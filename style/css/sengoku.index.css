@@ -1,0 +1,27 @@
+
+
+#mceu_11.mce-tinymce {
+	-webkit-box-shadow: none;
+	-moz-box-shadow: none;
+	box-shadow: none;
+
+}
+
+.fa-thermometer-empty {
+	color: #2DB512;
+    
+    font-size: 1.5em;
+}
+
+.fa-thermometer-half {
+	color: #B1CC1A;
+    
+    font-size: 1.5em;
+}
+
+.fa-thermometer-full {
+	color: #DE1C4E;
+  
+    font-size: 1.5em;
+}
+
