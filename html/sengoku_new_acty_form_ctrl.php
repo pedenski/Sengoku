@@ -1,15 +1,18 @@
   <!-- CONTROLS / WIDGET -->
     <table class="table is-fullwidth"">
-      <tr>
-      <th>Acty Date</th>
-        <!--DATE -->
-       <td colspan="2">
+     <!--  <tr>
+      <th>Activity Start Date</th>
+        <td colspan="2">
         <div class="field">
         <input type="text" class="input" name="acty_date" id="datetimepicker7" placeholder="02/04/88">
         </div>
       </td>
       
-      </tr>
+      </tr> -->
+
+
+
+
       <tr>
         <th>Category</th>
          <!-- CATEGORY -->

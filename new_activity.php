@@ -23,7 +23,7 @@
     
 
     
-  <form id="new_activity" action="parse.php" method="POST">
+  <form id="new_activity" action="_submit_new_acty.php" method="POST">
    <!-- NEW ACTIVITY FORM -->
   <?php include_once('html/sengoku_new_acty_form.php'); ?>
   </div>

@@ -64,11 +64,13 @@
         });
 
         $range.on("change", function () {
-        var $this = $(this),
-       
-        value = $range.prop("value");
+        severity_value = $range.prop("value");
+        if(severity_value == "Low") { severity_value = "1"; }
+        if(severity_value == "Medium") { severity_value = "2"; }
+        if(severity_value == "High") { severity_value = "3"; }
 
-        console.log("Value: " + value);
+
+        console.log("Value: " + severity_value);
 });
 
    });
@@ -77,42 +79,29 @@
 
 <script>
 $(document).ready(function() {
-
-
     var slider = $("#range").data("ionRangeSlider"); //call rangeslider
 
-    $('.buttons').on('click', '.button', function() {
-    if($(this).attr('name') == "Low")
+    $('.buttons').on('click', '.button', function() 
     {
-       $(this).addClass('is-selected is-light').siblings().attr('class','button is-small');
-       slider.update({from:0});
-   
-       
-       
+      if($(this).attr('name') == "Low")
+      {
+         $(this).addClass('is-selected is-light').siblings().attr('class','button is-small');
+         slider.update({from:0});
+      }
+     
+       if($(this).attr('name') == "Medium")
+      {
+        $(this).addClass('is-selected is-light').siblings().attr('class','button is-small');
+          slider.update({from:1});
+      }
+     
 
-
-    }
-   
-     if($(this).attr('name') == "Medium")
-    {
-      $(this).addClass('is-selected is-light').siblings().attr('class','button is-small');
-        slider.update({from:1});
-   
-
-
-
-
-
-
-
-    }
-     if($(this).attr('name') == "High")
-    {
-      $(this).addClass('is-selected is-light').siblings().attr('class','button is-small');
-       slider.update({from:2});
-   
-    }
-    });
+      if($(this).attr('name') == "High")
+      {
+        $(this).addClass('is-selected is-light').siblings().attr('class','button is-small');
+         slider.update({from:2});
+      }
+   });
 });
 </script>
 
@@ -124,23 +113,22 @@ $(document).ready(function() {
         // process the form
         $('#submit').click(function(event) {
                                  
-            var formData = {
-              'title'        : $("input[name=title]").val(),
-            
-              'tag'          : $('#demo3').tagEditor('getTags')[0].tags,
-
-              'acty_date' : $("input[name=acty_date]").val(),
-              'category'       : $("select#category option:selected" ).val(),
-              
-              'sev'          : $("#range").prop("value"),
-              'textarea'  : $("textarea#textarea[name=textarea]").val()
+            var formData = 
+            {
+              // 'acty_date'  : $("input[name=acty_date]").val(), 
+              'title'         : $("input[name=title]").val(),
+              'tag'           : $('#demo3').tagEditor('getTags')[0].tags,
+              'category'      : $("select#category option:selected" ).val(),
+              //'severity'      : $("#range").prop("value"),
+              'severity'      : severity_value,
+              'textarea'      : $("textarea#textarea[name=textarea]").val()
             };
                
             // process the form
             $.ajax
             ({
                 type        : 'POST', 
-                url         : 'parse.php',
+                url         : '_submit_new_acty.php',
                 data        : formData
             })
               .done(function(data) 
