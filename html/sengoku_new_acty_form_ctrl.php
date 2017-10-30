@@ -21,9 +21,25 @@
         <div class="control has-icons-left">
           <div class="select is-fullwidth">
             <select id="category" name="category">
-              <option selected>Category</option>
-              <option>Select dropdown</option>
-              <option>With options</option>
+
+            <?php
+
+            $SeverityList = $Severity->Get_Severity_List();
+            foreach($SeverityList as $row) {
+              $SeverityID   = $row['SeverityID'];
+              $SeverityName = $row['SeverityName'];
+            ?>
+           
+              <option value="<?php echo $SeverityID; ?>"><?php echo $SeverityName; ?></option>
+
+
+
+
+            <?php } ?>  
+
+
+          
+             
             </select>
           </div>
           <div class="icon is-small is-left">

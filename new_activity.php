@@ -1,3 +1,15 @@
+<?php
+include('lib/database.class.php');
+include('lib/severity.class.php');
+
+
+$db = new Database();
+$Severity = new Severity($db);
+
+
+
+?>
+
 <?php include_once('html/sengoku_header.php'); ?>
 <?php include_once('html/navbar.php'); ?>
 

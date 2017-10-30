@@ -53,27 +53,6 @@
 <script src="../sengoku/style/js/ion.rangeSlider.js"></script>
 <script>
 
-    $(function () {
-        var $range = $("#range");
-
-        $("#range").ionRangeSlider({
-        grid: true,
-        grid_snap: true,
-        from: 1,
-        values: ["Low", "Medium", "High" ]
-        });
-
-        $range.on("change", function () {
-        severity_value = $range.prop("value");
-        if(severity_value == "Low") { severity_value = "1"; }
-        if(severity_value == "Medium") { severity_value = "2"; }
-        if(severity_value == "High") { severity_value = "3"; }
-
-
-        console.log("Value: " + severity_value);
-});
-
-   });
 </script>
 
 
@@ -109,18 +88,44 @@ $(document).ready(function() {
 
  <!--SUBMIT AJAX FORM DAT  --> 
   <script>
-    $(document).ready(function() {
+    $(document).ready(function() 
+    {
         // process the form
-        $('#submit').click(function(event) {
-                                 
-            var formData = 
+          var $SeverityValue = "2"; //default value
+    
+      $(function () 
+      {
+          var $range = $("#range");
+        
+          $("#range").ionRangeSlider(
+          {
+            grid: true,
+            grid_snap: true,
+            from: 1,
+            values: ["Low", "Medium", "High" ]
+          });
+
+          $range.on("change", function () 
+          {
+            value = $range.prop("value");
+            if(value == "Low") { $SeverityValue = "1"; }
+            if(value == "Medium") { $SeverityValue = "2"; }
+            if(value == "High") { $SeverityValue = "3"; }
+    
+            console.log("Value: " + $SeverityValue + "-" + value);
+          });
+
+        });
+      
+       $('#submit').click(function(event) {
+          var formData = 
             {
               // 'acty_date'  : $("input[name=acty_date]").val(), 
               'title'         : $("input[name=title]").val(),
               'tag'           : $('#demo3').tagEditor('getTags')[0].tags,
-              'category'      : $("select#category option:selected" ).val(),
-              //'severity'      : $("#range").prop("value"),
-              'severity'      : severity_value,
+              'category'      : $("select#category option:selected" ).prop("value"),
+              'severity'      : $("#range").prop("value"),
+              'severity'      : $SeverityValue,
               'textarea'      : $("textarea#textarea[name=textarea]").val()
             };
                
@@ -131,16 +136,17 @@ $(document).ready(function() {
                 url         : '_submit_new_acty.php',
                 data        : formData
             })
-              .done(function(data) 
+                .done(function(data) 
               {
-              console.log(data); 
+                 console.log(data); 
               });
-           
-          event.preventDefault();
+           event.preventDefault();
         });
     });
   </script>
  
+
+
 <script>
 $("#reset").click(function() {
   

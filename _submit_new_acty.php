@@ -92,8 +92,8 @@ echo $a;
 // echo "---";
 
 
-// echo "sev: ".$_POST['severity'];
-// echo "---";
+echo "sev: ".$_POST['severity'];
+ echo "---";
 
 // echo "tags: ".print_r($_POST['tag']);
 // echo "---";
@@ -105,8 +105,8 @@ echo $a;
 
 
 
-// echo "category: ".$_POST['category'];
-// echo "----";
+//echo "category: ".$_POST['category'];
+//echo "----";
 
 
 
