@@ -112,7 +112,7 @@ $(document).ready(function() {
             if(value == "Medium") { $SeverityValue = "2"; }
             if(value == "High") { $SeverityValue = "3"; }
     
-            console.log("Value: " + $SeverityValue + "-" + value);
+            //console.log("Value: " + $SeverityValue + "-" + value);
           });
 
         });
@@ -122,7 +122,7 @@ $(document).ready(function() {
             {
               // 'acty_date'  : $("input[name=acty_date]").val(), 
               'title'         : $("input[name=title]").val(),
-              'tag'           : $('#demo3').tagEditor('getTags')[0].tags,
+              'tags'           : $('#demo3').tagEditor('getTags')[0].tags,
               'category'      : $("select#category option:selected" ).prop("value"),
               'severity'      : $("#range").prop("value"),
               'severity'      : $SeverityValue,
