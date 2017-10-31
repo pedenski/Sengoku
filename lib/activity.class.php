@@ -4,32 +4,23 @@ class Activity {
 
 	private $conn;
 	//vars from form
-	private $ActyTitle;
-	private $UserID = "1";
-	private $SeverityID;
-	private $CategoryID;
-	private $Textarea;
+	public $ActyTitle;
+	public $UserID = "1";
+	public $SeverityID;
+	public $CategoryID;
+	public $Textarea;
 
 	
 	private $LastID; //so tags can access this
 
-
-
 	public function __construct($db)
 	{
-		$this->conn 		= $db->getConn();
-		
-	
+		$this->conn = $db->getConn();
 	}
 
 	public function Execute_Insert()
 	{
-		$this->ActyTitle	= $_POST['title'];
-		//$this->UserID		= $_POST['title'];
-		$this->SeverityID 	= $_POST['severity'];
-		$this->CategoryID 	= $_POST['category'];
-		$this->Textarea 	= $_POST['textarea'];
-			
+		
 		$this->New_Activity();
 		return $this->LastID;
 	}
@@ -38,10 +29,6 @@ class Activity {
 	public function New_Activity()
 	//insert title, id, severity, category and author
 	{
-
-
-
-
 		$q = "INSERT INTO activity_titles SET
 			  ActyTitle 	=	:ActyTitle,
 			  UserID		=	:UserID,
@@ -74,19 +61,31 @@ class Activity {
 	}
 
 
-	/* SELECT SECTION */
-	public function Get_Titles()
+	/* 
+	 * SELECT SECTION 
+	 */
+
+
+	public function Get_Title_Listing()
+	//get all titles
 	{
 		$q = "SELECT * FROM activity_titles";
 		$sql = $this->conn->prepare($q);
 		$sql->execute();
 		return $row = $sql->fetchAll(PDO::FETCH_ASSOC);
+	}
+	
 
-
+	public function Get_Activity_Detail($ActyID)
+	{
+		$q = "SELECT * FROM activity_details WHERE ActyID =".$ActyID;
+		$sql = $this->conn->prepare($q);
+		$sql->execute();
+		$row = $sql->fetch(PDO::FETCH_ASSOC);
+		$this->textarea = $row['DetailText'];
 	}
 
-
-
+	
 
 
 

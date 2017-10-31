@@ -3,12 +3,14 @@ $page_title = "Sengoku";
 
 include('lib/database.class.php');
 include('lib/activity.class.php');
+include('lib/tags.class.php');
+include('lib/users.class.php');
 
 //instantiate
 $db = new Database();
 $Activity = new Activity($db);
-
-
+$Tags = new Tags($db);
+$Users = new Users($db);
 
 
 ?>
@@ -37,30 +39,73 @@ $Activity = new Activity($db);
 
   <!--FIRST COLUMN -->
   <div class="column is-four-fifths">
-    <table class="table is-bordered is-fullwidth">   
-    <?php 
-  $ActyList = $Activity->Get_Titles();
-  foreach($ActyList as $row) 
-  { ?>
 
-    
-       <tr>
-      <th><?php echo $row['ActyTitle']; ?></th>
-      <tr>
-      <td>DESCRIPTION HERE</td>
-      </tr>
-    </tr>
+ <?php 
+  $ActyList = $Activity->Get_TItle_Listing();
+  foreach($ActyList as $row) { ?>
+  <article class="media">
+
+  <div class="media-content">
+    <div class="content">
+      <p>
+        <strong><?php echo ucfirst($row['ActyTitle']); ?> - <?php echo $row['ActyID'];?></strong> <small>@Time</small> <small>31m</small>
+        <br>
+        <?php 
+          $Activity->Get_Activity_Detail($row['ActyID']);
+          echo strip_tags(substr($Activity->textarea, 0, 200));
+        ?>...
+      </p>
+    </div>
+    <nav class="level is-mobile">
+      <div class="level-left">
+        <?php
+            $Tags->UserLists = $Users->Get_User_Names(); //get Names and insert to Tags class var
+            $Tags->Get_Tags($row['ActyID']);   //Execute Tags based on ActyID
+            ?>
+            <?php foreach($Tags->TagLists as $TagName) { ?>
+            <?php echo $TagName; ?> 
+               <!-- <span class="tag is-info"> </span> -->
+        <?php } ?>
+      </div>
+      
+      <div class="level-left">
+        <?php  
+          foreach($Tags->UserLists as $UserNames)
+          {
+            echo $UserNames;
+          } ?>
+      </div>
+    </nav>
+  </div>
+  <div class="media-right">
+    <button class="delete"></button>
+  </div>
+</article>
+<?php }  ?>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
    
-
-
-
-
- <?php }  ?>
-
-  </table>
-    
   </div>
 
   <!--SECOND COLUMN -->

@@ -1,20 +1,21 @@
 <?php 
-
-
 class Tags  {
 
 	private $conn;
-	private $Tags;
+	
 	public $Acty_LastID;
+	public $UserLists;
+	public $TagLists;
 
 	public function __construct($db)
 	{
 		$this->conn = $db->getConn();
-		$this->Tags = $_POST['tags'];
 	}
 
 	public function Insert_Tags()
 	{
+		$this->Tags = $_POST['tags'];
+
 		$q = "INSERT INTO tags SET 
 		TagName = :TagName";
 
@@ -35,7 +36,7 @@ class Tags  {
 	{		
 		$q = "INSERT INTO tag_map SET 
 			  ActyID = :ActyID,
-			  TagID = :TagID";
+			  TagID  = :TagID";
 		$sql = $this->conn->prepare($q);
 
 		$sql->bindValue(":ActyID", $this->Acty_LastID);
@@ -43,7 +44,64 @@ class Tags  {
 		$sql->execute();
 	}
 
+	/*
+	 * SELECT QUERIES
+	 */
+
+	public function Get_Tags($ActyID) 
+	{
+		$q = "SELECT tags.TagName FROM tags
+			  INNER JOIN tag_map ON tags.TagID = tag_map.TagID 
+			  WHERE tag_map.ActyID = ?";
+		$sql = $this->conn->prepare($q);
+		$sql->bindParam(1, $ActyID);	  	
+		$sql->execute();
+		$this->TagLists = $sql->fetchALL(PDO::FETCH_ASSOC);
+		$this->Compare_Array();
+	}		
+
 	
+	public function Compare_Array()
+	/* -- Issue with Comparing Arrays --
+	 * array_diff & array_intersect doesnt work on 2 dimensionsal arrays
+	 * @param TagLists & @param UserLists must be converted to 1D by using foreach loop.
+	 * Once converted, use array_diff & array_intersect accordingly
+	 */
+	{
+		$t = array(); //tags
+		$u = array(); //users
+
+	 	foreach($this->TagLists as $tagval)
+        {
+        	$t[] = $tagval['TagName'];
+	         
+	        foreach($this->UserLists as $userval)
+	        {
+	        	$u[] = $userval['UserName'];
+	        }
+        }
+
+        $this->TagLists = array_diff($t, $u);
+        $this->UserLists = array_intersect($t, $u);
+
+	}
+
+
+
+
+
+
+
+
+
+
+
+
+
+	public function ret()
+	{
+		return $this->UserList;
+	}
 	
 }
 

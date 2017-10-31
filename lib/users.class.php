@@ -16,7 +16,7 @@ class Users {
 		$q = "SELECT UserName FROM users";
 		$sql = $this->conn->prepare($q);
 		$sql->execute();
-		return $sql->fetchALL(PDO::FETCH_ASSOC);
+		return $row = $sql->fetchALL(PDO::FETCH_ASSOC);
 	}
 
 

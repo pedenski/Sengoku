@@ -21,6 +21,11 @@ $Users = new Users($db);
 
 //$UserList = $Users->Get_User_Names();
 
+$Activity->ActyTitle 		= htmlspecialchars($_POST['title']);
+$Activity->SeverityID 		= htmlspecialchars($_POST['severity']);
+$Activity->CategoryID 		= htmlspecialchars($_POST['category']);
+$Activity->Textarea 		= $_POST['textarea'];
+
 $Acty_LastID = $Activity->Execute_Insert();
 $Tags->Acty_LastID = $Acty_LastID; //insert last ActyID
 

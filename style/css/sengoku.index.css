@@ -21,7 +21,10 @@
 
 .fa-thermometer-full {
 	color: #DE1C4E;
-  
     font-size: 1.5em;
+}
+
+table tr:nth-of-type(4n) td {
+    border-bottom: 3px solid #f00;
 }
 
