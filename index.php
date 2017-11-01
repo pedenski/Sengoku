@@ -48,7 +48,7 @@ $Users = new Users($db);
   <div class="media-content">
     <div class="content">
       <p>
-        <strong><?php echo ucfirst($row['ActyTitle']); ?> - <?php echo $row['ActyID'];?></strong> <small>@Time</small> <small>31m</small>
+        <strong><?php echo ucfirst($row['ActyTitle']); ?> - <?php echo $row['SeverityID'];?> </strong>
         <br>
         <?php 
           $Activity->Get_Activity_Detail($row['ActyID']);
@@ -63,23 +63,54 @@ $Users = new Users($db);
             $Tags->Get_Tags($row['ActyID']);   //Execute Tags based on ActyID
             ?>
             <?php foreach($Tags->TagLists as $TagName) { ?>
-            <?php echo $TagName; ?> 
+           <span class="tag is-info mar-r-5">  <?php echo $TagName; ?> </span> 
                <!-- <span class="tag is-info"> </span> -->
         <?php } ?>
       </div>
-      
-      <div class="level-left">
-        <?php  
-          foreach($Tags->UserLists as $UserNames)
-          {
-            echo $UserNames;
-          } ?>
+       
+       <div class="level-right">
+
+       
+        
+
+         <div class="level-item">
+         <span class="sev-<?php echo $row['SeverityID'];?>"></span>
+         </div>
+        <!-- <div class="level-item">
+             USERS in TAG
+             <?php foreach($Tags->UserLists as $UserNames) { ?>
+             <?php echo $UserNames; ?>
+             <?php } ?>
+        </div> -->
+        
+
+         <div class="level-item">
+          <div class="Divider"></div>
+         </div>
+
+        <div class="level-item">
+        <small> <i class="fa fa-pencil-square" aria-hidden="true"></i> Zild </small>
+        </div>
+
+      <div class="level-item">
+          <div class="Divider"></div>
+
       </div>
+
+        <div class="level-item">
+          <small><i class="fa fa-clock-o" aria-hidden="true"></i> <?php echo $row['ActyStartDate']; ?></small>
+        </div>
+
+
+      </div> 
+
+
+     
+       
+  
     </nav>
   </div>
-  <div class="media-right">
-    <button class="delete"></button>
-  </div>
+  
 </article>
 <?php }  ?>
 

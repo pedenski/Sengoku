@@ -1,10 +1,12 @@
-
+/* GLOBALS */
+.mar-r-5 {
+	margin-right:5px;
+}
 
 #mceu_11.mce-tinymce {
 	-webkit-box-shadow: none;
 	-moz-box-shadow: none;
 	box-shadow: none;
-
 }
 
 .fa-thermometer-empty {
@@ -26,5 +28,28 @@
 
 table tr:nth-of-type(4n) td {
     border-bottom: 3px solid #f00;
+}
+
+/* SEVERITY */
+.sev-1{
+    background: #ABFF3D;
+    padding: 5px 5px;
+    border-radius: 50%;
+}
+.sev-2{
+    background: #E8AE00;
+    padding: 5px 5px;
+    border-radius: 50%;
+}
+.sev-3{
+    background: #D1380E;
+    padding: 5px 5px;
+    border-radius: 50%;
+}
+
+/* Arcticle Divider */
+.Divider {
+     border-left:1px solid #c0c0c0; 
+     height:15px;
 }
 
