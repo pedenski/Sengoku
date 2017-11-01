@@ -2,10 +2,10 @@
 //$_POST from <form> already global var no need to insert to function, just execute method
 
 //include libraries
-include('lib/database.class.php');
-include('lib/activity.class.php');
-include('lib/tags.class.php');
-include('lib/users.class.php');
+include_once('lib/database.class.php');
+include_once('lib/activity.class.php');
+include_once('lib/tags.class.php');
+include_once('lib/users.class.php');
 
 //instantiates
 $db = new database();

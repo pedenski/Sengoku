@@ -8,6 +8,7 @@ class Activity {
 	public $UserID = "1";
 	public $SeverityID;
 	public $CategoryID;
+	public $ActyStartDate;
 	public $Textarea;
 
 	
@@ -19,8 +20,8 @@ class Activity {
 	}
 
 	public function Execute_Insert()
+	//insert new activity
 	{
-		
 		$this->New_Activity();
 		return $this->LastID;
 	}
@@ -85,8 +86,18 @@ class Activity {
 		$this->textarea = $row['DetailText'];
 	}
 
-	
-
+	public function Get_Title_Data($ActyID)
+	{
+		$q = "SELECT * FROM activity_titles WHERE ActyID =".$ActyID;
+		$sql = $this->conn->prepare($q);
+		$sql->execute();
+		$row = $sql->fetch(PDO::FETCH_ASSOC);
+		$this->ActyTitle = $row['ActyTitle'];
+		$this->SeverityID = $row['SeverityID'];
+		$this->CategoryID = $row['CategoryID'];
+		$this->UserID = $row['UserID'];
+		$this->ActyStartDate = $row['ActyStartDate'];
+	}
 
 
 
