@@ -12,6 +12,17 @@
  <script src="../sengoku/style/js/jquery.tag-editor.js"></script>
 
 
+<script>
+  
+$("#showModal").click(function() {
+  $(".modal").addClass("is-active");  
+});
+
+$(".modal-close").click(function() {
+   $(".modal").removeClass("is-active");
+});
+  
+</script>
 
 <script>
   $('#demo3').tagEditor({ 
@@ -120,12 +131,13 @@ $(document).ready(function() {
        $('#submit').click(function(event) {
           var formData = 
             {
-              // 'acty_date'  : $("input[name=acty_date]").val(), 
+              'acty_date'     : $("input[name=acty_date]").val(), 
               'title'         : $("input[name=title]").val(),
-              'tags'           : $('#demo3').tagEditor('getTags')[0].tags,
+              'tags'          : $('#demo3').tagEditor('getTags')[0].tags,
               'category'      : $("select#category option:selected" ).prop("value"),
+              'area'          : $("select#area option:selected" ).prop("value"),
               'severity'      : $("#range").prop("value"),
-              'severity'      : $SeverityValue,
+              //'severity'      : $SeverityValue,
               'textarea'      : $("textarea#textarea[name=textarea]").val()
             };
                

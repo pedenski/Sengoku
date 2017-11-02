@@ -14,7 +14,6 @@
 
 
 
-
  <!--DATETIME PICKER -->
     <script src="../sengoku/style/js/datetimepicker.full.js"></script>
     <script>
@@ -111,7 +110,7 @@ $(document).ready(function() {
             {
               // 'acty_date'  : $("input[name=acty_date]").val(), 
               'title'         : $("input[name=title]").val(),
-              'tags'           : $('#demo3').tagEditor('getTags')[0].tags,
+              'tags'          : $('#demo3').tagEditor('getTags')[0].tags,
               'category'      : $("select#category option:selected" ).prop("value"),
               'severity'      : $("#range").prop("value"),
               'severity'      : $SeverityValue,

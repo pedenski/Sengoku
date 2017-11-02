@@ -8,7 +8,7 @@ include_once('lib/database.class.php');
 include_once('lib/activity.class.php');
 include_once('lib/users.class.php');
 include_once('lib/tags.class.php');
-include_once('lib/severity.class.php');
+include_once('lib/actydetails.class.php');
 
 
 //instantiate
@@ -16,7 +16,7 @@ $db = new Database();
 $Activity = new Activity($db);
 $Users = new Users($db);
 $Tags = new Tags($db);
-$Severity = new Severity($db);
+$ActyDetails = new ActyDetails($db);
 
 $Activity->Get_Title_Data($ActyID);
 
@@ -216,7 +216,7 @@ include_once('html/navbar.php');
 
             <?php
 
-            $SeverityList = $Severity->Get_Severity_List();
+            $SeverityList = $ActyDetails->Get_Severity_List();
             foreach($SeverityList as $row) {
               $SeverityID   = $row['SeverityID'];
               $SeverityName = $row['SeverityName'];

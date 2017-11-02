@@ -1,10 +1,10 @@
 <?php
 include_once('lib/database.class.php');
-include_once('lib/severity.class.php');
+include_once('lib/actydetails.class.php');
 
 
 $db = new Database();
-$Severity = new Severity($db);
+$ActyDetails = new ActyDetails($db);
 
 
 
@@ -12,6 +12,7 @@ $Severity = new Severity($db);
 
 <?php include_once('html/sengoku_header_new_acty.php'); ?>
 <?php include_once('html/navbar.php'); ?>
+
 
 <section class="hero is-primary">
   <div class="hero-body">
@@ -47,7 +48,7 @@ $Severity = new Severity($db);
 
 
 
-
+<!--
     <article class="message">
       <div class="message-header">
         <p>Hello World</p>
@@ -58,7 +59,7 @@ $Severity = new Severity($db);
       </div>
     </article>
 
-
+-->
 
 
   </div><!--/SECOND COLUMN-->
