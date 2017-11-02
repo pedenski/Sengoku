@@ -1,5 +1,7 @@
 tinymce.init({
     selector: '#textarea',
+    theme: "modern",
+    skin: 'light',  // resolved to http://domain.mine/myLayout.css
     height : "350",
     menubar: false,
     branding: false,

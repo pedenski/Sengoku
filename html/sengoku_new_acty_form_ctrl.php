@@ -1,5 +1,5 @@
   <!-- CONTROLS / WIDGET -->
-    <table class="table is-fullwidth"">
+    <table class="table borderless is-fullwidth"">
      <!--  <tr>
       <th>Activity Start Date</th>
         <td colspan="2">

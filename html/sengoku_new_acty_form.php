@@ -1,6 +1,6 @@
 
 
-<table class="table  is-fullwidth">
+<table class="table borderless is-fullwidth">
 <thead>
     <tr>
       
@@ -22,7 +22,9 @@
     <tr>
       
       <td colspan="3">
+         <div style="padding:4px;border-radius:5px;background: #f4f4f4"> 
         <textarea id="textarea" name="textarea"></textarea>
+      </div>
       </td>
     </tr>
 

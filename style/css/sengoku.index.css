@@ -3,6 +3,10 @@
 	margin-right:5px;
 }
 
+.borderless td, .borderless th {
+    border: none;
+}
+
 ._actyTitle {
     text-decoration: none;
     font-size: 18px;
