@@ -136,8 +136,8 @@ $(document).ready(function() {
               'tags'          : $('#demo3').tagEditor('getTags')[0].tags,
               'category'      : $("select#category option:selected" ).prop("value"),
               'area'          : $("select#area option:selected" ).prop("value"),
-             // 'severity'      : $("#range").prop("value"),
-              'severity'      : $SeverityValue,
+              'severity'      : $("#range").prop("value"),
+              //'severity'      : $SeverityValue,
               'textarea'      : $("textarea#textarea[name=textarea]").val()
             };
                

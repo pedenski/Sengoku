@@ -16,7 +16,8 @@ include_once('lib/database.class.php');
 include_once('lib/activity.class.php');
 include_once('lib/tags.class.php');
 include_once('lib/users.class.php');
-include_once('lib/validator.class.php');
+include_once('lib/actydetails.class.php');
+
 
 //instantiates
 $db = new database();
@@ -26,10 +27,18 @@ $Users = new Users($db);
 $Validator = new Validator();
 
 
-
-if($Validator->ifEmpty()) {
-	echo "Empty Field";
+$error = $Validator->isPOST_Valid();
+if(!empty($error)){
+	echo $error;
+	die();
 }
+
+
+
+
+
+
+echo "ok";
 
 
 
@@ -45,23 +54,23 @@ if($Validator->ifEmpty()) {
 //activity_title
 
 
-$Activity->ActyTitle 		= htmlspecialchars($_POST['title']);
-$Activity->SeverityID 		= htmlspecialchars($_POST['severity']);
-$Activity->CategoryID 		= htmlspecialchars($_POST['category']);
-$Activity->AreaID 			= htmlspecialchars($_POST['area']);
-$Activity->ActyStartDate 	= htmlspecialchars($_POST['acty_date']);
+// $Activity->ActyTitle 		= htmlspecialchars($_POST['title']);
+// $Activity->SeverityID 		= htmlspecialchars($_POST['severity']);
+// $Activity->CategoryID 		= htmlspecialchars($_POST['category']);
+// $Activity->AreaID 			= htmlspecialchars($_POST['area']);
+// $Activity->ActyStartDate 	= htmlspecialchars($_POST['acty_date']);
 
 
 
-$Activity->Textarea 		= $_POST['textarea'];
-$Acty_LastID = $Activity->Execute_Insert();
-$Tags->Acty_LastID = $Acty_LastID; //insert last ActyID
+// $Activity->Textarea 		= $_POST['textarea'];
+// $Acty_LastID = $Activity->Execute_Insert();
+// $Tags->Acty_LastID = $Acty_LastID; //insert last ActyID
 
-$Tags->Acty_LastID = $Acty_LastID; //insert last ActyID
-$Tags->Insert_Tags(); // execute
+// $Tags->Acty_LastID = $Acty_LastID; //insert last ActyID
+// $Tags->Insert_Tags(); // execute
 
 
- echo "$Acty_LastID";
+// echo "$Acty_LastID";
 
 
 

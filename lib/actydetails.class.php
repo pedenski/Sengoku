@@ -1,5 +1,5 @@
 <?php 
-
+include_once('database.class.php');
 
 class ActyDetails {
 
@@ -8,8 +8,9 @@ class ActyDetails {
 	private $Category_List;
 	private $Area_List;
 
-	public function __construct($db)
+	public function __construct()
 	{
+		$db = new Database();
 		$this->conn = $db->getConn();
 	}
 
@@ -58,8 +59,79 @@ class ActyDetails {
 		$this->Area_List = $sql->fetchAll(PDO::FETCH_ASSOC);
 	}
 
+}
+
+
+
+class Validator extends ActyDetails {
+
+	public function isPOST_Valid()
+	{
+		if(!$this->ifValid_Input())
+		{
+			return "Empty Field";
+		} 
+		elseif(!$this->ifValid_Category())
+		{
+			return "Please Select a valid category";
+		}
+		elseif(!$this->ifValid_Area())
+		{
+			return "Please select a valid area";
+		}
+	}
+
+	public function ifValid_Input()
+	{	
+		$required = array('title','acty_date','textarea','tags');
+
+		$isEmpty = false;
+		$checked = array();
+		foreach($required as $key)
+		{
+			if(empty($_POST[$key])) //check each $_POST 
+			{
+				$isEmpty = true; //true if found 1 empty $_POST
+			}
+		}
+
+		if($isEmpty) //if true, an empty $_POST exists;
+		{ 
+			return false; //if empty
+		}
+
+		elseif(!$isEmpty) { 
+			return true; 
+		}
+
+	}
+
+	public function ifValid_Category()
+	//checks if selected category from dropdown is valid
+	{
+		$CategoryList =  parent::Get_Category_List();
+		foreach($CategoryList as $ckey => $cval) 
+		{
+			if(in_array($_POST['category'], $cval)) 
+			{
+				return true;
+			}
+		}
+	}
+
+	public function ifValid_Area()
+	//checks if selected category from dropdown is valid
+	{
+		$AreaList =  parent::Get_Area_List();
+		foreach($AreaList as $akey => $aval) 
+		{
+			if(in_array($_POST['area'], $aval)) 
+			{
+				return true;
+			}
+		}
+	}
 
 
 }
-
- ?>
+?>
