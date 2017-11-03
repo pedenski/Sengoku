@@ -12,17 +12,6 @@
  <script src="../sengoku/style/js/jquery.tag-editor.js"></script>
 
 
-<script>
-  
-$("#showModal").click(function() {
-  $(".modal").addClass("is-active");  
-});
-
-$(".modal-close").click(function() {
-   $(".modal").removeClass("is-active");
-});
-  
-</script>
 
 <script>
   $('#demo3').tagEditor({ 

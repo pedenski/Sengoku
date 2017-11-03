@@ -2,8 +2,12 @@
 include_once('lib/database.class.php');
 include_once('lib/actydetails.class.php');
 
+
 $db = new Database();
 $ActyDetails = new ActyDetails($db);
+
+
+
 ?>
 
 <?php include_once('html/sengoku_header_new_acty.php'); ?>
