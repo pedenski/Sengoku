@@ -16,12 +16,25 @@ include_once('lib/database.class.php');
 include_once('lib/activity.class.php');
 include_once('lib/tags.class.php');
 include_once('lib/users.class.php');
+include_once('lib/validator.class.php');
 
 //instantiates
 $db = new database();
 $Activity = new Activity($db);
 $Tags = new Tags($db);
 $Users = new Users($db);
+$Validator = new Validator();
+
+
+
+if($Validator->ifEmpty()) {
+	echo "Empty Field";
+}
+
+
+
+
+
 
 
 
@@ -41,7 +54,6 @@ $Activity->ActyStartDate 	= htmlspecialchars($_POST['acty_date']);
 
 
 $Activity->Textarea 		= $_POST['textarea'];
-
 $Acty_LastID = $Activity->Execute_Insert();
 $Tags->Acty_LastID = $Acty_LastID; //insert last ActyID
 
