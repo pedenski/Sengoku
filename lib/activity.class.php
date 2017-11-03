@@ -3,13 +3,15 @@
 class Activity {
 
 	private $conn;
+
 	//vars from form
-	public $ActyTitle;
-	public $UserID = "1";
-	public $SeverityID;
-	public $CategoryID;
-	public $ActyStartDate;
-	public $Textarea;
+	public $ActyTitle; //title
+	public $UserID = "1"; //user
+	public $SeverityID; //severity
+	public $CategoryID; //category
+	public $ActyStartDate; //activity date
+	public $Textarea; //textarea
+	public $AreaID;
 
 	
 	private $LastID; //so tags can access this
@@ -30,21 +32,28 @@ class Activity {
 	public function New_Activity()
 	//insert title, id, severity, category and author
 	{
-		$q = "INSERT INTO activity_titles SET
-			  ActyTitle 	=	:ActyTitle,
-			  UserID		=	:UserID,
-			  SeverityID	=	:SeverityID,
-			  CategoryID	=	:CategoryID";
+
+
+		$q = "INSERT INTO activity_titles 
+				( ActyTitle,  UserID,  CategoryID,  SeverityID,  AreaID,  ActyStartDate) VALUES 
+				(:ActyTitle, :UserID, :CategoryID, :SeverityID, :AreaID, :ActyStartDate) ";
+					
+
 		$sql = $this->conn->prepare($q);
 
-		$sql->bindParam(":ActyTitle", 	$this->ActyTitle);
-		$sql->bindParam(":UserID",		$this->UserID);
-		$sql->bindParam(":SeverityID",	$this->SeverityID);
-		$sql->bindParam(":CategoryID",	$this->CategoryID);
-		$sql->execute();
+		$sql->bindParam(':ActyTitle', 	$this->ActyTitle);
+		$sql->bindParam(':UserID',		$this->UserID);
+		$sql->bindParam(':CategoryID',	$this->CategoryID);
+		$sql->bindParam(':SeverityID',	$this->SeverityID);
+		$sql->bindParam(':AreaID',		$this->AreaID);
+		$sql->bindParam(':ActyStartDate',	$this->ActyStartDate);
 
+		$sql->execute();
+		
+		
 		$this->LastID =  $this->conn->lastInsertID();  //get last id
 		$this->Insert_Activity_Detail(); // execute insert of textarea
+		return $sql->errorCode();
 	}
 
 

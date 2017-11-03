@@ -2,17 +2,12 @@
 include_once('lib/database.class.php');
 include_once('lib/actydetails.class.php');
 
-
 $db = new Database();
 $ActyDetails = new ActyDetails($db);
-
-
-
 ?>
 
 <?php include_once('html/sengoku_header_new_acty.php'); ?>
 <?php include_once('html/navbar.php'); ?>
-
 
 <section class="hero is-primary">
   <div class="hero-body">
@@ -46,8 +41,6 @@ $ActyDetails = new ActyDetails($db);
   <?php include_once('html/sengoku_new_acty_form_ctrl.php'); ?>
   </form>
 
-
-
 <!--
     <article class="message">
       <div class="message-header">
@@ -60,14 +53,11 @@ $ActyDetails = new ActyDetails($db);
     </article>
 
 -->
-
-
-  </div><!--/SECOND COLUMN-->
+</div><!--/SECOND COLUMN-->
 
 
 </div> <!--/COLUMNS-->
 </div> <!--/CONTAINER-->
 </section>
-
 
 <?php include_once('html/sengoku_footer_new_acty.php'); ?>
