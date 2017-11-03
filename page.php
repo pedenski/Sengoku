@@ -117,12 +117,18 @@ include_once('html/navbar.php');
     <div style="padding:1px;border-radius:5px;background: #f4f4f4"> 
     <table style="background:#F4F4F4;" class="table  is-fullwidth is-small">
  		<tr>
- 			<td>
+ 			<td> 
+        <?php
+        $Users->Get_Username($Activity->UserID); ?>
+        <img style="border:2px solid #FF3860; border-radius:5px;width:38px;height:38px" src="style/img/<?php echo $Users->UserName; ?>.png">
+ 
+
+
        <?php 
        $Tags->UserLists = $Users->Get_User_Listing();
        $Tags->Get_Tags($ActyID);
        foreach($Tags->UserLists as $UserNames) { ?>
-       <img style="border-radius:5px;width:32px;height:32px" src="style/img/<?php echo $UserNames; ?>.png">
+       <img style="border-radius:5px;width:38px;height:38px" src="style/img/<?php echo $UserNames; ?>.png">
        <?php } ?>
       </td>
  		</tr>

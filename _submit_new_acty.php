@@ -28,7 +28,8 @@ $Validator = new Validator();
 
 
 $error = $Validator->isPOST_Valid();
-if(!empty($error)){
+if(!empty($error))
+{
 	echo $error;
 	die();
 }
@@ -38,7 +39,7 @@ if(!empty($error)){
 
 
 
-echo "ok";
+
 
 
 
@@ -54,23 +55,23 @@ echo "ok";
 //activity_title
 
 
-// $Activity->ActyTitle 		= htmlspecialchars($_POST['title']);
-// $Activity->SeverityID 		= htmlspecialchars($_POST['severity']);
-// $Activity->CategoryID 		= htmlspecialchars($_POST['category']);
-// $Activity->AreaID 			= htmlspecialchars($_POST['area']);
-// $Activity->ActyStartDate 	= htmlspecialchars($_POST['acty_date']);
+$Activity->ActyTitle 		= htmlspecialchars($_POST['title']);
+$Activity->SeverityID 		= htmlspecialchars($_POST['severity']);
+$Activity->CategoryID 		= htmlspecialchars($_POST['category']);
+$Activity->AreaID 			= htmlspecialchars($_POST['area']);
+$Activity->ActyStartDate 	= htmlspecialchars($_POST['acty_date']);
 
 
 
-// $Activity->Textarea 		= $_POST['textarea'];
-// $Acty_LastID = $Activity->Execute_Insert();
-// $Tags->Acty_LastID = $Acty_LastID; //insert last ActyID
+$Activity->Textarea 		= $_POST['textarea'];
+$Acty_LastID = $Activity->Execute_Insert();
+$Tags->Acty_LastID = $Acty_LastID; //insert last ActyID
 
-// $Tags->Acty_LastID = $Acty_LastID; //insert last ActyID
-// $Tags->Insert_Tags(); // execute
+$Tags->Acty_LastID = $Acty_LastID; //insert last ActyID
+$Tags->Insert_Tags(); // execute
 
 
-// echo "$Acty_LastID";
+echo "$Acty_LastID";
 
 
 
