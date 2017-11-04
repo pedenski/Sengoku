@@ -1,4 +1,6 @@
 <?php 
+session_start();
+
 $ActyID = isset($_GET['id']) ? $_GET['id'] : die ('Error: Missing ID');
 $page_title = $ActyID;
 
@@ -39,9 +41,8 @@ include_once('html/navbar.php');
           <li>
             <a><p>
           <i class="fa fa-user-o" aria-hidden="true"></i>  
-          <?php
-          $Users->Get_Username($Activity->UserID);
-          echo $Users->UserName; ?> </p></a>
+          <?php echo $Users->GetUser($Activity->UserID);?>
+          </p></a>
           </li>
           <li>
             <p><a>
@@ -118,9 +119,7 @@ include_once('html/navbar.php');
     <table style="background:#F4F4F4;" class="table  is-fullwidth is-small">
  		<tr>
  			<td> 
-        <?php
-        $Users->Get_Username($Activity->UserID); ?>
-        <img style="border:2px solid #FF3860; border-radius:5px;width:38px;height:38px" src="style/img/<?php echo $Users->UserName; ?>.png">
+       <img style="border:2px solid #FF3860; border-radius:5px;width:38px;height:38px" src="style/img/<?php echo $Users->GetUser($Activity->UserID);?>.png">
  
 
 
@@ -162,61 +161,22 @@ include_once('html/navbar.php');
 
 <!--FIRST COLUMN -->
 <div class="column is-four-fifths">
-   <div style="padding:5px;border-radius:5px;background: #f4f4f4"> 
-  <textarea id="textarea" name="textarea"></textarea>
-</div>
+  <!-- SUBMIT LOG FORM -->
 
-</div>
+<?php 
+if(isset($_SESSION['SESSID']))
+{
+  include_once('html/page_submit_log_form.php');
+} else { ?>
+  
+  <article class="message is-danger">
+  <div class="message-body">
+    <i class="fa fa-exclamation-circle" aria-hidden="true"></i> You must be <strong>logged</strong> in to to reply.
+   
+  </div>
+</article>
 
-<div class="column is-one-quarter">
-<div style="padding:1px;border-radius:5px;background: #f4f4f4"> 
-<table style="background:#F4F4F4;" class="table  is-fullwidth is-small">
-  <tr><td>   
-        <div class="field">
-        <div class="control has-icons-left">
-          <div class="select is-fullwidth">
-            <select id="severity" name="severity">
-              <option>Severity</option>
-            <?php
-
-            $SeverityList = $ActyDetails->Get_Severity_List();
-            foreach($SeverityList as $row) {
-              $SeverityID   = $row['SeverityID'];
-              $SeverityName = $row['SeverityName'];
-            ?>
-           
-              <option value="<?php echo $SeverityID; ?>"><?php echo $SeverityName; ?></option>
-
-
-
-
-            <?php } ?>  
-
-
-          
-             
-            </select>
-          </div>
-          <div class="icon is-small is-left">
-            <i class="fa fa-globe"></i>
-          </div>
-        </div>
-      </div>
-          </td>
-  </tr> 
-  <tr>
- <td>
-     <input type="text" class="input" name="acty_date" id="datetimepicker7" placeholder="02/04/88">
-    </td>
-   </tr>
-   <tr>
-    <td>
-        <a type="submit"   id="submit" class="button is-fullwidth is-danger is-outlined">Submit</a>
-    </td>
-  </tr>
-  </table>
-</div>
-</div>
+<?php } ?>
 
 
 

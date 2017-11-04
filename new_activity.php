@@ -1,11 +1,19 @@
 <?php
+session_start();
+
+
+if(!isset($_SESSION['SESSID'])){
+  header('location: index.php?err=1');
+} 
+
+
 include_once('lib/database.class.php');
 include_once('lib/actydetails.class.php');
-
+include_once('lib/users.class.php');
 
 $db = new Database();
 $ActyDetails = new ActyDetails();
-
+$Users = new Users();
 
 
 ?>

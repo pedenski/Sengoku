@@ -1,4 +1,6 @@
 <?php
+session_start();
+
 include_once('lib/activity.class.php');
 include_once('lib/users.class.php');
 include_once('lib/actydetails.class.php');
@@ -37,8 +39,8 @@ $log = $Activity->Last_Log_Insert($LastID);
 <td width="130"><small> <?php echo date('M-d g:i a',strtotime($log['LogDate']));?> </small></td>
 
 <!--/ USER /-->
-<?php $Users->Get_Username($log['UserID']);?>
-<td width="50"><figure class="media-left"><p class="image"><img style="border-radius:5px;width:55px;height:25px" src="style/img/<?php echo $Users->UserName; ?>.png"></p></figure></td>
+
+<td width="50"><figure class="media-left"><p class="image"><img style="border-radius:5px;width:55px;height:25px" src="style/img/<?php echo $Users->GetUser($log['UserID']);?>.png"></p></figure></td>
 
 <!--/ SEVERITY /-->
 <td width="80"><span class="tag <?php echo $ActyDetails->Severity_Status($log['LogSeverityID']); ?>"><?php echo $ActyDetails->Get_Severity_Name($log['LogSeverityID']);?></span></td>
