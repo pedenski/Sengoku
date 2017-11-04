@@ -176,7 +176,7 @@ include_once('html/navbar.php');
         <div class="control has-icons-left">
           <div class="select is-fullwidth">
             <select id="severity" name="severity">
-
+              <option>Severity</option>
             <?php
 
             $SeverityList = $ActyDetails->Get_Severity_List();

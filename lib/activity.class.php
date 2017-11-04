@@ -73,7 +73,7 @@ class Activity {
 		$sql->bindParam(':LogDate', 		$this->ActyStartDate);
 
 		$sql->execute();
-		return "ok--";
+		return $this->conn->lastInsertID();
 	}
 
 
@@ -136,8 +136,17 @@ class Activity {
 		$sql->execute();
 		return $sql->fetchALL(PDO::FETCH_ASSOC);
 	
+	}
+
+	public function Last_Log_Insert($LastID){
+		$q = "SELECT * FROM activity_log WHERE LogID = ?";
+		$sql = $this->conn->prepare($q);
+		$sql->bindParam(1, $LastID);	
+		$sql->execute();
+		return $sql->fetch(PDO::FETCH_ASSOC);
 
 	}
+
 
 
 

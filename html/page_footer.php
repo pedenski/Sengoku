@@ -93,9 +93,10 @@ $(document).ready(function() {
                 url         : '_submit_log.php',
                 data        : formData
             })
-                .done(function(data) 
+                .done(function(data)
               {
                  console.log(data); 
+                 $('table#logtable').append($(data)).fadeIn('slow');
               });
            event.preventDefault();
         });

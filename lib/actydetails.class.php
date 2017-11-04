@@ -165,6 +165,56 @@ class Validator extends ActyDetails {
 		}
 	}
 
+	public function ifValid_Severity()
+	//checks if selected category from dropdown is valid
+	{
+		$CategoryList =  parent::Get_Severity_List();
+		foreach($CategoryList as $ckey => $cval) 
+		{
+			if(in_array($_POST['severity'], $cval)) 
+			{
+				return true;
+			}
+		}
+	}
+
+	public function isLog_Valid()
+	{
+		if(!$this->ifValid_LogInput())
+		{
+			return "Empty Field";
+		} 
+		elseif(!$this->ifValid_Severity())
+		{
+			return "Please Select a valid severity";
+		}
+	}
+
+	public function ifValid_LogInput()
+	{	
+		$required = array('acty_date','textarea');
+
+		$isEmpty = false;
+		$checked = array();
+		foreach($required as $key)
+		{
+			if(empty($_POST[$key])) //check each $_POST 
+			{
+				$isEmpty = true; //true if found 1 empty $_POST
+			}
+		}
+
+		if($isEmpty) //if true, an empty $_POST exists;
+		{ 
+			return false; //if empty
+		}
+
+		elseif(!$isEmpty) { 
+			return true; 
+		}
+
+	}
+
 
 }
 ?>

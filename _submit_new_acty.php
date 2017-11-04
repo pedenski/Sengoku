@@ -27,6 +27,7 @@ $Users = new Users($db);
 $Validator = new Validator();
 
 
+
 $error = $Validator->isPOST_Valid();
 if(!empty($error))
 {
@@ -58,8 +59,8 @@ $Tags->Acty_LastID = $Acty_LastID; //insert last ActyID
 $Tags->Insert_Tags(); // execute
 
 $a = $Activity->Insert_Log();
-echo $a;
-echo "$Acty_LastID";
+// echo $a;
+// echo "$Acty_LastID";
 
 
 
