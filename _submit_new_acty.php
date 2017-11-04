@@ -35,19 +35,6 @@ if(!empty($error))
 }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
 //check users if existing in array tags
 //if not, proceed,
 //if yes, extract users from array, and insert to new array
@@ -60,7 +47,7 @@ $Activity->SeverityID 		= htmlspecialchars($_POST['severity']);
 $Activity->CategoryID 		= htmlspecialchars($_POST['category']);
 $Activity->AreaID 			= htmlspecialchars($_POST['area']);
 $Activity->ActyStartDate 	= htmlspecialchars($_POST['acty_date']);
-
+$Activity->LogText		 	= "Start of Activity";
 
 
 $Activity->Textarea 		= $_POST['textarea'];
@@ -70,7 +57,8 @@ $Tags->Acty_LastID = $Acty_LastID; //insert last ActyID
 $Tags->Acty_LastID = $Acty_LastID; //insert last ActyID
 $Tags->Insert_Tags(); // execute
 
-
+$a = $Activity->Insert_Log();
+echo $a;
 echo "$Acty_LastID";
 
 

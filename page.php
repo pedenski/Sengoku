@@ -13,14 +13,14 @@ include_once('lib/actydetails.class.php');
 
 //instantiate
 $db = new Database();
-$Activity = new Activity($db);
-$Users = new Users($db);
-$Tags = new Tags($db);
-$ActyDetails = new ActyDetails($db);
+$Activity = new Activity();
+$Users = new Users();
+$Tags = new Tags();
+$ActyDetails = new ActyDetails();
 
 $Activity->Get_Title_Data($ActyID);
 
-include_once('html/sengoku_header_page.php');
+include_once('html/page_header.php');
 include_once('html/navbar.php');
 ?>
 
@@ -149,65 +149,22 @@ include_once('html/navbar.php');
 
 
 
+<?php include_once('html/page_log_table.php'); ?>
 
-  <table class="table is-fullwidth is-small">
-    <tr>
-      <td>Date Log</td>
-    
-      <td>Author</td>
-      <td>Severity</td>
-      <td>Message</td>
-      <td>Edit</td>
 
-    </tr>
-    <tr>
-      <td width="100"><small> 2017-11-01 00:03:06 </small></td>
-
-      <td>  <figure class="media-left">
-       <p class="image is-32x32">
-      <img style="border-radius:5px;" src="https://bulma.io/images/placeholders/128x128.png">
-       </p>
-       </figure></td>
-      <td><span class="tag is-danger">Low</span></td>
-      <td> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Prtur adipiscoin ornare magna eros</td>
-      <td><a class="button is-small"><i class="fa fa-times" aria-hidden="true"></i></a></td>
-    </tr>
-    <tr>
-      <td width="100"><small> 2017-11-01 00:03:06 </small></td>
-      <td>  <figure class="media-left">
-       <p class="image is-32x32">
-      <img style="border-radius:5px;" src="https://bulma.io/images/placeholders/128x128.png">
-       </p>
-       </figure></td>
-      <td>Low</td>
-      <td> Lorem ipsum dolor sit amet, consectetur adipiscing tur consectetur adipiscing tuconsectetur adipiscing tuconsectetur adipiscing tuadipisctur adipiscelit. Proin ornare magna eros</td>
-      <td><a class="button is-small"><i class="fa fa-times" aria-hidden="true"></i></a></td>
-
-    </tr>
-    <tr>
-      <td width="100"><small> 2017-11-01 00:03:06 </small></td>
-      <td>  <figure class="media-left">
-       <p class="image is-32x32">
-      <img style="border-radius:5px;" src="https://bulma.io/images/placeholders/128x128.png">
-       </p>
-       </figure></td>
-      <td>Low</td>
-      <td> Lorem ipsum dolor sit amet, consectetur adipiscing elit.it. Proin ornare magna erit. Proin ornare magna er Proin ornare magna eros</td>
-      <td><a class="button is-small"><i class="fa fa-times" aria-hidden="true"></i></a></td>
-
-    </tr>
-    
-  </table>
+<form id="log" action="_submit_log.php" method="POST">
+<input type="hidden" id="pageid" name="pageid" value="<?php echo $ActyID;?>">
 
 
 <div class="columns is-2">
+
+
 
 <!--FIRST COLUMN -->
 <div class="column is-four-fifths">
    <div style="padding:5px;border-radius:5px;background: #f4f4f4"> 
   <textarea id="textarea" name="textarea"></textarea>
 </div>
-
 
 </div>
 
@@ -218,7 +175,7 @@ include_once('html/navbar.php');
         <div class="field">
         <div class="control has-icons-left">
           <div class="select is-fullwidth">
-            <select id="category" name="category">
+            <select id="severity" name="severity">
 
             <?php
 
@@ -254,7 +211,7 @@ include_once('html/navbar.php');
    </tr>
    <tr>
     <td>
-      <a class="button is-primary is-fullwidth">Submit</a>
+        <a type="submit"   id="submit" class="button is-fullwidth is-danger is-outlined">Submit</a>
     </td>
   </tr>
   </table>
@@ -273,6 +230,9 @@ include_once('html/navbar.php');
 
 
 </div> <!--/CONTAINER-->
+</form>
+
+
 </section>
 
 
@@ -301,4 +261,4 @@ include_once('html/navbar.php');
 
 
 
- <?php include_once('html/sengoku_footer_page.php'); ?>
+ <?php include_once('html/page_footer.php'); ?>

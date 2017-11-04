@@ -7,6 +7,7 @@ class ActyDetails {
 	private $Severity_List;
 	private $Category_List;
 	private $Area_List;
+	private $SeverityName;
 
 	public function __construct()
 	{
@@ -18,6 +19,12 @@ class ActyDetails {
 	{
 		$this->Query_Severity_List();
 		return $this->Severity_List;
+	}
+
+	public function Get_Severity_Name($SeverityID)
+	{
+		$this->Query_Severity_Name($SeverityID);
+		return $this->SeverityName;
 	}
 
 	public function Get_Category_List()
@@ -32,6 +39,23 @@ class ActyDetails {
 		return $this->Area_List;
 	}
 
+	public function Severity_Status($SeverityID)
+	{
+		switch($SeverityID){
+			case 1:
+				return "is-success";
+				break;
+			case 2:
+				return "is-warning";
+				break;
+			case 3:
+				return "is-danger";
+				break;
+
+		}
+	}
+
+
 	public function Query_Severity_List()
 	{
 		$q = "SELECT SeverityID, SeverityName from activity_severity";
@@ -39,6 +63,16 @@ class ActyDetails {
 		
 		$sql->execute();
 		$this->Severity_List = $sql->fetchAll(PDO::FETCH_ASSOC);
+	}
+
+	public function Query_Severity_Name($SeverityID)
+	{
+		$q = "SELECT SeverityName FROM activity_severity where SeverityID = ? ";
+		$sql = $this->conn->prepare($q);
+		$sql->bindParam(1, $SeverityID);	
+		$sql->execute();
+		$row = $sql->fetch(PDO::FETCH_ASSOC);
+		$this->SeverityName = $row['SeverityName'];
 	}
 
 	public function Query_Category_List()
@@ -60,7 +94,6 @@ class ActyDetails {
 	}
 
 }
-
 
 
 class Validator extends ActyDetails {

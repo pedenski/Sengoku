@@ -4,7 +4,7 @@ include_once('lib/actydetails.class.php');
 
 
 $db = new Database();
-$ActyDetails = new ActyDetails($db);
+$ActyDetails = new ActyDetails();
 
 
 
@@ -37,12 +37,12 @@ $ActyDetails = new ActyDetails($db);
     
   <form id="new_activity" action="_submit_new_acty.php" method="POST">
    <!-- NEW ACTIVITY FORM -->
-  <?php include_once('html/sengoku_new_acty_form.php'); ?>
+  <?php include_once('html/new_acty_form.php'); ?>
   </div>
 
   <!--SECOND COLUMN -->
   <div class="column is-one-third">
-  <?php include_once('html/sengoku_new_acty_form_ctrl.php'); ?>
+  <?php include_once('html/new_acty_form_ctrl.php'); ?>
   </form>
 
 <!--

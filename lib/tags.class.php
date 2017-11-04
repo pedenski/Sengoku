@@ -1,4 +1,6 @@
 <?php 
+include_once('database.class.php');
+
 class Tags  {
 
 	private $conn;
@@ -7,8 +9,9 @@ class Tags  {
 	public $UserLists;
 	public $TagLists;
 
-	public function __construct($db)
+	public function __construct()
 	{
+		$db = new Database();
 		$this->conn = $db->getConn();
 	}
 

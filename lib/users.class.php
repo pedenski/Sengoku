@@ -1,4 +1,5 @@
 <?php 
+include_once('database.class.php');
 
 class Users {
 
@@ -6,8 +7,9 @@ class Users {
 	public $UserName;
 
 
-	public function __construct($db)
+	public function __construct()
 	{
+		$db = new Database();	
 		$this->conn = $db->getConn();
 	}
 

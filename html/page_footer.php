@@ -38,13 +38,10 @@
 
 
 <!-- SLIDER SEVERITY -->
-<script src="../sengoku/style/js/ion.rangeSlider.js"></script>
-<script>
-
-</script>
 
 
-<script>
+
+<!-- <script>
 $(document).ready(function() {
     var slider = $("#range").data("ionRangeSlider"); //call rangeslider
 
@@ -70,7 +67,7 @@ $(document).ready(function() {
       }
    });
 });
-</script>
+</script> -->
 
 
 
@@ -78,42 +75,14 @@ $(document).ready(function() {
   <script>
     $(document).ready(function() 
     {
-        // process the form
-          var $SeverityValue = "2"; //default value
-    
-      $(function () 
-      {
-          var $range = $("#range");
-        
-          $("#range").ionRangeSlider(
-          {
-            grid: true,
-            grid_snap: true,
-            from: 1,
-            values: ["Low", "Medium", "High" ]
-          });
-
-          $range.on("change", function () 
-          {
-            value = $range.prop("value");
-            if(value == "Low") { $SeverityValue = "1"; }
-            if(value == "Medium") { $SeverityValue = "2"; }
-            if(value == "High") { $SeverityValue = "3"; }
-    
-            //console.log("Value: " + $SeverityValue + "-" + value);
-          });
-
-        });
+      
       
        $('#submit').click(function(event) {
           var formData = 
             {
-              // 'acty_date'  : $("input[name=acty_date]").val(), 
-              'title'         : $("input[name=title]").val(),
-              'tags'          : $('#demo3').tagEditor('getTags')[0].tags,
-              'category'      : $("select#category option:selected" ).prop("value"),
-              'severity'      : $("#range").prop("value"),
-              'severity'      : $SeverityValue,
+              'pageid'        : $("input#pageid[name=pageid]").val(),
+              'acty_date'     : $("input[name=acty_date]").val(), 
+              'severity'      : $("select#severity option:selected" ).prop("value"),
               'textarea'      : $("textarea#textarea[name=textarea]").val()
             };
                
@@ -121,7 +90,7 @@ $(document).ready(function() {
             $.ajax
             ({
                 type        : 'POST', 
-                url         : '_submit_new_acty.php',
+                url         : '_submit_log.php',
                 data        : formData
             })
                 .done(function(data) 
