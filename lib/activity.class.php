@@ -124,8 +124,10 @@ class Activity {
 		$this->ActyTitle = $row['ActyTitle'];
 		$this->SeverityID = $row['SeverityID'];
 		$this->CategoryID = $row['CategoryID'];
+		$this->AreaID = $row['AreaID'];
 		$this->UserID = $row['UserID'];
 		$this->ActyStartDate = $row['ActyStartDate'];
+
 	}
 
 	public function Get_Logs($ActyID)

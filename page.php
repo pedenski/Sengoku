@@ -117,17 +117,27 @@ include_once('html/navbar.php');
   <div class="column is-one-quarter">
     <div style="padding:1px;border-radius:5px;background: #f4f4f4"> 
     <table style="background:#F4F4F4;" class="table  is-fullwidth is-small">
+      <tr><td><a href="edit_activity.php?id=<?php echo $ActyID;?>"> Edit</td></tr>
+        <tr>
+          <td>Severity - <?php echo $ActyDetails->Get_Severity_Name($Activity->SeverityID);?></td>
+        </tr>
+        <tr><td>Area - <?php echo $ActyDetails->Get_Area_Name($Activity->AreaID); ?> </td>
+        </tr>
+        <tr>
+          <td>Category - <?php echo $ActyDetails->Get_Category_Name($Activity->CategoryID); ?></td>
+        </tr>
  		<tr>
  			<td> 
-       <img style="border:2px solid #FF3860; border-radius:5px;width:38px;height:38px" src="style/img/<?php echo $Users->GetUser($Activity->UserID);?>.png">
+       <img style="border:2px solid #FF3860; border-radius:50%;width:38px;height:38px" src="style/img/<?php echo $Users->GetUser($Activity->UserID);?>.png">
  
 
 
        <?php 
        $Tags->UserLists = $Users->Get_User_Listing();
        $Tags->Get_Tags($ActyID);
+       $Tags->Compare_Array(); // execute tag comparison
        foreach($Tags->UserLists as $UserNames) { ?>
-       <img style="border-radius:5px;width:38px;height:38px" src="style/img/<?php echo $UserNames; ?>.png">
+       <img style="border-radius:50%;width:38px;height:38px" src="style/img/<?php echo $UserNames; ?>.png">
        <?php } ?>
       </td>
  		</tr>

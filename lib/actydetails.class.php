@@ -8,6 +8,8 @@ class ActyDetails {
 	private $Category_List;
 	private $Area_List;
 	private $SeverityName;
+	private $CategoryName;
+	private $AreaName;
 
 	public function __construct()
 	{
@@ -15,16 +17,31 @@ class ActyDetails {
 		$this->conn = $db->getConn();
 	}
 
-	public function Get_Severity_List()
-	{
-		$this->Query_Severity_List();
-		return $this->Severity_List;
-	}
-
+	
+	/** GET NAMES **/
 	public function Get_Severity_Name($SeverityID)
 	{
 		$this->Query_Severity_Name($SeverityID);
 		return $this->SeverityName;
+	}
+
+	public function Get_Category_Name($CategoryID)
+	{
+		$this->Query_Category_Name($CategoryID);
+		return $this->CategoryName;
+	}
+
+	public function Get_Area_Name($AreaID)
+	{
+		$this->Query_Area_Name($AreaID);
+		return $this->AreaName;
+	}
+
+	/** GET LISTINGS **/
+	public function Get_Severity_List()
+	{
+		$this->Query_Severity_List();
+		return $this->Severity_List;
 	}
 
 	public function Get_Category_List()
@@ -38,6 +55,7 @@ class ActyDetails {
 		$this->Query_Area_List();
 		return $this->Area_List;
 	}
+
 
 	public function Severity_Status($SeverityID)
 	{
@@ -56,16 +74,19 @@ class ActyDetails {
 	}
 
 
-	public function Query_Severity_List()
+	public function Query_Area_Name($AreaID)
+	// TRANSLATE ID TO NAME e,g (1 = Butchery)
 	{
-		$q = "SELECT SeverityID, SeverityName from activity_severity";
+		$q = "SELECT AreaName FROM activity_area where AreaID = ? ";
 		$sql = $this->conn->prepare($q);
-		
+		$sql->bindParam(1, $AreaID);	
 		$sql->execute();
-		$this->Severity_List = $sql->fetchAll(PDO::FETCH_ASSOC);
-	}
+		$row = $sql->fetch(PDO::FETCH_ASSOC);
+		$this->AreaName = $row['AreaName'];
+	}	
 
 	public function Query_Severity_Name($SeverityID)
+	// TRANSLATE ID TO NAME e,g (1 = Low)
 	{
 		$q = "SELECT SeverityName FROM activity_severity where SeverityID = ? ";
 		$sql = $this->conn->prepare($q);
@@ -75,7 +96,30 @@ class ActyDetails {
 		$this->SeverityName = $row['SeverityName'];
 	}
 
+	public function Query_Category_Name($CategoryID)
+	// TRANSLATE ID TO NAME e,g (1 = Optimizaton)
+	{
+		$q = "SELECT CategoryName from activity_category WHERE CategoryID = ?";
+		$sql = $this->conn->prepare($q);
+		$sql->bindParam(1, $CategoryID);
+		$sql->execute();
+		$row = $sql->fetch(PDO::FETCH_ASSOC);
+		$this->CategoryName = $row['CategoryName'];
+	}
+
+	public function Query_Severity_List()
+	//QUERY ALL SEVERITY ID AND NAME;
+	{
+		$q = "SELECT SeverityID, SeverityName from activity_severity";
+		$sql = $this->conn->prepare($q);
+		
+		$sql->execute();
+		$this->Severity_List = $sql->fetchAll(PDO::FETCH_ASSOC);
+	}
+
+
 	public function Query_Category_List()
+	//QUERY ALL CATEGORY ID AND NAME
 	{
 		$q = "SELECT CategoryID, CategoryName from activity_category";
 		$sql = $this->conn->prepare($q);

@@ -73,6 +73,7 @@ include_once('html/navbar.php'); ?>
           <?php
               $Tags->UserLists = $Users->Get_User_Listing(); //get Names and insert to Tags class var
               $Tags->Get_Tags($row['ActyID']);   //Execute Tags based on ActyID
+              $Tags->Compare_Array(); // execute tag comparison
               ?>
               <?php foreach($Tags->TagLists as $TagName) { ?>
              <span class="tag is-info mar-r-5">  <?php echo $TagName; ?> </span> 

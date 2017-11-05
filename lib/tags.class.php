@@ -15,6 +15,7 @@ class Tags  {
 		$this->conn = $db->getConn();
 	}
 
+
 	public function Insert_Tags()
 	{
 		$this->Tags = $_POST['tags'];
@@ -60,8 +61,9 @@ class Tags  {
 		$sql->bindParam(1, $ActyID);	  	
 		$sql->execute();
 		$this->TagLists = $sql->fetchALL(PDO::FETCH_ASSOC);
-		$this->Compare_Array();
+		
 	}		
+
 
 	
 	public function Compare_Array()
