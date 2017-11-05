@@ -101,7 +101,7 @@
 
       </td>
     <td width="10"> 
-    <a type="submit"   id="submit" class="button is-info is-outlined">Submit</a>
+    <a type="submit"  name="submit" id="submit" class="button is-info is-outlined">Submit</a>
 
 
   

@@ -139,7 +139,8 @@ $(document).ready(function() {
             })
                 .done(function(data) 
               {
-                 console.log(data); 
+                 window.location.replace('page.php?id='+data);
+                 //console.log(data); 
               });
            event.preventDefault();
         });

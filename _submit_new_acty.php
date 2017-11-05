@@ -58,12 +58,13 @@ $Tags->Acty_LastID = $Acty_LastID; //insert last ActyID
 $Tags->Acty_LastID = $Acty_LastID; //insert last ActyID
 $Tags->Insert_Tags(); // execute
 
-$a = $Activity->Insert_Log();
+$Activity->Insert_Log(); //to reflect on log table
 // echo $a;
 // echo "$Acty_LastID";
 
+echo $Acty_LastID;
 
-
+//header('location: page.php?id='.$Acty_LastID);
 
 
 

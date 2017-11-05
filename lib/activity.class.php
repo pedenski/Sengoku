@@ -94,8 +94,6 @@ class Activity {
 	/* 
 	 * SELECT SECTION 
 	 */
-
-
 	public function Get_Title_Listing()
 	//get all titles
 	{
@@ -149,7 +147,11 @@ class Activity {
 
 	}
 
+	/*
+	 * UPDATE
+	 */
 
+	
 
 
 

@@ -53,7 +53,7 @@ $Activity->Get_Title_Data($ActyID);
     
 
     
- <form id="new_activity" action="_submit_new_acty.php" method="POST">
+ <form id="new_activity" action="_update_acty.php" method="POST">
    <!-- NEW ACTIVITY FORM -->
    
 <table class="table borderless is-fullwidth">
@@ -96,7 +96,7 @@ $Activity->Get_Title_Data($ActyID);
         <div class="field is-fullwidth">
       <!--  -->
 
-     <input class="input is-fullwidth" type="text" id="demo3" >
+     <input class="input is-fullwidth" name="tags[]"" type="text" id="demo3" >
      
         </div>
       </td>
@@ -134,7 +134,7 @@ $Activity->Get_Title_Data($ActyID);
 
       </td>
     <td width="10"> 
-    <a type="submit"   id="submit" class="button is-info is-outlined">Submit</a>
+    <input type="submit"   id="submit" class="button is-info is-outlined">
 
 
   
@@ -207,7 +207,7 @@ $Activity->Get_Title_Data($ActyID);
 
 
       <tr>
-       
+ 
          <!-- CATEGORY -->
         <td  colspan="2">
       <div class="field">

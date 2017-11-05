@@ -115,7 +115,7 @@ $(document).ready(function() {
           {
             grid: true,
             grid_snap: true,
-            from: 1,
+            from:<?php echo $Activity->SeverityID; ?>,
             values: ["Low", "Medium", "High" ]
           });
 
@@ -131,32 +131,32 @@ $(document).ready(function() {
 
         });
       
-       $('#submit').click(function(event) {
-          var formData = 
-            {
-              'acty_date'     : $("input[name=acty_date]").val(), 
-              'title'         : $("input[name=title]").val(),
-              'tags'          : $('#demo3').tagEditor('getTags')[0].tags,
-              'category'      : $("select#category option:selected" ).prop("value"),
-              'area'          : $("select#area option:selected" ).prop("value"),
-              //'severity'      : $("#range").prop("value"),
-              'severity'      : $SeverityValue,
-              'textarea'      : $("textarea#textarea[name=textarea]").val()
-            };
+       // $('#submit').click(function(event) {
+       //    var formData = 
+       //      {
+       //        'acty_date'     : $("input[name=acty_date]").val(), 
+       //        'title'         : $("input[name=title]").val(),
+       //        'tags'          : $('#demo3').tagEditor('getTags')[0].tags,
+       //        'category'      : $("select#category option:selected" ).prop("value"),
+       //        'area'          : $("select#area option:selected" ).prop("value"),
+       //        //'severity'      : $("#range").prop("value"),
+       //        'severity'      : $SeverityValue,
+       //        'textarea'      : $("textarea#textarea[name=textarea]").val()
+       //      };
                
-            // process the form
-            $.ajax
-            ({
-                type        : 'POST', 
-                url         : '_submit_new_acty.php',
-                data        : formData
-            })
-                .done(function(data) 
-              {
-                 console.log(data); 
-              });
-           event.preventDefault();
-        });
+       //      // process the form
+       //      $.ajax
+       //      ({
+       //          type        : 'POST', 
+       //          url         : '_update_acty.php',
+       //          data        : formData
+       //      })
+       //          .done(function(data) 
+       //        {
+       //           console.log(data); 
+       //        });
+       //     event.preventDefault();
+       //  });
     });
   </script>
  
