@@ -8,6 +8,7 @@ class Tags  {
 	public $Acty_LastID;
 	public $UserLists;
 	public $TagLists;
+	public $Tagss;
 
 	public function __construct()
 	{
@@ -15,6 +16,26 @@ class Tags  {
 		$this->conn = $db->getConn();
 	}
 
+
+	public function Insert_Tagss()
+	{
+		
+
+		$q = "INSERT INTO tags SET 
+		TagName = :TagName";
+
+		$sql = $this->conn->prepare($q);
+		
+		//foreach entry of tags in DB, get its lastID, and insert it to TagMap Table then execute
+		foreach($this->Tagss  as $k => &$v ) 
+		{
+			$sql->bindValue(":TagName",$v, PDO::PARAM_STR);
+			$sql->execute();
+			$this->LastTagID =  $this->conn->lastInsertID();  //get tag last id
+			$this->Tag_Mapping(); //execute TagMapping
+		}
+
+	}
 
 	public function Insert_Tags()
 	{
@@ -54,7 +75,7 @@ class Tags  {
 
 	public function Get_Tags($ActyID) 
 	{
-		$q = "SELECT tags.TagName FROM tags
+		$q = "SELECT tags.TagName, tags.TagID FROM tags
 			  INNER JOIN tag_map ON tags.TagID = tag_map.TagID 
 			  WHERE tag_map.ActyID = ?";
 		$sql = $this->conn->prepare($q);
@@ -97,11 +118,29 @@ class Tags  {
 
 
 
+	/* DELETE */
+	public function Delete_Tags($arrTags)
+	{
+		$q = "DELETE FROM tags WHERE TagID = ?";
+		$sql = $this->conn->prepare($q);
+
+		foreach($arrTags as $tags)
+		{
+			$sql->bindParam(1, $tags['TagID']);
+			$sql->execute();
+		}
+		return "deleted";
+	}
 
 
-
-
-
+	public function Delete_TagMap($ActyID)
+	{
+		$q = "DELETE FROM tag_map WHERE ActyID = ?";
+		$sql = $this->conn->prepare($q);
+		$sql->bindParam(1, $ActyID);
+		$sql->execute();
+		
+	}
 
 	public function ret()
 	{

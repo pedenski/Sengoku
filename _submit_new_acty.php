@@ -57,7 +57,7 @@ $Activity->Textarea 		= $_POST['textarea'];
 $Acty_LastID = $Activity->Execute_Insert();
 $Tags->Acty_LastID = $Acty_LastID; //insert last ActyID
 
-$Tags->Acty_LastID = $Acty_LastID; //insert last ActyID
+
 $Tags->Insert_Tags(); // execute
 
 $Activity->Insert_Log(); //to reflect on log table

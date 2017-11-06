@@ -2,11 +2,14 @@
 session_start();
 include_once('lib/actydetails.class.php');
 include_once('lib/activity.class.php');
+include_once('lib/tags.class.php');
+
 
 $Activity = new Activity();
 $ActyDetails = new ActyDetails();
 $severitylist = $ActyDetails->Get_Severity_List();
 
+$Tags = new Tags();
 
 $Activity->ActyID = htmlspecialchars($_POST['pageid']);
 
@@ -38,13 +41,31 @@ $Activity->ActyStartDate = htmlspecialchars($_POST['acty_date']);
 $Activity->UserID = htmlspecialchars($_SESSION['SESSID']);
 
 /*/ TAGS /*/
-//$_POST['tags'];
+$t = $_POST['tags'][0];
+$ptags = explode(",", $t);
+
+$Tags->Tagss = $ptags;
+
+$Tags->Get_Tags($_POST['pageid']);
+$arrTags = $Tags->TagLists;//with tag ID
+
+//delete existing
+$Tags->Delete_Tags($arrTags); // once deleted/ get id from previous array and update
+$Tags->Delete_TagMap($_POST['pageid']);
+
+
+
 
 /*/ TEXTAREA /*/
-//$Activity->Textarea = $_POST['textarea'];
+$Activity->Textarea = $_POST['textarea'];
+$Activity->update();
 
-$a = $Activity->Update();
-echo $a;
+$Tags->Acty_LastID = $_POST['pageid']; //insert last ActyID
+$Tags->Insert_Tagss(); // execute
+
+header("location: page.php?id=".$_POST['pageid']);
+//$a = $Activity->Update();
+//echo $a;
 
 /*echo "title- ".$_POST['title'];
 echo "text-".$_POST['textarea'];

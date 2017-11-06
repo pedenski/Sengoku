@@ -184,16 +184,28 @@ class Activity {
 
 		$sql->execute();
 		
-		return "ok";
-		//$this->LastID =  $this->conn->lastInsertID();  //get last id
-		//$this->Insert_Activity_Detail(); // execute insert of textarea
+
+		$this->Update_Activity_Detail(); // execute insert of textarea
 		//$this->Insert_Log(); // execute insert of textarea
 		//return $sql->errorCode();	
 
 
 	}
 	
+	public function Update_Activity_Detail()
+	{
+		$q = "UPDATE activity_details SET
+			  ActyID 		= :ActyID,
+			  DetailText 	= :DetailText";
+		$sql = $this->conn->prepare($q);
 
+		$sql->bindParam(':ActyID', 		$this->ActyID);
+		$sql->bindParam(':DetailText',	$this->Textarea);
+		$sql->execute();
+
+
+	}
+	
 
 
 
