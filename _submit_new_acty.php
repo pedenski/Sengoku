@@ -1,4 +1,5 @@
 <?php 
+session_start();
 
 /* if started from commandline, wrap parameters to $_POST and $_GET */
 // if (!isset($_SERVER["HTTP_HOST"])) {
@@ -48,6 +49,7 @@ $Activity->SeverityID 		= htmlspecialchars($_POST['severity']);
 $Activity->CategoryID 		= htmlspecialchars($_POST['category']);
 $Activity->AreaID 			= htmlspecialchars($_POST['area']);
 $Activity->ActyStartDate 	= htmlspecialchars($_POST['acty_date']);
+$Activity->UserID			= htmlspecialchars($_SESSION['SESSID']);
 $Activity->LogText		 	= "Start of Activity";
 
 

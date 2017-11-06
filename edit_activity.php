@@ -54,6 +54,7 @@ $Activity->Get_Title_Data($ActyID);
 
     
  <form id="new_activity" action="_update_acty.php" method="POST">
+  <input type="hidden" id="pageid" name="pageid" value="<?php echo $ActyID;?>">
    <!-- NEW ACTIVITY FORM -->
    
 <table class="table borderless is-fullwidth">
@@ -289,7 +290,7 @@ $Activity->Get_Title_Data($ActyID);
 
     <td colspan="2">  
       <div>
-        <input type="text" id="range" value="" name="range" />
+        <input type="text" id="range"  name="range" />
     </div>
 
     <!-- BUTTONS OPTIONAL 

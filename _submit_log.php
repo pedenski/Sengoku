@@ -11,11 +11,12 @@ $ActyDetails = new ActyDetails();
 $Validator = new Validator();
 
 
+
 $Activity->LastID			= htmlspecialchars($_POST['pageid']);
 $Activity->LogText 			= $_POST['textarea'];
 $Activity->SeverityID 		= htmlspecialchars($_POST['severity']);
 $Activity->ActyStartDate 	= htmlspecialchars($_POST['acty_date']);
-
+$Activity->UserID			= htmlspecialchars($_SESSION['SESSID']);
 
 
 $error = $Validator->isLog_Valid();

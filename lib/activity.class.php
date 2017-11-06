@@ -8,7 +8,7 @@ class Activity {
 	//vars from form
 	public $ActyTitle; //title
 	public $ActyID;
-	public $UserID = "1"; //user
+	public $UserID; //user
 	public $SeverityID; //severity
 	public $CategoryID; //category
 	public $ActyStartDate; //activity date
@@ -35,8 +35,6 @@ class Activity {
 	public function New_Activity()
 	//insert title, id, severity, category and author
 	{
-
-
 		$q = "INSERT INTO activity_titles 
 				( ActyTitle,  UserID,  CategoryID,  SeverityID,  AreaID,  ActyStartDate) VALUES 
 				(:ActyTitle, :UserID, :CategoryID, :SeverityID, :AreaID, :ActyStartDate) ";
@@ -61,6 +59,7 @@ class Activity {
 	}
 
 	public function Insert_Log()
+	//insert logs
 	{
 		$q = "INSERT INTO activity_log
 				( ActyID,  LogText,  LogSeverityID,  UserID,  LogDate) VALUES
@@ -114,6 +113,7 @@ class Activity {
 	}
 
 	public function Get_Title_Data($ActyID)
+	//get each activity data - used in index
 	{
 		$q = "SELECT * FROM activity_titles WHERE ActyID =".$ActyID;
 		$sql = $this->conn->prepare($q);
@@ -129,6 +129,7 @@ class Activity {
 	}
 
 	public function Get_Logs($ActyID)
+	//retrieve log from a specific activity
 	{
 		$q = "SELECT * FROM activity_log WHERE ActyID = ?";
 		$sql = $this->conn->prepare($q);
@@ -138,7 +139,9 @@ class Activity {
 	
 	}
 
-	public function Last_Log_Insert($LastID){
+	public function Last_Log_Insert($LastID)
+	// Get last inserted log for json post success();
+	{
 		$q = "SELECT * FROM activity_log WHERE LogID = ?";
 		$sql = $this->conn->prepare($q);
 		$sql->bindParam(1, $LastID);	
@@ -151,12 +154,45 @@ class Activity {
 	 * UPDATE
 	 */
 
+	public function Update()
+	{
+		$q = "UPDATE activity_titles SET
+						ActyTitle 		= :ActyTitle,
+						CategoryID 		= :CategoryID,
+						SeverityID 		= :SeverityID,
+						AreaID 			= :AreaID,
+						ActyStartDate	= :ActyStartDate,
+						ModifiedDate	= :ModifiedDate,
+						ModifiedUserID	= :ModifiedUserID
+						WHERE	
+						ActyID = :ActyID";
+
 	
 
+		$this->Timestamp = date('Y-m-d H:i:s');				
+		$sql = $this->conn->prepare($q);
+
+		$sql->bindParam(':ActyTitle', 	$this->ActyTitle);
+		$sql->bindParam(':CategoryID',	$this->CategoryID);
+		$sql->bindParam(':SeverityID',	$this->SeverityID);
+		$sql->bindParam(':AreaID',		$this->AreaID);
+		$sql->bindParam(':ActyStartDate',	$this->ActyStartDate);
+		$sql->bindParam(':ModifiedDate',	$this->Timestamp);
+		$sql->bindParam(':ModifiedUserID',	$this->UserID);
+		$sql->bindParam(':ActyID',	$this->ActyID);
 
 
+		$sql->execute();
+		
+		return "ok";
+		//$this->LastID =  $this->conn->lastInsertID();  //get last id
+		//$this->Insert_Activity_Detail(); // execute insert of textarea
+		//$this->Insert_Log(); // execute insert of textarea
+		//return $sql->errorCode();	
 
 
+	}
+	
 
 
 
