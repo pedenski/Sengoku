@@ -1,3 +1,44 @@
+body {
+    background:#f4f4f4;
+}
+.tag:not(body){
+    font-size:.60rem;
+
+}
+.hero-body{
+    padding: .5rem;
+}
+
+/* CARD */
+.card {
+    margin-bottom:15px;
+  /*  -webkit-box-shadow: 0 1px 2px rgba(10,10,10,.1);
+    -moz-box-shadow: 0 1px 2px rgba(10,10,10,.1);
+    box-shadow: 0 1px 2px rgba(10,10,10,.1);
+     margin-bottom:15px;*/
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
+    border-radius:8px;
+
+}
+
+.card-header {
+       -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
+    border-bottom:1px solid #f4f4f4;
+}
+    .card-header-title{
+        padding:.5rem;
+        font-weight: 400;
+
+    }
+    .card-content {
+        padding:.5rem;
+        /*border-bottom:1px solid #f4f4f4;*/
+    }
+
 /* GLOBALS */
 .mar-r-5 {
 	margin-right:5px;
@@ -41,19 +82,19 @@
 }*/
 
 /* SEVERITY */
-.sev-1{
+.sev-0{
     background: #ABFF3D;
-    padding: 3px 3px;
+    padding: 8px 8px;
+    border-radius: 50%;
+}
+.sev-1{
+    background: #E8AE00;
+    padding: 8px 8px;
     border-radius: 50%;
 }
 .sev-2{
-    background: #E8AE00;
-    padding: 3px 3px;
-    border-radius: 50%;
-}
-.sev-3{
     background: #D1380E;
-    padding: 3px 3px;
+    padding: 8px 8px;
     border-radius: 50%;
 }
 

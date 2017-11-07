@@ -98,7 +98,7 @@ class Activity {
 	public function Get_Title_Listing()
 	//get all titles
 	{
-		$q = "SELECT * FROM activity_titles ORDER BY ActyPostDate DESC ";
+		$q = "SELECT * FROM activity_titles ORDER BY ActyID DESC ";
 		$sql = $this->conn->prepare($q);
 		$sql->execute();
 		return $row = $sql->fetchAll(PDO::FETCH_ASSOC);
@@ -107,8 +107,9 @@ class Activity {
 
 	public function Get_Activity_Detail($ActyID)
 	{
-		$q = "SELECT DetailText FROM activity_details WHERE ActyID =".$ActyID;
+		$q = "SELECT DetailText FROM activity_details WHERE ActyID = ?";
 		$sql = $this->conn->prepare($q);
+		$sql->bindParam(1, $ActyID);
 		$sql->execute();
 		$row = $sql->fetch(PDO::FETCH_ASSOC);
 		$this->textarea = $row['DetailText'];
@@ -117,8 +118,9 @@ class Activity {
 	public function Get_Title_Data($ActyID)
 	//get each activity data - used in index
 	{
-		$q = "SELECT * FROM activity_titles WHERE ActyID =".$ActyID;
+		$q = "SELECT * FROM activity_titles WHERE ActyID = ?";
 		$sql = $this->conn->prepare($q);
+		$sql->bindParam(1, $ActyID);
 		$sql->execute();
 		$row = $sql->fetch(PDO::FETCH_ASSOC);
 		$this->ActyTitle = $row['ActyTitle'];
@@ -158,7 +160,7 @@ class Activity {
 	 * UPDATE
 	 */
 
-	public function Update()
+	public function Update_Activity()
 	{
 		$q = "UPDATE activity_titles SET
 						ActyTitle 		= :ActyTitle,
@@ -173,7 +175,7 @@ class Activity {
 
 	
 
-		$this->Timestamp = date('Y-m-d H:i:s');				
+			
 		$sql = $this->conn->prepare($q);
 
 		$sql->bindParam(':ActyTitle', 	$this->ActyTitle);
@@ -181,7 +183,7 @@ class Activity {
 		$sql->bindParam(':SeverityID',	$this->SeverityID);
 		$sql->bindParam(':AreaID',		$this->AreaID);
 		$sql->bindParam(':ActyStartDate',	$this->ActyStartDate);
-		$sql->bindParam(':ModifiedDate',	$this->Timestamp);
+		$sql->bindParam(':ModifiedDate',	$this->ModifiedDate);
 		$sql->bindParam(':ModifiedUserID',	$this->UserID);
 		$sql->bindParam(':ActyID',	$this->ActyID);
 
@@ -199,8 +201,8 @@ class Activity {
 	public function Update_Activity_Detail()
 	{
 		$q = "UPDATE activity_details SET
-			  ActyID 		= :ActyID,
-			  DetailText 	= :DetailText";
+			  DetailText 	= :DetailText
+			  WHERE  ActyID = :ActyID";
 		$sql = $this->conn->prepare($q);
 
 		$sql->bindParam(':ActyID', 		$this->ActyID);

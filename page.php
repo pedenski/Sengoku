@@ -4,7 +4,7 @@ session_start();
 $ActyID = isset($_GET['id']) ? $_GET['id'] : die ('Error: Missing ID');
 $page_title = $ActyID;
 
-
+date_default_timezone_set('Asia/Manila');
 
 include_once('lib/database.class.php');
 include_once('lib/activity.class.php');
@@ -66,9 +66,16 @@ include_once('html/navbar.php');
 
 
 
+
 <!-- CONTENT -->
 <section class="section">
 <div class="container">
+
+
+
+
+
+
 
 	<div class="tabs is-medium">
   <ul>
@@ -153,7 +160,7 @@ include_once('html/navbar.php');
     <tr>
 
 
-      <td> Edited: <?php echo $Activity->ModifiedDate; ?> - <?php echo $Activity->ModifiedUserID; ?>
+      <td> Edited: <?php echo date('M-d, h:i', strtotime($Activity->ModifiedDate)); ?> - <?php echo $Activity->ModifiedUserID; ?>
       </td>
 
     </tr>

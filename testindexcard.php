@@ -36,97 +36,36 @@ include_once('html/navbar.php'); ?>
 <section class="section">
 <div class="container">
 
- <?php if(isset($_GET['err'])){?>
-  <article class="message is-danger">
-  <div class="message-body">
-    <i class="fa fa-exclamation-circle" aria-hidden="true"></i> You must be <strong>logged</strong> in to to reply.
-  </div>
-  </article>
-<?php  } ?>
 
 
-<div class="columns is-2">
 
-<!--FIRST COLUMN -->
-<div class="column is-four-fifths">
 
+
+
+<div class="columns is-multiline is-mobile">
+  
   <?php 
     $ActyList = $Activity->Get_TItle_Listing();
 
     foreach($ActyList as $row) { ?>
 
-<!--  <img style="border-radius:50%;width:38px;height:38px" src="style/img/<?php echo $Users->GetUser($row['UserID']);?>.png"> -->
-<div class="card">
-  <header class="card-header">
-    <div class="card-header-title">
-   
-
-  <div class="media-left">
-  
+      <div class="column is-one-quarter">
+    <div style="padding:5px; background:#F4F4F4;border:1px solid #000;">
     
-        <span class="_actyTitle"><a href="page.php?id=<?php echo $row['ActyID'];?>"> <?php echo ucfirst(substr($row['ActyTitle'], 0, 70)); ?> </a></span>
-        <br>
-        <small class="has-text-grey-light is-size-7"><i class="fa fa-clock-o" aria-hidden="true"></i> <?php echo $row['ActyStartDate']; ?></small>
-   
-
-   
-  </div>
- 
-
-      
-    </div>
-
-    <a href="#" class="card-header-icon" aria-label="more options">
-      <span class="icon">
-        <span class="sev-<?php echo $row['SeverityID'];?>"></span>
-       
-      </span>
-    </a>
-  </header>
-
-
-  <div class="card-content">
-    <div class="content">
-       <?php 
-            $Activity->Get_Activity_Detail($row['ActyID']);
-            echo strip_tags(substr($Activity->textarea, 0, 240));
-          ?>...
-
-
-    </div>
-  </div>
- 
-    <div style="padding:5px"><?php
-              $Tags->UserLists = $Users->Get_User_Listing(); //get Names and insert to Tags class var
-              $Tags->Get_Tags($row['ActyID']);   //Execute Tags based on ActyID
-              $Tags->Compare_Array(); // execute tag comparison
-              ?>
-              <?php foreach($Tags->TagLists as $TagName) { ?>
-             <span class="tag is-info mar-r-5">  <?php echo $TagName; ?> </span> 
-                 <!-- <span class="tag is-info"> </span> -->
-    <?php } ?></div>
-
-  <footer class="card-footer">
-    <a href="#" class="card-footer-item"><?php echo $Users->GetUser($row['UserID']);?></a>
-    <a href="#" class="card-footer-item"><?php echo $row['AreaID'];?></a>
-    <a href="#" class="card-footer-item">Delete</a>
-  </footer>
-</div>
-
-
-
-          <!-- <div class="level-item">
-               USERS in TAG
-               <?php foreach($Tags->UserLists as $UserNames) { ?>
-               <?php echo $UserNames; ?>
-               <?php } ?>
-          </div> -->
+         <span class="_actyTitle"><a href="page.php?id=<?php echo $row['ActyID'];?>"> <?php echo ucfirst($row['ActyTitle']); ?> </a></span>
+                  </div>
+ </div>     
 
   <?php }  ?>
+
 </div> <!--/first column-->
 
+
+
+
+
   <!--SECOND COLUMN -->
-<div class="column is-one-third">
+<!-- <div class="column is-one-third">
 <?php if(!isset($_SESSION['SESSID'])){ ?>
     <div style="margin-bottom:5px; padding:5px;border-radius:5px;background: #f4f4f4"> 
 
@@ -158,9 +97,13 @@ include_once('html/navbar.php'); ?>
       </form>
 </div>
 <?php } ?>
+ -->
 
 
 
+
+
+<!-- 
 <div style="margin-bottom:5px;padding:5px;border-radius:5px;background: #f4f4f4"> 
 <?php if(!isset($_SESSION['SESSID'])){ ?>
    <a class="button is-success is-fullwidth" href="new_activity.php" disabled>
@@ -180,7 +123,7 @@ include_once('html/navbar.php'); ?>
 <?php } ?>
 </div>
 
-
+ -->
     <!-- <article class="message">
       <div class="message-header">
         <p>Hello World</p>
@@ -193,11 +136,6 @@ include_once('html/navbar.php'); ?>
 
 
 
-
-  </div><!--/SECOND COLUMN-->
-
-
-</div> <!--/COLUMNS-->
 </div> <!--/CONTAINER-->
 </section>
 

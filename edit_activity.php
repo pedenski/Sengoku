@@ -28,7 +28,7 @@ $Activity->Get_Title_Data($ActyID);
   <div class="hero-body">
     <div class="container">
       <h1 class="title">
-       <i class="fa fa-file-text-o" aria-hidden="true"></i> Edit Activity
+       <i class="fa fa-file-text-o" aria-hidden="true"></i> Edit Activity - 
       </h1>
       
     </div>
