@@ -9,6 +9,12 @@ class Tags  {
 	public $UserLists;
 	public $TagLists;
 	public $Tagss;
+	public $FormTags;
+
+	public function retfrom()
+	{
+		return $this->FormTags;
+	}
 
 	public function __construct()
 	{
@@ -17,29 +23,9 @@ class Tags  {
 	}
 
 
-	public function Insert_Tagss()
-	{
-		
-
-		$q = "INSERT INTO tags SET 
-		TagName = :TagName";
-
-		$sql = $this->conn->prepare($q);
-		
-		//foreach entry of tags in DB, get its lastID, and insert it to TagMap Table then execute
-		foreach($this->Tagss  as $k => &$v ) 
-		{
-			$sql->bindValue(":TagName",$v, PDO::PARAM_STR);
-			$sql->execute();
-			$this->LastTagID =  $this->conn->lastInsertID();  //get tag last id
-			$this->Tag_Mapping(); //execute TagMapping
-		}
-
-	}
-
 	public function Insert_Tags()
 	{
-		$this->Tags = $_POST['tags'];
+		
 
 		$q = "INSERT INTO tags SET 
 		TagName = :TagName";
@@ -47,7 +33,7 @@ class Tags  {
 		$sql = $this->conn->prepare($q);
 		
 		//foreach entry of tags in DB, get its lastID, and insert it to TagMap Table then execute
-		foreach($this->Tags as $k => &$v ) 
+		foreach($this->FormTags as $k => &$v ) 
 		{
 			$sql->bindValue(":TagName",$v, PDO::PARAM_STR);
 			$sql->execute();

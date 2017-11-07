@@ -15,6 +15,8 @@ class Activity {
 	public $Textarea; //textarea
 	public $AreaID;
 	public $LogText;
+	public $ModifiedBy;
+	public $ModifiedDate;
 	
 	public $LastID; //so tags can access this
 
@@ -125,6 +127,8 @@ class Activity {
 		$this->AreaID = $row['AreaID'];
 		$this->UserID = $row['UserID'];
 		$this->ActyStartDate = $row['ActyStartDate'];
+		$this->ModifiedUserID = $row['ModifiedUserID'];
+		$this->ModifiedDate = $row['ModifiedDate'];
 
 	}
 

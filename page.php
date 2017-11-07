@@ -143,11 +143,20 @@ include_once('html/navbar.php');
  		</tr>
  		<tr>
  			<td>
+        <div class="tags">
        <?php foreach($Tags->TagLists as $TagName) { ?>
-       <span class="tag is-info mar-r-5">  <?php echo $TagName; ?> </span> 
+       <span class="tag is-primary mar-r-5">  <?php echo $TagName; ?> </span> 
        <?php } ?>
+     </div>
       </td>
  		</tr>
+    <tr>
+
+
+      <td> Edited: <?php echo $Activity->ModifiedDate; ?> - <?php echo $Activity->ModifiedUserID; ?>
+      </td>
+
+    </tr>
  	</table>
  </div>
 </div><!--/SECOND COLUMN-->

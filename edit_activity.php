@@ -80,7 +80,7 @@ $Activity->Get_Title_Data($ActyID);
     <td colspan="3">
          <div style="padding:4px;border-radius:5px;background: #f4f4f4"> 
         <textarea id="textarea" name="textarea"> 
-            <small>[Reason for edit]:</small>
+          
 
           <?php 
           $Activity->Get_Activity_Detail($ActyID);

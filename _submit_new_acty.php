@@ -51,6 +51,9 @@ $Activity->AreaID 			= htmlspecialchars($_POST['area']);
 $Activity->ActyStartDate 	= htmlspecialchars($_POST['acty_date']);
 $Activity->UserID			= htmlspecialchars($_SESSION['SESSID']);
 $Activity->LogText		 	= "Start of Activity";
+$Tags->FormTags			= $_POST['tags'];
+
+
 
 
 $Activity->Textarea 		= $_POST['textarea'];

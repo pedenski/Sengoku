@@ -44,7 +44,7 @@ $Activity->UserID = htmlspecialchars($_SESSION['SESSID']);
 $t = $_POST['tags'][0];
 $ptags = explode(",", $t);
 
-$Tags->Tagss = $ptags;
+$Tags->FormTags = $ptags;
 
 $Tags->Get_Tags($_POST['pageid']);
 $arrTags = $Tags->TagLists;//with tag ID
@@ -61,7 +61,7 @@ $Activity->Textarea = $_POST['textarea'];
 $Activity->update();
 
 $Tags->Acty_LastID = $_POST['pageid']; //insert last ActyID
-$Tags->Insert_Tagss(); // execute
+$Tags->Insert_Tags(); // execute
 
 header("location: page.php?id=".$_POST['pageid']);
 //$a = $Activity->Update();

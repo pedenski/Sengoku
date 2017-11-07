@@ -4,7 +4,7 @@ class Database {
 	//creds
 	private $dbn = 'mysql:dbname=sengoku;host=localhost;';
 	private $user = 'root';
-	private $password = '';
+	private $password = 'Inn0v@t10n';
 
 	public $conn;
 
