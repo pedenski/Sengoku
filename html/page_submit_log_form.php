@@ -1,4 +1,5 @@
-   <div style="padding:5px;border-radius:5px;background: #f4f4f4"> 
+   <div class="tinymce-bg" style="padding:5px;border-radius:5px;background: #f4f4f4"> 
+    <div class="tinymce-noti"></div>
   <textarea id="textarea" name="textarea"></textarea>
 </div>
 

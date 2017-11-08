@@ -1,6 +1,8 @@
 <?php
 session_start();
 
+
+
 include_once('lib/activity.class.php');
 include_once('lib/users.class.php');
 include_once('lib/actydetails.class.php');

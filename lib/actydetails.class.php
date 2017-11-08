@@ -60,13 +60,13 @@ class ActyDetails {
 	public function Severity_Status($SeverityID)
 	{
 		switch($SeverityID){
-			case 1:
+			case 0:
 				return "is-success";
 				break;
-			case 2:
+			case 1:
 				return "is-warning";
 				break;
-			case 3:
+			case 2:
 				return "is-danger";
 				break;
 
