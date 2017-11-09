@@ -5,7 +5,7 @@ tinymce.init({
     height : "150",
     menubar: false,
     branding: false,
-     toolbar: 'undo redo bold italic bullist numlist issue noissue',
+     toolbar: 'undo redo bold italic bullist numlist issue noissue removeref',
     plugins: 'codesample',
     paste_as_text: true,
     setup: function (editor) {
@@ -27,6 +27,12 @@ tinymce.init({
       
     } 
 
+     function removeRef(){
+      $(".tinymce-noti").html("");
+      $('input#issuenum').val("");
+      
+    } 
+
      editor.addButton('issue', {
       icon: 'insertdatetime',
       image: 'http://p.yusukekamiyamane.com/icons/search/fugue/icons/flag--arrow.png',
@@ -39,6 +45,13 @@ tinymce.init({
       image: 'http://p.yusukekamiyamane.com/icons/search/fugue/icons/flag-white.png',
       tooltip: "Remove Issue",
       onclick: removeIssue
+    });
+
+      editor.addButton('removeref', {
+      icon: 'insertdatetime',
+      image: 'http://p.yusukekamiyamane.com/icons/search/fugue/icons/flag-white.png',
+      tooltip: "Clear reference",
+      onclick: removeRef
     });
 
     editor.on('change', function () {

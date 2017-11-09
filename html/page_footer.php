@@ -37,14 +37,37 @@
 <!-- GROUP BUTTON -->
 
 <script>
-
-$("span.log").click(function() {
+  //GET LOG ID CONTENT 
+  $("span.log").click(function() {
   var a = $(this).data('logid');
   $("input#issuenum").val(a);
+ 
+          var formData = 
+            {
+              'logid'         : a
+            };
+               
+            // process the form
+            $.ajax
+            ({
+                type        : 'POST', 
+                url         : 'html/_get_logid.php',
+                data        : formData
+            })
+                .done(function(data)
+              {
+                 console.log(data); 
+                 $(".tinymce-noti").html(data);
+              });
+           event.preventDefault();
+ 
+
+ 
 });
 
+  </script>
 
-</script>
+
 
 <!-- SLIDER SEVERITY -->
 

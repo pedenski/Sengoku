@@ -157,6 +157,16 @@ class Activity {
 
 	}
 
+	public function Query($id, $table)
+	{
+		$q = "SELECT * FROM ".$table." WHERE LogID = ?";
+		$sql = $this->conn->prepare($q);
+		$sql->bindParam(1, $id);
+		$sql->execute();
+		return $sql->fetch(PDO::FETCH_ASSOC);
+
+	}
+
 	/*
 	 * UPDATE
 	 */

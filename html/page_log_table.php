@@ -10,6 +10,8 @@
 
     </tr>
 
+
+<form action="html/_get_logid.php" method="POST">
   
   <?php 
 
@@ -52,7 +54,7 @@
 
 
   <?php } ?>
-
+</form>
   
    
     
