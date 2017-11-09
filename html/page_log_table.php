@@ -15,8 +15,14 @@
 
   $logs = $Activity->Get_Logs($ActyID);
 
-  foreach($logs as $log) { ?>
+  foreach($logs as $log) { 
 
+  	if($log['LogIssue'] != 1) {
+  		echo "<tr>";
+  	} else {
+  		echo "<tr class='is-selected'";
+  	}
+  	?>
     <tr>
       <!--/ LOG DATE /-->
       <td width="130"><small> <?php echo date('M-d g:i a',strtotime($log['LogDate']));?> </small></td>

@@ -2,9 +2,6 @@
 session_start();
 
 
-echo $_POST['issue'];
-die();
-
 include_once('lib/activity.class.php');
 include_once('lib/users.class.php');
 include_once('lib/actydetails.class.php');
@@ -21,7 +18,7 @@ $Activity->LogText 			= $_POST['textarea'];
 $Activity->SeverityID 		= htmlspecialchars($_POST['severity']);
 $Activity->ActyStartDate 	= htmlspecialchars($_POST['acty_date']);
 $Activity->UserID			= htmlspecialchars($_SESSION['SESSID']);
-
+$Activity->IssueID			= htmlspecialchars($_POST['issue']);
 
 $error = $Validator->isLog_Valid();
 if(!empty($error))
@@ -39,7 +36,16 @@ $log = $Activity->Last_Log_Insert($LastID);
 // echo $_POST['textarea'];
 ?> 
 
-<tr>
+<?php
+
+
+  	if($log['LogIssue'] != 1) {
+  		echo "<tr>";
+  	} else {
+  		echo "<tr class='is-selected'";
+  	}
+  	?>
+  	
 <!--/ LOG DATE /-->
 <td width="130"><small> <?php echo date('M-d g:i a',strtotime($log['LogDate']));?> </small></td>
 

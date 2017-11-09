@@ -40,7 +40,7 @@
 
 $("span.log").click(function() {
   var a = $(this).data('logid');
-  alert(a);
+  $("input#issuenum").val(a);
 });
 
 

@@ -5,3 +5,8 @@ pre.language-markup {
 .table td, .table th {
 	padding:5px;
 }
+
+.table tr.is-selected {
+	background-color:#522235;
+	color: #fff;
+}

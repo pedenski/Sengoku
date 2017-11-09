@@ -64,14 +64,15 @@ class Activity {
 	//insert logs
 	{
 		$q = "INSERT INTO activity_log
-				( ActyID,  LogText,  LogSeverityID,  UserID,  LogDate) VALUES
-				(:ActyID, :LogText, :LogSeverityID, :UserID, :LogDate)";
+				( ActyID,  LogText,  LogSeverityID,  UserID,  LogDate,  LogIssue) VALUES
+				(:ActyID, :LogText, :LogSeverityID, :UserID, :LogDate, :LogIssue)";
 		$sql = $this->conn->prepare($q);
 		$sql->bindParam(':ActyID', 			$this->LastID);
 		$sql->bindParam(':LogText',			$this->LogText);
 		$sql->bindParam(':LogSeverityID', 	$this->SeverityID);
 		$sql->bindParam(':UserID',			$this->UserID);
 		$sql->bindParam(':LogDate', 		$this->ActyStartDate);
+		$sql->bindParam(':LogIssue',		$this->IssueID);
 
 		$sql->execute();
 		return $this->conn->lastInsertID();
