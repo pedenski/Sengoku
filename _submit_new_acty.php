@@ -13,6 +13,9 @@ session_start();
 //$_POST from <form> already global var no need to insert to function, just execute method
 
 //include libraries
+
+
+
 include_once('lib/database.class.php');
 include_once('lib/activity.class.php');
 include_once('lib/tags.class.php');
@@ -51,7 +54,7 @@ $Activity->AreaID 			= htmlspecialchars($_POST['area']);
 $Activity->ActyStartDate 	= htmlspecialchars($_POST['acty_date']);
 $Activity->UserID			= htmlspecialchars($_SESSION['SESSID']);
 $Activity->LogText		 	= "Start of Activity";
-$Tags->FormTags			= $_POST['tags'];
+$Tags->FormTags				= $_POST['tags'];
 
 
 

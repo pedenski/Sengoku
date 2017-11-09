@@ -36,6 +36,15 @@
 
 <!-- GROUP BUTTON -->
 
+<script>
+
+$("span.log").click(function() {
+  var a = $(this).data('logid');
+  alert(a);
+});
+
+
+</script>
 
 <!-- SLIDER SEVERITY -->
 
@@ -80,6 +89,7 @@ $(document).ready(function() {
        $('#submit').click(function(event) {
           var formData = 
             {
+              'issue'         : $("input#issue").val(),
               'pageid'        : $("input#pageid[name=pageid]").val(),
               'acty_date'     : $("input[name=acty_date]").val(), 
               'severity'      : $("select#severity option:selected" ).prop("value"),

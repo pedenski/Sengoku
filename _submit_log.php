@@ -2,6 +2,8 @@
 session_start();
 
 
+echo $_POST['issue'];
+die();
 
 include_once('lib/activity.class.php');
 include_once('lib/users.class.php');

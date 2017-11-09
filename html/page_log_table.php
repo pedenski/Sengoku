@@ -31,12 +31,12 @@
       <!--/ LOG DETAIL /-->
       <td> <?php echo $log['LogText'];?></td>
 
+    
 
       <td width="150">
         <div class="buttons has-addons is-pulled-right">
-          <span class="button is-small"><i class="fa fa-times" aria-hidden="true"></i></span>
-          <span class="button is-small"><i class="fa fa-times" aria-hidden="true"></i></span>
-          <span class="button is-small"><i class="fa fa-times" aria-hidden="true"></i></span>
+          <span id="datalog" class="button is-small log" data-logid="<?php echo $log['LogID'];?>" ><?php echo $log['LogID'];?></span>
+      
         </div>
 
         </td>

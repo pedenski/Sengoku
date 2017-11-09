@@ -125,7 +125,8 @@ include_once('html/navbar.php');
   <div class="column is-one-quarter">
     <div style="padding:1px;border-radius:5px;background: #f4f4f4"> 
     <table style="background:#F4F4F4;" class="table  is-fullwidth is-small">
-      <tr><td><input id="issue" value="" name="issue"></td></tr>
+      <tr><td><input id="issue" value="0" name="issue"></td></tr>
+       <tr><td><input id="lognumber" value="" name="lognumber"></td></tr>
       <tr><td><a href="edit_activity.php?id=<?php echo $ActyID;?>"> Edit</td></tr>
         <tr>
           <td>Severity - <?php echo $ActyDetails->Get_Severity_Name($Activity->SeverityID);?></td>

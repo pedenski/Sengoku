@@ -12,16 +12,19 @@ tinymce.init({
 
     function insertIssue() 
     {
-      var noti = "<div class='tags has-addons'><span class='tag is-dark'>Note:</span><span class='tag is-primary'>You are submitting an issue.</span></div>";
-      var html = 1;
+      var noti = "<div class='tags has-addons'><span class='tag is-danger'>Note:</span><span class='tag is-dark'>You are submitting an issue.</span></div>";
+      var log = 1;
+      $(".tinymce-bg").css("border","1px solid #ff5e51");
       $(".tinymce-noti").html(noti);
-      $('#issue').val(html);
+      $('input#issue').val(log);
     }
 
     function removeIssue(){
-      $('#issue').val("");
+      var log = 0;
       $(".tinymce-bg").css("border","none");
       $(".tinymce-noti").html("");
+      $('input#issue').val(log);
+      
     } 
 
      editor.addButton('issue', {
