@@ -17,6 +17,7 @@ tinymce.init({
       $(".tinymce-bg").css("border","1px solid #ff5e51");
       $(".tinymce-noti").html(noti);
       $('input#issue').val(log);
+      $("input#issuenum").val("0");
     }
 
     function removeIssue(){
@@ -28,8 +29,10 @@ tinymce.init({
     } 
 
      function removeRef(){
+      var log = 0;
+      $("input#issuenum").val(log);
       $(".tinymce-noti").html("");
-      $('input#issuenum').val("");
+      
       
     } 
 

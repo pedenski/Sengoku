@@ -39,12 +39,13 @@
 <script>
   //GET LOG ID CONTENT 
   $("span.log").click(function() {
-  var a = $(this).data('logid');
-  $("input#issuenum").val(a);
+  var logid = $(this).data('logid');
+  $("input#issuenum").val(logid);
+  $("input#issue").val("0");
  
           var formData = 
             {
-              'logid'         : a
+              'logid'         : logid
             };
                
             // process the form
@@ -113,6 +114,7 @@ $(document).ready(function() {
           var formData = 
             {
               'issue'         : $("input#issue").val(),
+              'issuenum'      : $("input#issuenum").val(),
               'pageid'        : $("input#pageid[name=pageid]").val(),
               'acty_date'     : $("input[name=acty_date]").val(), 
               'severity'      : $("select#severity option:selected" ).prop("value"),

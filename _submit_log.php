@@ -19,6 +19,8 @@ $Activity->SeverityID 		= htmlspecialchars($_POST['severity']);
 $Activity->ActyStartDate 	= htmlspecialchars($_POST['acty_date']);
 $Activity->UserID			= htmlspecialchars($_SESSION['SESSID']);
 $Activity->IssueID			= htmlspecialchars($_POST['issue']);
+$Activity->ReferTo			= htmlspecialchars($_POST['issuenum']); //answer
+
 
 $error = $Validator->isLog_Valid();
 if(!empty($error))

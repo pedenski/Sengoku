@@ -10,3 +10,8 @@ pre.language-markup {
 	background-color:#522235;
 	color: #fff;
 }
+
+.table tr.answer{
+	background-color:#000;
+	color: #fff;
+}

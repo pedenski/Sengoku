@@ -4,7 +4,7 @@
       <td>Date Log</td>
     
       <td>User</td>
-      <td>Severity</td>
+      <td> <p class="has-text-centered">Status</p></td>
       <td colspan="2">Action</td>
      
 
@@ -24,8 +24,10 @@
   	} else {
   		echo "<tr class='is-selected'";
   	}
+
   	?>
     <tr>
+    
       <!--/ LOG DATE /-->
       <td width="130"><small> <?php echo date('M-d g:i a',strtotime($log['LogDate']));?> </small></td>
 
@@ -34,10 +36,25 @@
       <td width="50"><figure class="media-left"><p class="image"><img style="border-radius:5px;width:55px;height:25px" src="style/img/<?php echo $Users->GetUser($log['UserID']);?>.png"></p></figure></td>
 
       <!--/ SEVERITY /-->
-      <td width="80"><span class="tag <?php echo $ActyDetails->Severity_Status($log['LogSeverityID']); ?>"><?php echo $ActyDetails->Get_Severity_Name($log['LogSeverityID']);?></span></td>
+
+      <td width="80">
+        <p class="has-text-centered">
+        <?php
+        if($log['ReferTo'] == 0) { ?>
+           <span class="tag <?php echo $ActyDetails->Severity_Status($log['LogSeverityID']); ?>"><?php echo $ActyDetails->Get_Severity_Name($log['LogSeverityID']);?></span>
+        <?php } else { ?>
+            <span class="tag is-dark">Ref # <?php echo sprintf("%02d",$log['ReferTo']); ?>:</span>
+
+
+        <?php }  ?>
+       
+      </p>
+      </td>
 
       <!--/ LOG DETAIL /-->
-      <td> <?php echo $log['LogText'];?></td>
+      <td> 
+    
+        <?php echo strip_tags($log['LogText'],'<strong><em>');?></td>
 
     
 

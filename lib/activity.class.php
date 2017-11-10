@@ -17,6 +17,8 @@ class Activity {
 	public $LogText;
 	public $ModifiedBy;
 	public $ModifiedDate;
+	public $IssueID;
+	public $ReferTo;
 	
 	public $LastID; //so tags can access this
 
@@ -64,8 +66,8 @@ class Activity {
 	//insert logs
 	{
 		$q = "INSERT INTO activity_log
-				( ActyID,  LogText,  LogSeverityID,  UserID,  LogDate,  LogIssue) VALUES
-				(:ActyID, :LogText, :LogSeverityID, :UserID, :LogDate, :LogIssue)";
+				( ActyID,  LogText,  LogSeverityID,  UserID,  LogDate,  LogIssue,  ReferTo) VALUES
+				(:ActyID, :LogText, :LogSeverityID, :UserID, :LogDate, :LogIssue, :ReferTo)";
 		$sql = $this->conn->prepare($q);
 		$sql->bindParam(':ActyID', 			$this->LastID);
 		$sql->bindParam(':LogText',			$this->LogText);
@@ -73,6 +75,7 @@ class Activity {
 		$sql->bindParam(':UserID',			$this->UserID);
 		$sql->bindParam(':LogDate', 		$this->ActyStartDate);
 		$sql->bindParam(':LogIssue',		$this->IssueID);
+		$sql->bindParam(':ReferTo',			$this->ReferTo);
 
 		$sql->execute();
 		return $this->conn->lastInsertID();
