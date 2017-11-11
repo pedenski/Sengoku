@@ -1,6 +1,7 @@
-  <table id="logtable" class="table is-fullwidth is-small">
+  <table id="logtable" style="background:#F4F4F4;" class="table is-fullwidth is-small ">
  
     <tr>
+      <td><p class="has-text-centered"> ID </p></td>
       <td>Date Log</td>
     
       <td>User</td>
@@ -21,13 +22,22 @@
 
   	if($log['LogIssue'] != 1) {
   		echo "<tr>";
+      if($log['ReferTo'] !=0 ) {
+        echo "<tr class='is-answered'>";
+      }
   	} else {
-  		echo "<tr class='is-selected'";
+  		echo "<tr class='is-selected'>";
   	}
 
   	?>
-    <tr>
     
+      <td width="20">
+  
+          <span id="datalog" class="button is-small log" data-logid="<?php echo $log['LogID'];?>" ><small><?php echo sprintf("%02d",$log['LogID']);?></small></span>
+      
+   
+
+        </td>
       <!--/ LOG DATE /-->
       <td width="130"><small> <?php echo date('M-d g:i a',strtotime($log['LogDate']));?> </small></td>
 
@@ -58,13 +68,6 @@
 
     
 
-      <td width="150">
-        <div class="buttons has-addons is-pulled-right">
-          <span id="datalog" class="button is-small log" data-logid="<?php echo $log['LogID'];?>" ><?php echo $log['LogID'];?></span>
-      
-        </div>
-
-        </td>
     </tr>
 
 

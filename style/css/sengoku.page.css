@@ -7,11 +7,36 @@ pre.language-markup {
 }
 
 .table tr.is-selected {
-	background-color:#522235;
+	background: #CB356B;  /* fallback for old browsers */
+background: -webkit-linear-gradient(to right, #BD3F32, #CB356B);  /* Chrome 10-25, Safari 5.1-6 */
+background: linear-gradient(to right, #BD3F32, #CB356B); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
 	color: #fff;
 }
 
-.table tr.answer{
-	background-color:#000;
-	color: #fff;
+.table tr.is-answered {
+background: #fff;  /* fallback for old browsers */
+
+
+	color: #000;
 }
+
+
+.hero-body{
+    padding: .5rem;
+}
+
+.table {
+	margin-bottom: .5rem;
+}
+
+.log {
+	border-color:#f4f4f4;
+}
+/*
+.chart-container {
+	width:  80%;
+	height: 480px;
+	margin: 0 auto;
+}
+*/

@@ -160,9 +160,24 @@ class Activity {
 
 	}
 
-	public function Query($id, $table)
+	 public function Count_Entries_Per_Date($ActyID)
+	 //used by graphjs 
+    {
+
+        $q = "SELECT COUNT(1) AS count, DATE(LogDate) as date FROM activity_log WHERE ActyID = ? GROUP BY DATE(LogDate)";
+        $sql = $this->conn->prepare($q);
+        $sql->bindParam(1, $ActyID);
+        $sql->execute();
+        return $row = $sql->fetchALL(PDO::FETCH_ASSOC);
+        
+    }
+
+
+
+	public function Query($id)
+	// html/log_submit.php
 	{
-		$q = "SELECT * FROM ".$table." WHERE LogID = ?";
+		$q = "SELECT * FROM activity_log WHERE LogID = ?";
 		$sql = $this->conn->prepare($q);
 		$sql->bindParam(1, $id);
 		$sql->execute();
@@ -225,11 +240,6 @@ class Activity {
 
 
 	}
-	
-
-
-
-
 
 
 }

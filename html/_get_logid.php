@@ -5,11 +5,11 @@ $Activity = new Activity();
 
 
 $logid = $_POST['logid'];
-$logtable = "activity_log";
-$row = $Activity->Query($logid, $logtable);
+$row = $Activity->Query($logid);
 
 ?>
-
+<div style="font-size:1.2rem;padding-left:3px; border-left:2px solid #FF3860;">
 [ref#<?php echo $row['LogID']; ?>] <?php echo strip_tags($row['LogText']); ?>
+</div>
 
 

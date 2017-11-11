@@ -10,6 +10,9 @@
   <!--TAG EDITOR JS -->   
  <script src="../sengoku/style/js/jquery.caret.min.js"></script>
  <script src="../sengoku/style/js/jquery.tag-editor.js"></script>
+ <script src="../sengoku/style/js//Chart.min.js"></script>
+
+
 
 
 
@@ -108,8 +111,10 @@ $(document).ready(function() {
   <script>
     $(document).ready(function() 
     {
-      
-      
+     /* 
+      * AJAX POST FOR FORM SUBMISSION
+      *
+      */
        $('#submit').click(function(event) {
           var formData = 
             {
@@ -135,9 +140,18 @@ $(document).ready(function() {
               });
            event.preventDefault();
         });
+
+   /* 
+    * GRAPH JS
+    *
+    */  
+    <?php include_once('../sengoku/scripts/page_script_graphjs.js'); ?> 
+
+
     });
   </script>
- 
+ <!-- CHART -- >
+
 
 
 <script>
@@ -150,6 +164,7 @@ $("#reset").click(function() {
 
 
 </script>
+
 
 
 
