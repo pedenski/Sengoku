@@ -19,7 +19,8 @@ class Activity {
 	public $ModifiedDate;
 	public $IssueID;
 	public $ReferTo;
-	
+	public $is_Resolved;
+
 	public $LastID; //so tags can access this
 
 	public function __construct()
@@ -76,9 +77,12 @@ class Activity {
 		$sql->bindParam(':LogDate', 		$this->ActyStartDate);
 		$sql->bindParam(':LogIssue',		$this->IssueID);
 		$sql->bindParam(':ReferTo',			$this->ReferTo);
+		
 
 		$sql->execute();
+
 		return $this->conn->lastInsertID();
+
 	}
 
 
@@ -160,6 +164,8 @@ class Activity {
 
 	}
 
+
+
 	 public function Count_Entries_Per_Date($ActyID)
 	 //used by graphjs 
     {
@@ -172,6 +178,43 @@ class Activity {
         
     }
 
+    public function CountIssues($ActyID) 
+    //total issues
+    {
+    
+    	$q = "SELECT COUNT(*) as issueCount FROM `activity_log` WHERE LogIssue = '1' AND ActyID = ?";
+    	$sql = $this->conn->prepare($q);
+
+    	$sql->bindParam(1, $ActyID);
+    	$sql->execute();
+    	return $row = $sql->fetch(PDO::FETCH_ASSOC);
+
+    }
+
+    public function Count_Active_Issues($ActyID) 
+    //count active issues need fix
+    {
+    	
+    	$q = "SELECT count(*) AS active FROM `activity_log` WHERE LogIssue = '1' AND  is_Resolved = '0' AND ActyID = ? ";
+    	$sql = $this->conn->prepare($q);
+    	$sql->bindParam(1, $ActyID);
+    	$sql->execute();
+    	return $row = $sql->fetch(PDO::FETCH_ASSOC);
+
+    }
+
+    public function CountAnswers($ActyID) 
+    //total answers
+    {
+    
+    	$q = "SELECT COUNT(*) as answer FROM `activity_log` WHERE ReferTo != '0' AND ActyID = ?";
+    	$sql = $this->conn->prepare($q);
+
+    	$sql->bindParam(1, $ActyID);
+    	$sql->execute();
+    	return $row = $sql->fetch(PDO::FETCH_ASSOC);
+
+    }
 
 
 	public function Query($id)
@@ -226,8 +269,24 @@ class Activity {
 
 
 	}
+
+	public function Update_Issue_As_Answered()
+	//update issues with answers as is_Resolved
+	{
+		$q = "UPDATE activity_log SET
+				is_Resolved = :is_Resolved
+				WHERE
+				LogID 	= :LogID";
+
+		$sql = $this->conn->prepare($q);
+		$sql->bindParam(':is_Resolved', $this->is_Resolved);
+		$sql->bindParam(':LogID', $this->ReferTo);
+		$sql->execute();
+
+	}
 	
 	public function Update_Activity_Detail()
+	//update activity textarea details
 	{
 		$q = "UPDATE activity_details SET
 			  DetailText 	= :DetailText

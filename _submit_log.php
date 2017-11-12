@@ -20,6 +20,11 @@ $Activity->ActyStartDate 	= htmlspecialchars($_POST['acty_date']);
 $Activity->UserID			= htmlspecialchars($_SESSION['SESSID']);
 $Activity->IssueID			= htmlspecialchars($_POST['issue']);
 $Activity->ReferTo			= htmlspecialchars($_POST['issuenum']); //answer
+$Activity->is_Resolved		= htmlspecialchars($_POST['resolve']);	
+
+
+$Activity->Update_Issue_As_Answered();
+
 
 
 $error = $Validator->isLog_Valid();

@@ -15,7 +15,6 @@ session_start();
 //include libraries
 
 
-
 include_once('lib/database.class.php');
 include_once('lib/activity.class.php');
 include_once('lib/tags.class.php');
@@ -31,13 +30,15 @@ $Users = new Users($db);
 $Validator = new Validator();
 
 
-
 $error = $Validator->isPOST_Valid();
+
 if(!empty($error))
 {
-	echo $error;
+	echo json_encode($error);
 	die();
 }
+
+
 
 
 //check users if existing in array tags
@@ -70,12 +71,14 @@ $Activity->Insert_Log(); //to reflect on log table
 // echo $a;
 // echo "$Acty_LastID";
 
-echo $Acty_LastID;
+
 
 //header('location: page.php?id='.$Acty_LastID);
 
 
-
+$success = true;
+$res = array('success' => $success, 'ActyID' => $Acty_LastID);
+echo json_encode($res);
 
 
 

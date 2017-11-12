@@ -138,15 +138,22 @@ $(document).ready(function() {
                 data        : formData
             })
                 .done(function(data) 
-              {
-                 window.location.replace('page.php?id='+data);
-                 //console.log(data); 
+              {   
+                 var data = $.parseJSON(data); 
+                 console.log(data);
+                 if(data['success'] == true ) {
+                  location.href = "page.php?id="+data['ActyID'];  
+                 } 
+                  
+                 
               });
            event.preventDefault();
         });
     });
   </script>
  
+
+
 
 
 <script>

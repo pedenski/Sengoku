@@ -31,6 +31,7 @@ tinymce.init({
      function removeRef(){
       var log = 0;
       $("input#issuenum").val(log);
+      $("input#resolve").val(log);
       $(".tinymce-noti").html("");
       
       

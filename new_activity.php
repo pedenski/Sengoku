@@ -43,7 +43,7 @@ $Users = new Users();
     
 
     
-  <form id="new_activity" action="_submit_new_acty.php" method="POST">
+  <form id="new_activity" method="POST">
    <!-- NEW ACTIVITY FORM -->
   <?php include_once('html/new_acty_form.php'); ?>
   </div>

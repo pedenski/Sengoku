@@ -1,5 +1,7 @@
-pre.language-markup {
-	max-width:800px;
+pre {
+	max-width:100%;
+	background-color: #D7D7D7;
+	border-left: 1px solid #00D1B2;
 }
 
 .table td, .table th {
@@ -7,23 +9,23 @@ pre.language-markup {
 }
 
 .table tr.is-selected {
-	background: #CB356B;  /* fallback for old browsers */
-background: -webkit-linear-gradient(to right, #BD3F32, #CB356B);  /* Chrome 10-25, Safari 5.1-6 */
-background: linear-gradient(to right, #BD3F32, #CB356B); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-
+	background: #FF3860; 
 	color: #fff;
 }
 
 .table tr.is-answered {
-background: #fff;  /* fallback for old browsers */
+ background: #00D1B2;  /* fallback for old browsers */
 
 
 	color: #000;
 }
 
+.section {
+	padding: 1rem 1.5rem;
+}
 
 .hero-body{
-    padding: .5rem;
+    padding: 1.5rem;
 }
 
 .table {

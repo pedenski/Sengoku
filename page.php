@@ -28,7 +28,7 @@ include_once('html/navbar.php');
 
 
 <!-- HERO -->
-<section class="hero is-danger">
+<section class="hero is-primary">
  <div class="hero-body">
     <div class="container is-fluid">
       <h1 class="title">
@@ -36,26 +36,7 @@ include_once('html/navbar.php');
       </h1>
       <h4 class="subtitle is-6">
 
-        <nav class="breadcrumb has-bullet-separator" aria-label="breadcrumbs">
-        <ul>
-          <li>
-            <a><p>
-          <i class="fa fa-user-o" aria-hidden="true"></i>  
-          <?php echo $Users->GetUser($Activity->UserID);?>
-          </p></a>
-          </li>
-          <li>
-            <p><a>
-           <i class="fa fa-clock-o" aria-hidden="true"> </i> <?php echo $Activity->ActyStartDate; ?></a></p>
-          </li>
-
-     
-         
-        </ul>
-      </nav>
-
-
-
+       
          
 
        
@@ -87,35 +68,41 @@ include_once('html/navbar.php');
 <div class="column is-four-fifths">
 
   
+
+  
  <div style="padding-top:4px; padding-right:4px; padding-left:4px; padding-bottom:1px;border-radius:5px;background: #f4f4f4; margin-bottom: 8px; "> 
-  <article class="media" style="padding:10px;">
-             <div class="media-content">
-            <div class="content">
-            
-                
-          
-            <?php 
+ <article class="media" style="padding:8px;">
+  
+  <div class="media-content">
+  
+      <div class="level-left">
+        <a class="level-item">
+          <small style="color:#00D1B2;"> <span class="icon is-small"><i class="fa fa-pencil"></i></span><?php echo  ucfirst($Users->GetUser($Activity->UserID));?></small>
+        </a>
+        <a class="level-item">
+         <small style="color:#00D1B2;"> <span class="icon is-small"><i class="fa fa-clock-o"></i></span><?php echo date('M-d g:i a',strtotime($Activity->ActyStartDate)); ?></small>
+        </a>
+
+        <?php
+        if($Activity->ModifiedUserID != 0) { ?>
+         <a class="level-item">
+         <small style="color:#00D1B2;"><span class="icon is-small"><i class="fa fa-exclamation-circle"></i></span>Edited: <?php echo date('M-d', strtotime($Activity->ModifiedDate)); ?> by <?php echo $Users->GetUser($Activity->ModifiedUserID); ?></small>
+        </a> <?php } ?>
+      </div>
+
+    <div class="content">
+        <?php 
             $Activity->Get_Activity_Detail($ActyID);
             echo $Activity->textarea;
             ?>    
-          
-            </div>
-            <nav class="level is-mobile">
-              <div class="level-left">
-                <a class="level-item">
-                 
-                </a>
-                <a class="level-item">
-                 
-                </a>
-                <a class="level-item">
-                
-                </a>
-              </div>
-            </nav>
-          </div>
-   
-        </article>
+ 
+    </div>
+
+  </div>
+  <div class="media-right">
+    <button class="delete"></button>
+  </div>
+</article>
 
 
 <?php include_once('html/page_log_table.php'); ?>
@@ -124,32 +111,6 @@ include_once('html/navbar.php');
 
   <!--SECOND COLUMN -->
   <div class="column is-one-quarter">
-     <table class="table  is-fullwidth is-small">
-            <tr>
-        <td>
-
-          <div class="field is-grouped">
-          <p class="control">
-             <a href="edit_activity.php?id=<?php echo $ActyID;?>" class="button is-light is-fullwidth">
-        <span class="icon">
-          <i class="fa fa-pencil-square-o"></i>
-        </span>
-        <span>Edit</span>
-      </a>
-          </p>
-          <p class="control">
-           <a href="edit_activity.php?id=<?php echo $ActyID;?>" class="button is-light">
-        <span class="icon">
-          <i class="fa fa-times"></i>
-        </span>
-        <span>Close</span>
-      </a>
-          </p>
-        </div>
-
-        </td>
-      </tr>
-</table>
 
     <div style="padding-top:4px; padding-right:4px; padding-left:4px; padding-bottom:1px;border-radius:5px;background: #f4f4f4; margin-bottom: 8px; "> 
   
@@ -192,7 +153,7 @@ include_once('html/navbar.php');
  		<tr>
  			<td> 
        <p class="has-text-centered">
-       <img style="border:2px solid #FF3860; border-radius:50%;width:38px;height:38px" src="style/img/<?php echo $Users->GetUser($Activity->UserID);?>.png">
+       
        <?php 
        $Tags->UserLists = $Users->Get_User_Listing();
        $Tags->Get_Tags($ActyID);
@@ -208,7 +169,7 @@ include_once('html/navbar.php');
         <p class="has-text-centered">
            
        <?php foreach($Tags->TagLists as $TagName) { ?>
-       <span class="tag is-primary mar-r-5">  <?php echo $TagName; ?> </span> 
+       <span class="tag is-danger mar-r-5">  <?php echo $TagName; ?> </span> 
        <?php } ?>  
       </p>
      
@@ -218,26 +179,45 @@ include_once('html/navbar.php');
  	</table>
  </div>
 
+
+
+
   <div style="margin-bottom:8px;padding-top:15px;padding-bottom:15px;padding-right:15px;border-radius:5px;background: #00D1B2"> 
-   <nav class="level">
+  <nav class="level">
   <div class="level-item has-text-centered">
-    <div>
-      <p class="heading">Issues</p>
-      <p class="title">2</p>
+      <div>
+      <p class="heading">Total </p>
+      <?php
+      $issue = $Activity->CountIssues($ActyID);?>
+      <p class="title"> <?php echo $issue['issueCount']; ?> </p>
     </div>
   </div>
   <div class="level-item has-text-centered">
-    <div>
-      <p class="heading">Resolved</p>
-      <p class="title">4</p>
-    </div>
-  </div>
-
-
    
+    <div>
+      <p class="heading">Active </p>
+      <?php
+      $active = $Activity->Count_Active_Issues($ActyID);?>
+        <p class="title"> <?php echo $active['active']; ?> </p>
+    </div>
+  </div>
+  <div class="level-item has-text-centered">
+   <div>
+      <p class="heading">Resolved</p>
+       <?php
+        $answer = $Activity->CountAnswers($ActyID);?>
+        <p class="title"> <?php echo $answer['answer']; ?> </p>
+    </div>
+  </div>
+  
 </nav>
 
   </div>
+
+
+
+
+
 
  <div style="margin-bottom:8px; padding-top:15px;padding-right:15px;border-radius:5px;background: #f4f4f4"> 
     <?php include_once('html/page_graph_entries.php'); ?>
@@ -248,15 +228,41 @@ include_once('html/navbar.php');
 
   </div>
 
-   <div style="margin-bottom:8px; padding-top:15px;padding-right:15px;border-radius:5px;background: #f4f4f4"> 
-   Edited: <?php echo date('M-d, h:i', strtotime($Activity->ModifiedDate)); ?> - <?php echo $Activity->ModifiedUserID; ?>
-   
+     <table class="table  is-fullwidth is-small">
+            <tr>
+        <td>
 
-  </div>
+          <div class="field is-grouped">
+          <p class="control">
+             <a href="edit_activity.php?id=<?php echo $ActyID;?>" class="button is-light is-fullwidth">
+        <span class="icon">
+          <i class="fa fa-pencil-square-o"></i>
+        </span>
+        <span>Edit</span>
+      </a>
+          </p>
+          <p class="control">
+           <a href="edit_activity.php?id=<?php echo $ActyID;?>" class="button is-light">
+        <span class="icon">
+          <i class="fa fa-times"></i>
+        </span>
+        <span>Close</span>
+      </a>
+          </p>
+           <p class="control">
+             <a href="edit_activity.php?id=<?php echo $ActyID;?>" class="button is-light is-fullwidth">
+        <span class="icon">
+          <i class="fa fa-folder-open-o"></i>
+        </span>
+        <span>Open</span>
+      </a>
 
 
+        </div>
 
-
+        </td>
+      </tr>
+</table>
 
 
 
@@ -272,8 +278,9 @@ include_once('html/navbar.php');
 
 
 <form id="log" action="_submit_log.php" method="POST">
-<tr><td><input id="issue" value="0" name="issue"></td></tr>
-<tr><td><input id="issuenum" value="0" name="issuenum"></td></tr>
+<tr><td><input  id="issue" value="0" name="issue"></td></tr>
+<tr><td><input  id="issuenum" value="0" name="issuenum"></td></tr>
+<tr><td><input  id="resolve" name="resolve"></td></tr>
 <input type="hidden" id="pageid" name="pageid" value="<?php echo $ActyID;?>">
 
 
