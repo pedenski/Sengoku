@@ -19,6 +19,11 @@ $Users = new Users();
 ?>
 
 <?php include_once('html/sengoku_header_new_acty.php'); ?>
+<link rel="stylesheet" href="jbox/Source/jBox.css">
+<link rel="stylesheet" href="jbox/Source/plugins/Notice/jBox.Notice.css">
+<link rel="stylesheet" href="jbox/Source/themes/NoticeFancy.css">
+<link rel="stylesheet" href="jbox/Source/themes/TooltipSmallGray.css">
+<link rel="stylesheet" href="jbox/Demo/Demo.css">
 <?php include_once('html/navbar.php'); ?>
 
 <section class="hero is-primary">
@@ -41,7 +46,7 @@ $Users = new Users();
   <!--FIRST COLUMN -->
   <div class="column is-four-fifths">
     
-
+   <div id="Notice-7" class="target-notice">Click me</div>
     
   <form id="new_activity" method="POST">
    <!-- NEW ACTIVITY FORM -->

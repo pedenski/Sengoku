@@ -11,6 +11,8 @@
  <script src="../sengoku/style/js/jquery.caret.min.js"></script>
  <script src="../sengoku/style/js/jquery.tag-editor.js"></script>
 
+ <!-- JBOX -->
+
 
 
 <script>
@@ -139,8 +141,31 @@ $(document).ready(function() {
             })
                 .done(function(data) 
               {   
-                 var data = $.parseJSON(data); 
-                 console.log(data);
+                 var data = $.parseJSON(data);
+                     new jBox('Notice', {
+                      theme: 'NoticeFancy',
+                      attributes: {
+                        x: 'left',
+                        y: 'bottom'
+                      },
+                      color: getColor(),
+                      title: getZ(data),
+                      maxWidth: 600,
+                      audio: 'jbox/Source/audio/bling2',
+                      volume: 80,
+                      autoClose: Math.random() * 8000 + 2000,
+                      animation: {open: 'slide:bottom', close: 'slide:left'},
+                      delayOnHover: true,
+                      showCountdown: true,
+                      closeButton: true
+                    });
+                     
+                    
+                 
+                   
+
+
+
                  if(data['success'] == true ) {
                   location.href = "page.php?id="+data['ActyID'];  
                  } 
@@ -152,7 +177,20 @@ $(document).ready(function() {
     });
   </script>
  
+<script>
+    var t = "test"; 
+    var getZ = function (data) {
+    return data;
+    };  
 
+      var colors = ['red', 'green', 'blue', 'yellow'], index = 0;
+var getColor = function () {
+  (index >= colors.length) && (index = 0);
+  return colors[index++];
+};
+
+
+</script>
 
 
 
@@ -196,6 +234,9 @@ $("#reset").click(function() {
   </script> --> 
 
 
+<script src="jbox/Source/jBox.js"></script>
+<script src="jbox/Source/plugins/Notice/jBox.Notice.js"></script>
+<script src="jbox/Demo/Demo.js"></script>
 
   </body>
 </html>
