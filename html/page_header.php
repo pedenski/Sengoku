@@ -18,27 +18,20 @@
    <link rel="stylesheet" href="../sengoku/style/css/jquery-ui.css">-->
 
     <!-- TAGEDITOR -->
-    <link rel="stylesheet" href="../sengoku/style/css/jquery.tag-editor.css">
+    <link rel="stylesheet" href="mods/TagEditor/jquery.tag-editor.css">
 
     <!-- FONT AWESOME (CDN) -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 
     <!-- DATETIME PICKER -->
-    <link rel="stylesheet" type="text/css" href="../sengoku/style/css/datetimepicker.css"/>  
+    <link rel="stylesheet" type="text/css" href="mods/DatePicker/datetimepicker.css"/>  
     
 
     <!-- TINYMICE (/script) -->
-  	<script src="../sengoku/style/js/tinymce/tinymce.min.js"></script>  
+  	<script src="mods/tinyMCE/tinymce.min.js"></script>  
     <script src="scripts/page_script_tinyMCE.js"></script>
      
-
-    <!-- SLIDER 
-    <link rel="stylesheet" href="../sengoku/style/css/ion.rangeSlider.css" />
-    <link rel="stylesheet" href="../sengoku/style/css/ion.rangeSlider.skinFlat.css" /> 
-    -->
-
-
     <!-- CUSTOM CSS -->
-    <link rel="stylesheet" type="text/css" href="../sengoku/style/css/sengoku.page.css"/> 
+    <link rel="stylesheet" type="text/css" href="style/css/sengoku.page.css"/> 
   </head>
   <body>

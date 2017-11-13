@@ -1,9 +1,6 @@
 <?php
-
 $Dates = $Activity->Count_Entries_Per_Date($ActyID);
-
 $list = array();
-
 $month = date('m');
 $year = date('y');
 

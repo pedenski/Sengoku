@@ -15,7 +15,7 @@ $Tags = new Tags($db);
 $Users = new Users($db);
 
 //styles
-include_once('html/sengoku_header_new_acty.php');
+include_once('html/index_header.php');
 include_once('html/navbar.php'); ?>
 
 <!-- HERO -->
@@ -113,8 +113,6 @@ include_once('html/navbar.php'); ?>
   </footer>
 </div>
 
-
-
           <!-- <div class="level-item">
                USERS in TAG
                <?php foreach($Tags->UserLists as $UserNames) { ?>
@@ -130,7 +128,7 @@ include_once('html/navbar.php'); ?>
 <?php if(!isset($_SESSION['SESSID'])){ ?>
     <div style="margin-bottom:5px; padding:5px;border-radius:5px;background: #f4f4f4"> 
 
-    <form id='login' action='_submit_login.php' method='post' accept-charset='UTF-8'>
+    <form id='login' action='util/submit_login.php' method='post' accept-charset='UTF-8'>
           <p class="control has-icons-left has-icons-right">
             <input class="input" type="text" name="username" placeholder="Username">
             <span class="icon is-small is-left">
@@ -204,4 +202,4 @@ include_once('html/navbar.php'); ?>
 
 
 
-<?php include_once('html/sengoku_footer_new_acty.php'); ?>
+<?php include_once('html/index_footer.php'); ?>

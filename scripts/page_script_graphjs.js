@@ -15,11 +15,7 @@
 				fill: 'false',
 				lineTension : 0,
 				pointRadius : 0,
-
-
 			},
-			
-			
 		]
 	};
 

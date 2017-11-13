@@ -1,11 +1,9 @@
 <?php
 session_start();
 
-
 if(!isset($_SESSION['SESSID'])){
   header('location: index.php?err=1');
 } 
-
 
 include_once('lib/database.class.php');
 include_once('lib/actydetails.class.php');
@@ -13,18 +11,12 @@ include_once('lib/users.class.php');
 
 $db = new Database();
 $ActyDetails = new ActyDetails();
-$Users = new Users();
+$Users = new Users(); 
 
-
+include_once('html/newActy_header.php');
+include_once('html/navbar.php');
 ?>
 
-<?php include_once('html/sengoku_header_new_acty.php'); ?>
-<link rel="stylesheet" href="jbox/Source/jBox.css">
-<link rel="stylesheet" href="jbox/Source/plugins/Notice/jBox.Notice.css">
-<link rel="stylesheet" href="jbox/Source/themes/NoticeFancy.css">
-<link rel="stylesheet" href="jbox/Source/themes/TooltipSmallGray.css">
-<link rel="stylesheet" href="jbox/Demo/Demo.css">
-<?php include_once('html/navbar.php'); ?>
 
 <section class="hero is-primary">
   <div class="hero-body">
@@ -43,38 +35,25 @@ $Users = new Users();
 <div class="container">
 <div class="columns is-2">
 
-  <!--FIRST COLUMN -->
-  <div class="column is-four-fifths">
-    
-   <div id="Notice-7" class="target-notice">Click me</div>
-    
-  <form id="new_activity" method="POST">
-   <!-- NEW ACTIVITY FORM -->
-  <?php include_once('html/new_acty_form.php'); ?>
-  </div>
+<!--/ FIRST COLUMN /-->
+<div class="column is-four-fifths">
 
-  <!--SECOND COLUMN -->
-  <div class="column is-one-third">
-  <?php include_once('html/new_acty_form_ctrl.php'); ?>
-  </form>
+<form id="new_activity" method="POST">
+<!--/ NEW ACTIVITY FORM /-->
+<?php include_once('html/newActy_form_left.php'); ?>
+</div>
 
-<!--
-    <article class="message">
-      <div class="message-header">
-        <p>Hello World</p>
-        <button class="delete" aria-label="delete"></button>
-      </div>
-      <div class="message-body">
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. <strong>Pellentesque risus mi</strong>, tempus quis placerat ut, porta nec nulla. Vestibulum rhoncus ac ex sit amet fringilla. Nullam gravida purus diam, et dictum <a>felis venenatis</a> efficitur. Aenean ac <em>eleifend lacus</em>, in mollis lectus. Donec sodales, arcu et sollicitudin porttitor, tortor urna tempor ligula, id porttitor mi magna a neque. Donec dui urna, vehicula et sem eget, facilisis sodales sem.
-      </div>
-    </article>
-
--->
-</div><!--/SECOND COLUMN-->
+<!--/ SECOND COLUMN /-->
+<div class="column is-one-third">
+<?php include_once('html/newActy_form_right.php'); ?>
+</form>
 
 
-</div> <!--/COLUMNS-->
-</div> <!--/CONTAINER-->
+</div><!--//Second Column -->
+
+
+</div> <!-- //columns -->
+</div> <!-- //containers-->
 </section>
 
-<?php include_once('html/sengoku_footer_new_acty.php'); ?>
+<?php include_once('html/newActy_footer.php'); ?>
