@@ -108,9 +108,9 @@ $(document).ready(function() {
           $range.on("change", function () 
           {
             value = $range.prop("value");
-            if(value == "Low") { $SeverityValue = "1"; }
-            if(value == "Medium") { $SeverityValue = "2"; }
-            if(value == "High") { $SeverityValue = "3"; }
+            if(value == "Low") { $SeverityValue = "0"; }
+            if(value == "Medium") { $SeverityValue = "1"; }
+            if(value == "High") { $SeverityValue = "2"; }
     
             //console.log("Value: " + $SeverityValue + "-" + value);
           });
