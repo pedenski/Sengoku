@@ -103,13 +103,22 @@ class Activity {
 	/* 
 	 * SELECT SECTION 
 	 */
-	public function Get_Title_Listing()
+	public function Get_Title_Listing($nav, $max)
 	//get all titles
 	{
-		$q = "SELECT * FROM activity_titles ORDER BY ActyID DESC ";
+		$q = "SELECT * FROM activity_titles ORDER BY ActyID DESC LIMIT ".$nav->start().",".$max;
 		$sql = $this->conn->prepare($q);
 		$sql->execute();
 		return $row = $sql->fetchAll(PDO::FETCH_ASSOC);
+	}
+
+	public function CountRows_Titles()
+	//pagination
+	{
+		$q = "SELECT * FROM activity_titles";
+		$sql = $this->conn->prepare($q);
+		$sql->execute();
+		return $row = $sql->rowCount();
 	}
 	
 
@@ -161,7 +170,6 @@ class Activity {
 		$sql->bindParam(1, $LastID);	
 		$sql->execute();
 		return $sql->fetch(PDO::FETCH_ASSOC);
-
 	}
 
 
@@ -184,7 +192,6 @@ class Activity {
     
     	$q = "SELECT COUNT(*) as issueCount FROM `activity_log` WHERE LogIssue = '1' AND ActyID = ?";
     	$sql = $this->conn->prepare($q);
-
     	$sql->bindParam(1, $ActyID);
     	$sql->execute();
     	return $row = $sql->fetch(PDO::FETCH_ASSOC);
@@ -298,6 +305,23 @@ class Activity {
 		$sql->execute();
 
 
+	}
+
+
+	public function get_snippet( $str, $wordCount ) {
+	  return implode( 
+	    '', 
+	    array_slice( 
+	      preg_split(
+	        '/([\s,\.;\?\!]+)/', 
+	        $str, 
+	        $wordCount*2+1, 
+	        PREG_SPLIT_DELIM_CAPTURE
+	      ),
+	      0,
+	      $wordCount*2-1
+	    )
+	  );
 	}
 
 

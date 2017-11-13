@@ -49,11 +49,10 @@ include_once('html/navbar.php'); ?>
 
     foreach($ActyList as $row) { ?>
 
-      <div class="column is-one-quarter">
+    <div class="column is-one-quarter">
     <div style="padding:5px; background:#F4F4F4;border:1px solid #000;">
-    
-         <span class="_actyTitle"><a href="page.php?id=<?php echo $row['ActyID'];?>"> <?php echo ucfirst($row['ActyTitle']); ?> </a></span>
-                  </div>
+    <span class="_actyTitle"><a href="page.php?id=<?php echo $row['ActyID'];?>"> <?php echo ucfirst($row['ActyTitle']); ?> </a></span>
+    </div>
  </div>     
 
   <?php }  ?>

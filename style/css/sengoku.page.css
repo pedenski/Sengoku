@@ -9,12 +9,12 @@ pre {
 }
 
 .table tr.is-selected {
-	background: #FF3860; 
+	background: #FFA8B9; 
 	color: #fff;
 }
 
 .table tr.is-answered {
- background: #00D1B2;  /* fallback for old browsers */
+ background: #BBE5DF;  /* fallback for old browsers */
 
 
 	color: #000;
@@ -30,6 +30,7 @@ pre {
 
 .table {
 	margin-bottom: .5rem;
+
 }
 
 .log {
