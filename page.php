@@ -114,6 +114,8 @@ include_once('html/navbar.php');
 <tr> <!-- Involved Widget -->
   <td> 
     <p class="has-text-centered">
+    <!-- Author -->
+    <img style="border:2px solid #FF3860; border-radius:50%;width:38px;height:38px" src="style/img/<?php echo $Users->GetUser($Activity->UserID);?>.png">
     <?php $Tags->UserLists = $Users->Get_User_Listing();
           $Tags->Get_Tags($ActyID);
           $Tags->Compare_Array(); // execute tag comparison
