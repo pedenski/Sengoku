@@ -26,11 +26,11 @@ include_once('html/index_header.php');
 include_once('html/navbar.php'); 
 
 ?>
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+
 
  <div class="container">
 
-     <input class="input" type="text" name="search_text" id="search_text" placeholder="Search by Customer Details" class="form-control" />
+     <input class="input" type="text" name="search_text" id="search_text" placeholder="Search by Title">
 
    <div id="result"></div>
 </div>

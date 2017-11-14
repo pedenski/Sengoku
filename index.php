@@ -20,17 +20,30 @@ $Users = new Users($db);
 $ActyDetails = new ActyDetails();
 
 //pagination
-$max = 12; //max items per page
-$maxNum  = 15; //max number per page
+$max = 8; //max items per page
+$maxNum  = 5; //max number per page
 $total = $Activity->CountRows_Titles(); //count all rows
 $nav = new Pagination($max, $total, $page, $maxNum);
-
-
-
 
 //styles
 include_once('html/index_header.php');
 include_once('html/navbar.php'); ?>
+
+
+ <style>
+ .pagi {
+  margin-top:5px;
+
+ }
+  .pagi a, b {
+   background:#f4f4f4;
+   padding: 10px;
+   border-radius: 3px;
+
+
+
+  }
+  </style>
 
 <!-- HERO -->
 <section class="hero is-primary">
@@ -53,50 +66,43 @@ include_once('html/navbar.php'); ?>
 
 <div class="columns is-2 is-desktop">
 
-
-  <div style="" class="column is-four-fifths">  <!-- LEFT COLUMN -->
+<div  class="column is-four-fifths">  <!-- LEFT COLUMN -->
    
 
-  <style>
-  .pagi {
-
-  }
-  .pagi a, b {
-   background:#f4f4f4;
-   padding:8px;
-   border-radius: 3px;
-   margin-right:2px;
-
-  }
-  </style>
-  <div class="column">
-  <table class="table is-fullwidth is-bordered">
-  <tr><td></td>
-
-  <td width="300">
-  <div class="pagi is-pulled-right">
-  <?php
-  echo $nav->first(' <a href="index.php">First</a>  ');
-  echo $nav->numbers(' <a href="index.php?page={nr}">{nr}</a>  ', '  <b>{nr}</b>  ');
-  echo $nav->next(' <a href="index.php?page={nr}">Next</a>  ');
-  ?></div></td>
-  </tr>
-  </table>
-  </div>
 
 
-    <?php $ActyList = $Activity->Get_TItle_Listing($nav, $max);
+    <div class="columns">
+      <div class="column is-half">
+          <div class="control has-icons-left has-icons-right">
+          <input class="input" type="text" name="search_text" id="search_text" placeholder="Search By Title">
+          <span class="icon is-small is-left">
+          <i class="fa fa-search"></i>
+          </span>
+          </div>
+        </td>
+      </div>
+      <div class="column is-half ">
+          <div class="pagi is-pulled-right">
+          <?php echo $nav->first(' <a href="index.php">First</a>  ');
+                echo $nav->numbers(' <a href="index.php?page={nr}">{nr}</a>  ', '  <b>{nr}</b>  ');
+                echo $nav->next(' <a href="index.php?page={nr}">Next</a>  '); ?>
+          </div> 
+      </div>
+     </div>
+
+
+
+  <div id="result"></div>
+   <?php $ActyList = $Activity->Get_TItle_Listing($nav, $max);
         foreach($ActyList as $row) { ?>
-
-
-          <div style="border-radius: 3px; margin-bottom:5px;  background:#f4f4f4" class="column  is-one-fourth zwrap-<?php echo $row['SeverityID'];?>">
+        <div style="border-radius: 3px; margin-bottom:5px;  background:#f4f4f4" class="column  is-one-fourth zwrap-<?php echo $row['SeverityID'];?>">
               
               <div class="columns">
                 <div class="column">
                   <table style="background:#f4f4f4;" class="table is-fullwidth"> 
                     <tr>
                       <td>
-                        <a href="page.php?id=<?php echo $row['ActyID'];?>"><span style="color:#00D1B2; font-size:1.4rem;" class="_actyTitle"> <?php echo $Activity->get_snippet($row['ActyTitle'], 7); ?>
+                        <a href="page.php?id=<?php echo $row['ActyID'];?>"><span style="color:#00D1B2; font-size:1rem;" class="_actyTitle"> <?php echo ucfirst($Activity->get_snippet($row['ActyTitle'], 7)); ?>
                          </span></a>
                       </td>
                     </tr>
@@ -104,7 +110,7 @@ include_once('html/navbar.php'); ?>
 
                     <tr>
                       <td> <small> <?php $Activity->Get_Activity_Detail($row['ActyID']);
-                            echo strip_tags($Activity->get_snippet($Activity->textarea, 20)); ?> ... </small>
+                            echo strip_tags($Activity->get_snippet($Activity->textarea, 12)); ?> ... </small>
                       </td>
                     </tr>
 
@@ -167,8 +173,6 @@ include_once('html/navbar.php'); ?>
     <?php }  ?> <!--END FOR-->
 
 
- 
-
   </div>  <!-- END LEFT COLUMN -->
 
 
@@ -229,6 +233,7 @@ include_once('html/navbar.php'); ?>
 
 </div> <!--/container-->
 </section>
+
 
 
 

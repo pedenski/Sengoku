@@ -47,7 +47,7 @@ include_once('html/navbar.php');
 <!--FIRST COLUMN -->
 <div class="column is-four-fifths">
 
-  <div style="padding-top:4px; padding-right:4px; padding-left:4px; padding-bottom:1px;border-radius:5px;background: #f4f4f4; margin-bottom: 8px; "> 
+  <div style="border-radius:4px; padding:15px;background: #f4f4f4; margin-bottom: 8px; "> 
     <article class="media" style="padding:8px;">
       <div class="media-content">
 
@@ -65,12 +65,12 @@ include_once('html/navbar.php');
             </a> <?php } ?>
         </div>
 
-        <div class="content">
+        <div style="margin-top:10px;" class="content">
         <?php $Activity->Get_Activity_Detail($ActyID);
               echo $Activity->textarea; ?>    
         </div>
       </div>
-      <div class="media-right">
+      <div  class="media-right">
       <button class="delete"></button>
       </div>
     </article>
