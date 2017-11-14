@@ -81,6 +81,40 @@ body {
     border-bottom: 3px solid #f00;
 }*/
 
+.table td {
+
+}
+.table td, .table th{
+  border:0;
+   padding:.2rem;
+}
+
+.table {
+    margin-bottom:0;
+}
+
+/* SEVERITY */
+.zwrap-0 {
+    border-left:3px solid #71AC23 ;
+    background:  #f4f4f4;
+
+    padding:;
+}
+
+.zwrap-1 {
+    border-left:3px solid #E8AE00 ;
+    background:  #f4f4f4;
+    
+    padding:;
+}
+
+.zwrap-2 {
+    border-left:3px solid #D1380E ;
+    background:  #f4f4f4;
+  
+    padding:;
+}
+
 /* SEVERITY */
 .sev-0{
     background: #ABFF3D;

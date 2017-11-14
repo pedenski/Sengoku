@@ -20,7 +20,7 @@ $Users = new Users($db);
 $ActyDetails = new ActyDetails();
 
 //pagination
-$max = 15; //max items per page
+$max = 12; //max items per page
 $maxNum  = 15; //max number per page
 $total = $Activity->CountRows_Titles(); //count all rows
 $nav = new Pagination($max, $total, $page, $maxNum);
@@ -34,298 +34,200 @@ include_once('html/navbar.php'); ?>
 
 <!-- HERO -->
 <section class="hero is-primary">
- <div class="hero-body">
-    <div class="container is-fluid">
-      <h1 class="title">
-      <?php echo $page_title;?>
-      </h1>
-      <h2 class="subtitle">
-        Activity Tracker Dashboard
-      </h2>
-    </div>
-  </div>
+<div class="hero-body">
+<div class="container ">
+  <h1 class="title">
+  <?php echo $page_title;?>
+  </h1>
+  <h2 class="subtitle">
+    Activity Tracker Dashboard
+  </h2>
+</div>
+</div>
 </section>
 
 <!-- CONTENT -->
 <section class="section">
-<div class="container is-fluid">
+<div class="container ">
 
- <?php if(isset($_GET['err'])){?>
-  <article class="message is-danger">
-  <div class="message-body">
-    <i class="fa fa-exclamation-circle" aria-hidden="true"></i> You must be <strong>logged</strong> in to to reply.
+
+<div class="columns is-2 is-desktop">
+
+
+  <div style="" class="column is-four-fifths">  <!-- LEFT COLUMN -->
+   
+
+  <style>
+  .pagi {
+
+  }
+  .pagi a, b {
+   background:#f4f4f4;
+   padding:8px;
+   border-radius: 3px;
+   margin-right:2px;
+
+  }
+  </style>
+  <div class="column">
+  <table class="table is-fullwidth is-bordered">
+  <tr><td></td>
+
+  <td width="300">
+  <div class="pagi is-pulled-right">
+  <?php
+  echo $nav->first(' <a href="index.php">First</a>  ');
+  echo $nav->numbers(' <a href="index.php?page={nr}">{nr}</a>  ', '  <b>{nr}</b>  ');
+  echo $nav->next(' <a href="index.php?page={nr}">Next</a>  ');
+  ?></div></td>
+  </tr>
+  </table>
   </div>
-  </article>
-<?php  } ?>
 
 
-<div class="columns is-2">
-
-<!--FIRST COLUMN -->
-<div class="columns is-multiline is-mobile is-narrow is-centered">
-
-  <?php 
-    $ActyList = $Activity->Get_TItle_Listing($nav, $max);
-
-    foreach($ActyList as $row) { ?>
+    <?php $ActyList = $Activity->Get_TItle_Listing($nav, $max);
+        foreach($ActyList as $row) { ?>
 
 
-<div  class="column is-one-third is-mobile">
-<div style="background: #f4f4f4; border-radius:5px; padding:20px;" class="zwrap">
-    <div style="background:#f4f4f4;" class="is-narrow">
-        
+          <div style="border-radius: 3px; margin-bottom:5px;  background:#f4f4f4" class="column  is-one-fourth zwrap-<?php echo $row['SeverityID'];?>">
+              
+              <div class="columns">
+                <div class="column">
+                  <table style="background:#f4f4f4;" class="table is-fullwidth"> 
+                    <tr>
+                      <td>
+                        <a href="page.php?id=<?php echo $row['ActyID'];?>"><span style="color:#00D1B2; font-size:1.4rem;" class="_actyTitle"> <?php echo $Activity->get_snippet($row['ActyTitle'], 7); ?>
+                         </span></a>
+                      </td>
+                    </tr>
+                    
 
-        <article style="border-bottom:1px solid #D6D6D6;" class="media">
-        <figure class="media-left">
-          <p class="image">
-          <img style="border-radius:20px;width:45px;height:45px" src="style/img/<?php echo $Users->GetUser($row['UserID']);?>.png"> 
-          </p>
-        </figure>
-        <div class="media-content">
-          <div class="content">
-            <p>
+                    <tr>
+                      <td> <small> <?php $Activity->Get_Activity_Detail($row['ActyID']);
+                            echo strip_tags($Activity->get_snippet($Activity->textarea, 20)); ?> ... </small>
+                      </td>
+                    </tr>
 
-                <span class="_actyTitle"><a href="page.php?id=<?php echo $row['ActyID'];?>"> <?php echo $Activity->get_snippet($row['ActyTitle'], 7); ?>..
-                  <br>
-                    <small class="has-text-grey-light is-size-7"><i class="fa fa-clock-o" aria-hidden="true"></i> <?php echo $row['ActyStartDate']; ?></small>
-            </a></span> 
-            <br>
-      
-            </p>
-          </div>
-  
-        </div>
-        <div class="media-right">
-      
-            <span class="icon">
-              <span class="sev-<?php echo $row['SeverityID'];?>"></span>
-             
-            </span>
-          </a>
-        </div>
-      </article>
-
-
-     
-    </div>
-
-    <div style="background:#f4f4f4; margin-top:15px;padding-bottom:15px;border-bottom:1px solid #D6D6D6;" class="is-narrow">
+                    <tr>
+                      <td>
+                         <?php $Tags->UserLists = $Users->Get_User_Listing(); //get Names and insert to Tags class var
+                               $Tags->Get_Tags($row['ActyID']);   //Execute Tags based on ActyID
+                               $Tags->Compare_Array(); // execute tag comparison  ?>
+                              <?php foreach($Tags->TagLists as $TagName) { ?>
+                                  <span class="tag is-dark mar-r-5">  <?php echo $TagName; ?> </span> 
+                                  <!-- <span class="tag is-info"> </span> -->
+                          <?php } ?>
+                      </td>
+                    </tr>
 
 
 
-         <nav class="level">
-      <div class="level-item has-text-centered">
-        <div>
-          <h2><?php echo $ActyDetails->Get_Severity_Name($row['SeverityID']);?></h2>
-          <p class="heading"><small>Severity</small></p>
-        </div>
-      </div> 
-     
-    <!--   <div style="border-left:2px solid #f4f4f4; height:35px;" class="vl"></div> -->
-      
-      <div class="level-item has-text-centered">
-        <div>
-          <h2><?php echo $ActyDetails->Get_Category_Name($row['CategoryID']); ?></h2>
-          <p class="heading"><small>Category</small></p>
-        </div>
-    
-      </div> 
-     
-  
-     
-      <div class="level-item has-text-centered">
-        <div>
-          <h2><?php echo $ActyDetails->Get_Area_Name($row['AreaID']); ?></h2>
-          <p class="heading"><small>Area</small></p>
-        </div>
-      </div>
-
-
-    </nav>
-
-          <?php 
-            //$Activity->Get_Activity_Detail($row['ActyID']);
-            //echo strip_tags($Activity->get_snippet($Activity->textarea, 10));
-          ?>
-   
-    </div>
-
-
- <div style="background:#f4f4f4; margin-top:15px;margin-bottom:5px; " class="is-narrow">
-
-
-
-         <nav class="level">
-      <div class="level-item has-text-centered">
-        <div>
-          <h2><i class="fa fa-bar-chart" aria-hidden="true"></i></h2>
-          <p class="heading">Open</p>
-        </div>
-      </div> 
-     
-    
-      
-      <div class="level-item has-text-centered">
-        <div>
-          <h2><i class="fa fa-comment-o" aria-hidden="true"></i></h2>
-          <p class="heading">5</p>
-        </div>
-    
-      </div> 
-     
-     
-      <div class="level-item has-text-centered">
-        <div>
-          <h2><i class="fa fa-pencil-square-o" aria-hidden="true"></i></h2>
-          <p class="heading">5</p>
-        </div>
-    
-      </div> 
-     
-     
-      <div class="level-item has-text-centered">
-        <div>
-          <h2><i class="fa fa-thumbs-down" aria-hidden="true"></i></h2>
-          <p class="heading">0</p>
-        </div>
-      </div>
-    </nav>
-
-          <?php 
-            //$Activity->Get_Activity_Detail($row['ActyID']);
-            //echo strip_tags($Activity->get_snippet($Activity->textarea, 10));
-          ?>
-   
-    </div>
-
-<!--     <div style="background:#fff; border-bottom:1px solid #f4f4f4; padding-left:10px;" class="zcontent">
-   <b>Description</b><br>
-          <?php 
-            $Activity->Get_Activity_Detail($row['ActyID']);
-            echo strip_tags($Activity->get_snippet($Activity->textarea, 10));
-          ?> ...
-   
-    </div> -->
-
-
-    <div style="background:#f4f4f4; padding-left:10px;" class="is-narrow">
- 
-     <?php
-          /*    $Tags->UserLists = $Users->Get_User_Listing(); //get Names and insert to Tags class var
-              $Tags->Get_Tags($row['ActyID']);   //Execute Tags based on ActyID
-              $Tags->Compare_Array(); // execute tag comparison
-              ?>
-              <?php foreach($Tags->TagLists as $TagName) { ?>
-             <span class="tag is-info mar-r-5">  <?php echo $TagName; ?> </span> 
-                 <!-- <span class="tag is-info"> </span> -->
-    <?php } */?>
-
-    </div>
-</div> <!--/zwrapp-->
-</div>
-  <?php }  ?>
-
-<!-- <style>
-.pagi {
-  background: #fff;
-  padding:5px;
-}
-
-.pagi a, b {
-  background:#fff;
-  border-radius: 3px;
-
-}
-</style>
-<div class="pagi">
-<?php
-echo $nav->first(' <a href="./page-{nr}/">First</a> | ');
-echo $nav->numbers(' <a href="index.php?page={nr}">{nr}</a> | ', '  <b>{nr}</b> | ');
-echo $nav->next(' <a href="index.php?page={nr}">Next</a>  ');
-?>
-</div>
- -->
-
-
-</div> <!--/first column-->
-
-  <!--SECOND COLUMN -->
-<div class="column is-one-quarter">
-<?php if(!isset($_SESSION['SESSID'])){ ?>
-    <div style="margin-bottom:5px; padding:5px;border-radius:5px;background: #f4f4f4"> 
-
-    <form id='login' action='util/submit_login.php' method='post' accept-charset='UTF-8'>
-          <p class="control has-icons-left has-icons-right">
-            <input class="input" type="text" name="username" placeholder="Username">
-            <span class="icon is-small is-left">
-              <i class="fa fa-envelope"></i>
-            </span>
+                    </table>
+                </div>
             
-          </p>
+                 <div class="column is-one-fourth">
+                  <table  style="background:#f4f4f4; border-color:#fff;" class="table   is-fullwidth is-small">
+                    <tr> 
+                      <td ><p class="has-text-right is-small" style="color:gray;">Author</p></td>
+                      <td width="10"><?php echo $Users->GetUser($row['UserID']);?></td>
+                         <td><p class="has-text-right" style="color:gray;">Area </td>
+                      <td><?php echo $ActyDetails->Get_Area_Name($row['AreaID']); ?></td>
+                      
+                    </tr>  
+                    <tr> 
+                       <td><p class="has-text-right" style="color:gray;">Date </td>
+                      <td><?php echo date('m-y',strtotime($row['ActyStartDate'])); ?></td>
+                      
+                       <td><p class="has-text-right" style="color:gray;">Time </td>
+                      <td><?php echo date('H:i',strtotime($row['ActyStartDate'])); ?></td>
+                    </tr>  
+
+                     <tr> 
+                      <td><p class="has-text-right" style="color:gray;">Category </td>
+                      <td><?php echo $ActyDetails->Get_Category_Name($row['CategoryID']); ?></td>
+                  
+                       <td><p class="has-text-right" style="color:gray;">Severity </td>
+                      <td><?php echo $ActyDetails->Get_Severity_Name($row['SeverityID']);?></td>
+                    </tr>
+                        
+
+
+                  </table>
+
+
+                </div>
+
+              </div>
+
+
+
+
+        </div> <!-- END COLUMN IS-ONE-THIRD-->
+ 
+    <?php }  ?> <!--END FOR-->
+
+
+ 
+
+  </div>  <!-- END LEFT COLUMN -->
+
+
+  <div style="background:#fff;" class="column is-one-quarter">   <!-- RIGHT COLUMN -->
         
 
-        <div class="field">
-          <p class="control has-icons-left">
-            <input class="input" type="password" name="password" placeholder="Password">
-            <span class="icon is-small is-left">
-              <i class="fa fa-lock"></i>
-            </span>
-          </p>
-        </div>
-        <div class="field">
-          <p class="control">
-            <button type='submit' name="submit" class="button is-info is-fullwidth">
-              Login
-            </button>
-          </p>
-        </div>
-      </form>
-</div>
-<?php } ?>
+        <?php if(!isset($_SESSION['SESSID'])){ ?>
+        <div style="margin-bottom:5px; padding:5px;border-radius:5px;background: #f4f4f4"> 
+        <form id='login' action='util/submit_login.php' method='post' accept-charset='UTF-8'>
+              <p class="control has-icons-left has-icons-right">
+                <input class="input" type="text" name="username" placeholder="Username">
+                <span class="icon is-small is-left">
+                  <i class="fa fa-envelope"></i>
+                </span>
+              </p>
+              <div class="field">
+              <p class="control has-icons-left">
+                <input class="input" type="password" name="password" placeholder="Password">
+                <span class="icon is-small is-left">
+                  <i class="fa fa-lock"></i>
+                </span>
+              </p>
+            </div>
+            <div class="field">
+              <p class="control">
+                <button type='submit' name="submit" class="button is-info is-fullwidth">
+                  Login
+                </button>
+              </p>
+            </div>
+          </form>
+       </div>
+      <?php } ?>
 
-
-
-<div style="margin-bottom:5px;padding:5px;border-radius:5px;background: #f4f4f4"> 
-<?php if(!isset($_SESSION['SESSID'])){ ?>
-   <a class="button is-primary is-fullwidth" href="new_activity.php" disabled>
-    <span class="icon is-small">
-      <i class="fa fa-plus"></i>
-    </span>
-    <span>New Activity</span>
-  </a>
-
-<?php } else { ?>
-    <a class="button is-primary is-fullwidth" href="new_activity.php" >
-    <span class="icon is-small">
-      <i class="fa fa-plus"></i>
-    </span>
-    <span>New Activity</span>
-  </a>
-<?php } ?>
-</div>
-
-
-    <!-- <article class="message">
-      <div class="message-header">
-        <p>Hello World</p>
-        <button class="delete" aria-label="delete"></button>
-      </div>
-      <div class="message-body">
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. <strong>Pellentesque risus mi</strong>, tempus quis placerat ut, porta nec nulla. Vestibulum rhoncus ac ex sit amet fringilla. Nullam gravida purus diam, et dictum <a>felis venenatis</a> efficitur. Aenean ac <em>eleifend lacus</em>, in mollis lectus. Donec sodales, arcu et sollicitudin porttitor, tortor urna tempor ligula, id porttitor mi magna a neque. Donec dui urna, vehicula et sem eget, facilisis sodales sem.
-      </div>
-    </article> -->
-
-
-
-
-  </div><!--/SECOND COLUMN-->
-
-
-</div> <!--/COLUMNS-->
+     <div style="margin-bottom:5px;padding:5px;border-radius:5px;background: #f4f4f4"> 
+     <?php if(!isset($_SESSION['SESSID'])){ ?>
+       <a class="button is-primary is-fullwidth" href="new_activity.php" disabled>
+        <span class="icon is-small">
+          <i class="fa fa-plus"></i>
+        </span>
+        <span>New Activity</span>
+      </a>
+    <?php } else { ?>
+        <a class="button is-primary is-fullwidth" href="new_activity.php" >
+        <span class="icon is-small">
+          <i class="fa fa-plus"></i>
+        </span>
+        <span>New Activity</span>
+      </a>
+    <?php } ?>
+    </div>
+  </div>   <!-- END RIGHT COLUMN -->
 
 
 </div>
-</div> <!--/CONTAINER-->
+
+
+
+</div> <!--/container-->
 </section>
 
 
