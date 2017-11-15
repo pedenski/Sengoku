@@ -48,7 +48,7 @@ include_once('html/navbar.php'); ?>
 <!-- HERO -->
 <section class="hero is-primary">
 <div class="hero-body">
-<div class="container ">
+<div class="container is-fluid">
   <h1 class="title">
   <?php echo $page_title;?>
   </h1>
@@ -61,14 +61,13 @@ include_once('html/navbar.php'); ?>
 
 <!-- CONTENT -->
 <section class="section">
-<div class="container ">
+<div class="container is-fluid">
 
 
 <div class="columns is-2 is-desktop">
 
 <div  class="column is-four-fifths">  <!-- LEFT COLUMN -->
    
-
 
 
     <div class="columns">
@@ -224,6 +223,30 @@ include_once('html/navbar.php'); ?>
       </a>
     <?php } ?>
     </div>
+
+
+    <!-- TAG GRAPH BAR -->
+      <div style="margin-bottom:15px; padding-right:15px; border-radius:5px;background: #ffdee4"> 
+        <div class="chart-container">
+          <canvas id="bar-chartcanvas"></canvas>
+        </div>
+      </div><!-- END TAG GRAPH BAR -->
+
+
+
+    <!-- USER LOGGED IN TODAY -->
+      <div style="margin-bottom:5px;padding:8px;"> 
+        <h2>Online Today</h2>
+        <div style="padding:5px;">
+       <?php $userlogged = $Users->LastLogged(); 
+            foreach($userlogged as $online) { ?>
+            <img style="border-radius:10px;width:38px;height:38px" src="style/img/<?php echo $online['UserName']; ?>.png">
+         <?php } ?>
+       </div>
+
+       </div><!-- //USER LOGGED IN TODAY -->
+
+
   </div>   <!-- END RIGHT COLUMN -->
 
 

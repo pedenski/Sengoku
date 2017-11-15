@@ -60,11 +60,18 @@ class Users {
 
 		
 		$UserArr = $this->Check_Cred();
-		if($UserArr)
+		if($UserArr) //if true
 		{
 			$this->UserArr = $UserArr;
 			$_SESSION['SESSID'] = $UserArr['UserID'];
 			$_SESSION['SESSNAME'] = $UserArr['UserName'];
+
+			//update login date
+			$q = "UPDATE users  SET `LastLogin` = now() WHERE UserID = ?";
+			$sql = $this->conn->prepare($q);
+			$sql->bindParam(1, $UserArr['UserID']);
+			$sql->execute();
+
 			return $UserArr['UserID'];
 		}
 
@@ -86,6 +93,14 @@ class Users {
 		}	
 
 
+	}
+
+	public function LastLogged() 
+	{
+		$q = "SELECT UserName FROM `users` WHERE DATE(`LastLogin`) = CURDATE()";
+		$sql = $this->conn->prepare($q);
+		$sql->execute();
+		return $row = $sql->fetchAll(PDO::FETCH_ASSOC);
 	}
 
 }

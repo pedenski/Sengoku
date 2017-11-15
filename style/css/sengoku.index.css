@@ -95,21 +95,21 @@ body {
 
 /* SEVERITY */
 .zwrap-0 {
-    border-left:3px solid #71AC23 ;
+    border-left:9px solid #71AC23 ;
     background:  #f4f4f4;
 
     padding:;
 }
 
 .zwrap-1 {
-    border-left:3px solid #E8AE00 ;
+    border-left:9px solid #E8AE00 ;
     background:  #f4f4f4;
     
     padding:;
 }
 
 .zwrap-2 {
-    border-left:3px solid #D1380E ;
+    border-left:9px solid #D1380E ;
     background:  #f4f4f4;
   
     padding:;

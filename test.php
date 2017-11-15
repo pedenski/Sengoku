@@ -112,7 +112,7 @@ $(document).ready(function () {
 					{
 						label : "TeamA score",
 						data : total,
-						backgroundColor : ["rgba(10, 20, 30, 0.3)"],
+							backgroundColor : ["rgba(127,46,61,0.9)" ,"rgba(153,55,73,0.9)","rgba(178,64,86,0.9)","rgba(204,73,98,0.9)","rgba(229,82,110,0.9)"],
 						borderWidth : 1
 					}
 					

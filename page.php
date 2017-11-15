@@ -177,32 +177,29 @@ include_once('html/navbar.php');
   <canvas id="line-chartcanvas"></canvas>
 </div>
 
+<form id="page_ctrl" action="util/close_page.php" method="post">
 <table class="table  is-fullwidth is-small">
 <tr>
   <td>
     <div class="field is-grouped">
       <p class="control">
-        <a href="edit_activity.php?id=<?php echo $ActyID;?>" class="button is-light is-fullwidth">
+        <a href="edit_activity.php?id=<?php echo $ActyID;?>" class="button is-dark is-outlined">
           <span class="icon"><i class="fa fa-pencil-square-o"></i></span>
           <span>Edit</span>
         </a>
       </p>
       <p class="control">
-        <a href="edit_activity.php?id=<?php echo $ActyID;?>" class="button is-light">
-          <span class="icon"><i class="fa fa-times"></i></span>
-          <span>Close</span>
-        </a>
-      </p>
+     <button class="button is-danger is-outlined" id="close_btn" name="close" type="submit">Close</button>
+     </p>
       <p class="control">
-        <a href="edit_activity.php?id=<?php echo $ActyID;?>" class="button is-light is-fullwidth">
-          <span class="icon"><i class="fa fa-folder-open-o"></i> </span>
-          <span>Open</span>
-        </a>
+      <button class="button is-primary is-outlined" id="close_btn" name="open" type="submit">Open</button>
       </p>
+
     </div>
   </td>
 </tr>
 </table>
+</form>
 
 </div><!--//second column-->
 </div> <!--//columns-->
