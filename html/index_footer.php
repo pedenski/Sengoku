@@ -7,35 +7,8 @@
   crossorigin="anonymous"></script>
 
 
- <script>
-$(document).ready(function(){
+ <script src="scripts/index_search.js">
 
- load_data();
-
- function load_data(query)
- {
-  $.ajax({
-   url:"util/search.php",
-   method:"POST",
-   data:{query:query},
-   success:function(data)
-   {
-    $('#result').html(data);
-   }
-  });
- }
- $('#search_text').keyup(function(){
-  var search = $(this).val();
-  if(search != '')
-  {
-   load_data(search);
-  }
-  else
-  {
-   load_data();
-  }
- });
-});
 </script>
 
   </body>
