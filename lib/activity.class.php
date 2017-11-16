@@ -20,6 +20,7 @@ class Activity {
 	public $IssueID;
 	public $ReferTo;
 	public $is_Resolved;
+	public $ActyPostDate; //date post created
 
 	public $LastID; //so tags can access this
 
@@ -146,6 +147,7 @@ class Activity {
 		$this->AreaID = $row['AreaID'];
 		$this->UserID = $row['UserID'];
 		$this->ActyStartDate = $row['ActyStartDate'];
+		$this->ActyPostDate = $row['ActyPostDate'];
 		$this->ModifiedUserID = $row['ModifiedUserID'];
 		$this->ModifiedDate = $row['ModifiedDate'];
 

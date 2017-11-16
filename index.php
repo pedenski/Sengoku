@@ -20,7 +20,7 @@ $Users = new Users($db);
 $ActyDetails = new ActyDetails();
 
 //pagination
-$max = 15; //max items per page
+$max = 20; //max items per page
 $maxNum  = 5; //max number per page
 $total = $Activity->CountRows_Titles(); //count all rows
 $nav = new Pagination($max, $total, $page, $maxNum);
@@ -89,9 +89,9 @@ include_once('html/navbar.php'); ?>
       </div>
      </div>
 
-
-
-  
+<div id="demo-container">
+  <span class="hover" id="demo-tooltip-above" title="I'm above the element">Above centered</span>
+</div>  
 
 <table id="topics" class="table is-fullwidth is-striped is-responsive">
 
@@ -104,8 +104,8 @@ include_once('html/navbar.php'); ?>
     <th>Date</th>
     <th>Time</th>
     <th>Area</th>
-    <th>Category</th>
-    <th>Severity</th>
+    <th><p class="has-text-centered">Div</p></th>
+    <th><p class="has-text-centered">Sev</p></th>
     <th>Tags</th>
   </tr>
 </thead>
@@ -122,18 +122,61 @@ foreach($ActyList as $row) { ?>
 <tr>
 
 <td>#<?php echo $row['ActyID'];?></td>
-<td><a href="page.php?id=<?php echo $row['ActyID'];?>"><span style="color:#00D1B2; font-size:1rem;" class="_actyTitle"> <?php echo ucfirst($Activity->get_snippet($row['ActyTitle'], 5)); ?></a>
+<td><a href="page.php?id=<?php echo $row['ActyID'];?>"><span style="color:#03927D; font-size:1.1rem;" class="_actyTitle"> <?php echo ucfirst($Activity->get_snippet($row['ActyTitle'], 5)); ?></a>
 <td><small> <?php $Activity->Get_Activity_Detail($row['ActyID']);
-echo strip_tags($Activity->get_snippet($Activity->textarea, 5)); ?> ... </small></td>
+echo strip_tags($Activity->get_snippet($Activity->textarea, 5)); ?>  </small></td>
 
 
 
-<td><img style="border-radius:10px;width:38px;height:38px" src="style/img/<?php echo $Users->GetUser($row['UserID']);?>.png"></td>
+<td><img style="border-radius:50%;width:30px;height:30px" src="style/img/<?php echo $Users->GetUser($row['UserID']);?>.png"></td>
 <td><?php echo date('m-y',strtotime($row['ActyStartDate'])); ?></td>
 <td><?php echo date('H:i',strtotime($row['ActyStartDate'])); ?></td>
 <td><?php echo $ActyDetails->Get_Area_Name($row['AreaID']); ?></td>
-<td><?php echo $ActyDetails->Get_Category_Name($row['CategoryID']); ?></td>
-<td><?php echo $ActyDetails->Get_Severity_Name($row['SeverityID']);?></td>
+<td>
+<p class="has-text-centered">
+    <?php switch($row['CategoryID']) 
+      {
+        case 1:
+          echo "<i style='color:#536878' class='fa fa-handshake-o fa-lg' aria-hidden='true'></i>";
+        break; 
+        case 2:
+          echo "<i style='color:#536878' class='fa fa-eraser fa-lg' aria-hidden='true'></i>";
+        break;
+        case 3:
+          echo "<i style='color:#536878' class='fa fa-sliders fa-lg' aria-hidden='true'></i>";
+        break;
+         case 4:
+          echo "<i style='color:#536878' class='fa fa-rocket fa-lg' aria-hidden='true'></i>";
+        break;
+         case 5:
+          echo "<i style='color:#536878' class='fa fa-shield fa-lg' aria-hidden='true'></i>";
+        break;
+      }  
+
+      //$ActyDetails->Get_Category_Name($row['CategoryID']); //severity name
+
+      ?>
+
+</p>
+</td>
+<td><p class="has-text-centered">
+  <?php switch($row['SeverityID']) 
+      {
+        case 0:
+          echo "<i style='color:#81D742' class='fa fa-thermometer-0 fa-lg' aria-hidden='true'></i>";
+        break; 
+        case 1:
+          echo "<i style='color:#FCC02B' class='fa fa-thermometer-2 fa-lg' aria-hidden='true'></i>";
+        break;
+        case 2:
+          echo "<i style='color:#EB1C23' class='fa fa-thermometer fa-lg' aria-hidden='true'></i>";
+        break;
+      }  
+
+      //$ActyDetails->Get_Severity_Name($row['SeverityID']); //severity name
+
+      ?>
+</td>
 
 <td>
 <?php $Tags->UserLists = $Users->Get_User_Listing(); //get Names and insert to Tags class var

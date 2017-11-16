@@ -56,7 +56,7 @@ include_once('html/navbar.php');
             <small style="color:#00D1B2;"> <span class="icon is-small"><i class="fa fa-pencil"></i></span><?php echo  ucfirst($Users->GetUser($Activity->UserID));?></small>
           </a>
           <a class="level-item">
-            <small style="color:#00D1B2;"> <span class="icon is-small"><i class="fa fa-clock-o"></i></span><?php echo date('M-d g:i a',strtotime($Activity->ActyStartDate)); ?></small>
+            <small style="color:#00D1B2;"> <span class="icon is-small"><i class="fa fa-clock-o"></i></span>Created: <?php echo date('M-d g:i a',strtotime($Activity->ActyPostDate)); ?></small>
           </a>
           <?php
             if($Activity->ModifiedUserID != 0) { ?>
