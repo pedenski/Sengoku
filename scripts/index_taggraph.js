@@ -22,7 +22,7 @@ $(document).ready(function () {
 					{	
 						label : false,
 						data : total,
-						backgroundColor : ["#fff","#ececec","#d4d4d4", "#bcbcbc", "#a5a5a5", "#8d8d8d" ],
+						backgroundColor : ["#00D1B2","#64D1B2","#79D1B2", "#79C2B2", "#FFD1B2", "#fff" ],
 						//backgroundColor : ["rgba(127,46,61,0.9)" ,"rgba(153,55,73,0.9)","rgba(178,64,86,0.9)","rgba(204,73,98,0.9)","rgba(229,82,110,0.9)"],
 						borderWidth : 1
 					}
@@ -38,7 +38,7 @@ $(document).ready(function () {
 					position : "top",
 					text : "2017 Top tags",
 					fontSize : 14,
-					fontColor : "#fff"
+					fontColor : "#00C4A7"
 				},
 				legend : {
 					display : true,

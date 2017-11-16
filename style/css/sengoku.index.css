@@ -82,11 +82,11 @@ body {
 }*/
 
 .table td {
-
+		padding:0;
 }
 .table td, .table th{
-  border:0;
-   padding:.2rem;
+
+   padding:10px;
 }
 
 .table {
@@ -95,25 +95,31 @@ body {
 
 /* SEVERITY */
 .zwrap-0 {
-    border-left:9px solid #71AC23 ;
-    background:  #f4f4f4;
+background: #11998e;  /* fallback for old browsers */
+background: -webkit-linear-gradient(to right, #11988E, #13A498);  /* Chrome 10-25, Safari 5.1-6 */
+background: linear-gradient(to right, #11998e, #13A498); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
 
     padding:;
 }
 
 .zwrap-1 {
-    border-left:9px solid #E8AE00 ;
-    background:  #f4f4f4;
+
+background: #F2994A;  /* fallback for old browsers */
+background: -webkit-linear-gradient(to right, #F2C94C, #F2994A);  /* Chrome 10-25, Safari 5.1-6 */
+background: linear-gradient(to right, #F2C94C, #F2994A); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
     
     padding:;
 }
 
 .zwrap-2 {
-    border-left:9px solid #D1380E ;
-    background:  #f4f4f4;
-  
-    padding:;
-}
+background: #7b4397;  /* fallback for old browsers */
+background: -webkit-linear-gradient(to right, #dc2430, #87161D);  /* Chrome 10-25, Safari 5.1-6 */
+background: linear-gradient(to right, #dc2430, #87161D); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+
+} 
 
 /* SEVERITY */
 .sev-0{

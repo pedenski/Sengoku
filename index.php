@@ -20,7 +20,7 @@ $Users = new Users($db);
 $ActyDetails = new ActyDetails();
 
 //pagination
-$max = 8; //max items per page
+$max = 15; //max items per page
 $maxNum  = 5; //max number per page
 $total = $Activity->CountRows_Titles(); //count all rows
 $nav = new Pagination($max, $total, $page, $maxNum);
@@ -91,87 +91,65 @@ include_once('html/navbar.php'); ?>
 
 
 
-  <div id="result"></div>
-   <?php $ActyList = $Activity->Get_TItle_Listing($nav, $max);
-        foreach($ActyList as $row) { ?>
-        <div style="border-radius: 3px; margin-bottom:5px;  background:#f4f4f4" class="column  is-one-fourth zwrap-<?php echo $row['SeverityID'];?>">
-              
-              <div class="columns">
-                <div class="column">
-                  <table style="background:#f4f4f4;" class="table is-fullwidth"> 
-                    <tr>
-                      <td>
-                        <a href="page.php?id=<?php echo $row['ActyID'];?>"><span style="color:#00D1B2; font-size:1rem;" class="_actyTitle"> <?php echo ucfirst($Activity->get_snippet($row['ActyTitle'], 7)); ?>
-                         </span></a>
-                      </td>
-                    </tr>
-                    
+  
 
-                    <tr>
-                      <td> <small> <?php $Activity->Get_Activity_Detail($row['ActyID']);
-                            echo strip_tags($Activity->get_snippet($Activity->textarea, 12)); ?> ... </small>
-                      </td>
-                    </tr>
+<table id="topics" class="table is-fullwidth is-striped is-responsive">
 
-                    <tr>
-                      <td>
-                         <?php $Tags->UserLists = $Users->Get_User_Listing(); //get Names and insert to Tags class var
-                               $Tags->Get_Tags($row['ActyID']);   //Execute Tags based on ActyID
-                               $Tags->Compare_Array(); // execute tag comparison  ?>
-                              <?php foreach($Tags->TagLists as $TagName) { ?>
-                                  <span class="tag is-dark mar-r-5">  <?php echo $TagName; ?> </span> 
-                                  <!-- <span class="tag is-info"> </span> -->
-                          <?php } ?>
-                      </td>
-                    </tr>
+<thead>
+  <tr>
+    <th>ID</th>
+    <th>Title</th>
+    <th>Description</th>
+    <th>User</th>
+    <th>Date</th>
+    <th>Time</th>
+    <th>Area</th>
+    <th>Category</th>
+    <th>Severity</th>
+    <th>Tags</th>
+  </tr>
+</thead>
+
+
+<tbody>
+
+<div id="result"></div>
+<?php $ActyList = $Activity->Get_TItle_Listing($nav, $max);
+foreach($ActyList as $row) { ?>
 
 
 
-                    </table>
-                </div>
-            
-                 <div class="column is-one-fourth">
-                  <table  style="background:#f4f4f4; border-color:#fff;" class="table   is-fullwidth is-small">
-                    <tr> 
-                      <td ><p class="has-text-right is-small" style="color:gray;">Author</p></td>
-                      <td width="10"><?php echo $Users->GetUser($row['UserID']);?></td>
-                         <td><p class="has-text-right" style="color:gray;">Area </td>
-                      <td><?php echo $ActyDetails->Get_Area_Name($row['AreaID']); ?></td>
-                      
-                    </tr>  
-                    <tr> 
-                       <td><p class="has-text-right" style="color:gray;">Date </td>
-                      <td><?php echo date('m-y',strtotime($row['ActyStartDate'])); ?></td>
-                      
-                       <td><p class="has-text-right" style="color:gray;">Time </td>
-                      <td><?php echo date('H:i',strtotime($row['ActyStartDate'])); ?></td>
-                    </tr>  
+<tr>
 
-                     <tr> 
-                      <td><p class="has-text-right" style="color:gray;">Category </td>
-                      <td><?php echo $ActyDetails->Get_Category_Name($row['CategoryID']); ?></td>
-                  
-                       <td><p class="has-text-right" style="color:gray;">Severity </td>
-                      <td><?php echo $ActyDetails->Get_Severity_Name($row['SeverityID']);?></td>
-                    </tr>
-                        
-
-
-                  </table>
-
-
-                </div>
-
-              </div>
+<td>#<?php echo $row['ActyID'];?></td>
+<td><a href="page.php?id=<?php echo $row['ActyID'];?>"><span style="color:#00D1B2; font-size:1rem;" class="_actyTitle"> <?php echo ucfirst($Activity->get_snippet($row['ActyTitle'], 5)); ?></a>
+<td><small> <?php $Activity->Get_Activity_Detail($row['ActyID']);
+echo strip_tags($Activity->get_snippet($Activity->textarea, 5)); ?> ... </small></td>
 
 
 
+<td><img style="border-radius:10px;width:38px;height:38px" src="style/img/<?php echo $Users->GetUser($row['UserID']);?>.png"></td>
+<td><?php echo date('m-y',strtotime($row['ActyStartDate'])); ?></td>
+<td><?php echo date('H:i',strtotime($row['ActyStartDate'])); ?></td>
+<td><?php echo $ActyDetails->Get_Area_Name($row['AreaID']); ?></td>
+<td><?php echo $ActyDetails->Get_Category_Name($row['CategoryID']); ?></td>
+<td><?php echo $ActyDetails->Get_Severity_Name($row['SeverityID']);?></td>
 
-        </div> <!-- END COLUMN IS-ONE-THIRD-->
- 
-    <?php }  ?> <!--END FOR-->
+<td>
+<?php $Tags->UserLists = $Users->Get_User_Listing(); //get Names and insert to Tags class var
+$Tags->Get_Tags($row['ActyID']);   //Execute Tags based on ActyID
+$Tags->Compare_Array(); // execute tag comparison  ?>
+<?php foreach($Tags->TagLists as $TagName) { ?>
+<span class="tag is-dark mar-r-5">  <?php echo $TagName; ?> </span> 
+<!-- <span class="tag is-info"> </span> -->
+<?php } ?>
+</td>
 
 
+</tr>
+<?php }  ?> <!--END FOR-->
+</body>
+</table>
   </div>  <!-- END LEFT COLUMN -->
 
 
@@ -224,9 +202,15 @@ include_once('html/navbar.php'); ?>
     <?php } ?>
     </div>
 
+      <!-- USER PROFILE -->
+      <div style="margin-bottom:15px; padding-right:15px; border-radius:5px;background: #f4f4f4"> 
+          test
+      </div><!-- USE PROFILE -->
+
+
 
     <!-- TAG GRAPH BAR -->
-      <div style="margin-bottom:15px; padding-right:15px; border-radius:5px;background: #ffdee4"> 
+      <div style="margin-bottom:15px; padding-right:15px; border-radius:5px;background: #f4f4f4"> 
         <div class="chart-container">
           <canvas id="bar-chartcanvas"></canvas>
         </div>
