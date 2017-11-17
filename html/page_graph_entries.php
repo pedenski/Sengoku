@@ -1,10 +1,11 @@
 <?php
+$ActyID = $_GET['actyid'];
+
 include_once('../lib/activity.class.php');
 $Activity = new Activity();
 
-
-
 $Dates = $Activity->Count_Entries_Per_Date($ActyID);
+
 $list = array();
 $month = date('m');
 $year = date('y');
@@ -21,7 +22,7 @@ if($today <= 15) {
 
 } else {
 
-    for($d=16; $d<=30; $d++)
+    for($d=16; $d<=31; $d++)
     {
     $time=mktime(12, 0, 0, $month, $d, $year);          
     if (date('m', $time)==$month)       
@@ -43,11 +44,10 @@ for($i = 0; $i < $listlen; $i++ ){
     }
 }
 
-$days = implode("','",$list);
 
 
 echo json_encode(array(
-   'days' => $days,
+   'days' => $list,
    'arr' => $arr
 ));
 
