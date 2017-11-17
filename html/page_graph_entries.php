@@ -1,4 +1,9 @@
 <?php
+include_once('../lib/activity.class.php');
+$Activity = new Activity();
+
+
+
 $Dates = $Activity->Count_Entries_Per_Date($ActyID);
 $list = array();
 $month = date('m');
@@ -39,6 +44,14 @@ for($i = 0; $i < $listlen; $i++ ){
 }
 
 $days = implode("','",$list);
+
+
+echo json_encode(array(
+   'days' => $days,
+   'arr' => $arr
+));
+
+
 
 ?>
 

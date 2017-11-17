@@ -1,4 +1,10 @@
-  $('#demo-tooltip-above').jBox('Tooltip', {
-    theme: 'TooltipDark'
-  });
+$(document).ready(function() {
+	new jBox('Tooltip', {
+		attach: '.hover',
+	  	theme: 'TooltipDark',
+	  	animation: 'zoomOut',
+	  	getContent: 'data-jbox-content'
+	});
+});
+
   

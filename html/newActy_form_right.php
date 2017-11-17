@@ -29,6 +29,7 @@
               <option value="<?php echo $row['CategoryID']; ?>"><?php echo $row['CategoryName']; ?></option>
               <?php } ?>  
           </select>
+
         </div>
         <div class="icon is-small is-left">
           <i class="fa fa-folder-open-o"></i>
@@ -41,13 +42,15 @@
 <tr> <!--/ AREA /-->
   <td  colspan="2">
     <div class="field">
+
+
       <div class="control has-icons-left">
         <div class="select is-fullwidth is-primary">
           <select id="area" name="area">
-          <option>Location</option
+           <option>Area</option>
             <?php
-            $SeverityList = $ActyDetails->Get_Area_List();
-            foreach($SeverityList as $row) { ?>
+            $arealist = $ActyDetails->Get_Area_List();
+            foreach($arealist as $row) { ?>
             <option value="<?php echo $row['AreaID']; ?>"><?php echo  $row['AreaName']; ?></option>
             <?php } ?>  
           </select>
@@ -62,6 +65,7 @@
 
 <tr> <!--/ SEVERITY RANGER /-->
   <td colspan="2">  
+          
     <div>
       <input type="text" id="range" value="" name="range" />
     </div>
@@ -76,4 +80,6 @@
 </tr>
 
 </table>
+
+ 
 </div>

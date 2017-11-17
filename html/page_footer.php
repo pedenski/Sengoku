@@ -72,6 +72,7 @@ $(document).ready(function() {
     .done(function(data) {
      console.log(data); 
      $('table#logtable').append($(data)).fadeIn('slow'); //insert on table
+
   });
   event.preventDefault();
   });
@@ -79,8 +80,10 @@ $(document).ready(function() {
  /* Chart
   * Load ChartJS on .Ready
   */
-  <?php include_once('scripts/page_script_graphjs.js'); ?> 
+
 });
 </script>
+
+ <script src="scripts/page_script_graphjs.js"></script>
 </body>
 </html>

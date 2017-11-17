@@ -49,7 +49,7 @@ if(isset($_POST['query'])) {
     <th>User</th>
     <th>Date</th>
     <th>Time</th>
-    <th>Area</th>
+    <th><p class="has-text-centered">Area</p></th>
     <th><p class="has-text-centered">Div</p></th>
     <th><p class="has-text-centered">Sev</p></th>
     <th>Tags</th>
@@ -61,8 +61,8 @@ if(isset($_POST['query'])) {
 
 <tr>
 
-<td>#<?php echo $row['ActyID'];?></td>
-<td><a href="page.php?id=<?php echo $row['ActyID'];?>"><span style="color:#00D1B2; font-size:1rem;" class="_actyTitle"> <?php echo ucfirst($Activity->get_snippet($row['ActyTitle'], 5)); ?></a>
+<td width="25">#<?php echo $row['ActyID'];?></td>
+<td width="400"><a href="page.php?id=<?php echo $row['ActyID'];?>"><span style="color:#03927D; font-size:1.1rem;" class="_actyTitle"> <?php echo ucfirst($Activity->get_snippet($row['ActyTitle'], 5)); ?></a>
 <td><small> <?php $Activity->Get_Activity_Detail($row['ActyID']);
 echo strip_tags($Activity->get_snippet($Activity->textarea, 5)); ?>  </small></td>
 
@@ -71,29 +71,61 @@ echo strip_tags($Activity->get_snippet($Activity->textarea, 5)); ?>  </small></t
 <td><img style="border-radius:50%;width:30px;height:30px" src="style/img/<?php echo $Users->GetUser($row['UserID']);?>.png"></td>
 <td><?php echo date('m-y',strtotime($row['ActyStartDate'])); ?></td>
 <td><?php echo date('H:i',strtotime($row['ActyStartDate'])); ?></td>
-<td><?php echo $ActyDetails->Get_Area_Name($row['AreaID']); ?></td>
+<td>
+    <p class="has-text-centered">
+    <?php switch($row['AreaID']) 
+      {
+        case 1:
+          echo "<span class='hover' id='demo-tooltip-above' data-jbox-content='".$ActyDetails->Get_Area_Name($row['AreaID'])."'><img style='border-radius:50%;width:30px;height:30px' src='style/icons/".$ActyDetails->Get_Area_Name($row['AreaID']).".png'></span>";
+        break; 
+        case 2:
+          echo "<span class='hover' id='demo-tooltip-above' data-jbox-content='".$ActyDetails->Get_Area_Name($row['AreaID'])."'><img style='border-radius:50%;width:30px;height:30px' src='style/icons/".$ActyDetails->Get_Area_Name($row['AreaID']).".png'></span>";
+        break;
+        case 3:
+          echo "<span class='hover' id='demo-tooltip-above' data-jbox-content='".$ActyDetails->Get_Area_Name($row['AreaID'])."'><img style='border-radius:50%;width:30px;height:30px' src='style/icons/".$ActyDetails->Get_Area_Name($row['AreaID']).".png'></span>";
+        break;
+         case 4:
+          echo "<span class='hover' id='demo-tooltip-above' data-jbox-content='".$ActyDetails->Get_Area_Name($row['AreaID'])."'><img style='border-radius:50%;width:30px;height:30px' src='style/icons/".$ActyDetails->Get_Area_Name($row['AreaID']).".png'></span>";
+        break;
+         case 5:
+          echo "<span class='hover' id='demo-tooltip-above' data-jbox-content='".$ActyDetails->Get_Area_Name($row['AreaID'])."'><img style='border-radius:50%;width:30px;height:30px' src='style/icons/".$ActyDetails->Get_Area_Name($row['AreaID']).".png'></span>";
+        break;
+      }  
+
+      //$ActyDetails->Get_Area_Name($row['AreaID']) //area name
+
+      ?>
+
+</p>
+
+  
+
+
+
+
+</td>
 <td>
 <p class="has-text-centered">
     <?php switch($row['CategoryID']) 
       {
         case 1:
-          echo "<i style='color:#536878' class='fa fa-handshake-o fa-lg' aria-hidden='true'></i>";
+          echo "<span class='hover' id='demo-tooltip-above' data-jbox-content=".$ActyDetails->Get_Category_Name($row['CategoryID'])."><i style='color:#536878' class='fa fa-handshake-o fa-lg' aria-hidden='true'></i></span>";
         break; 
         case 2:
-          echo "<i style='color:#536878' class='fa fa-eraser fa-lg' aria-hidden='true'></i>";
+          echo "<span class='hover' id='demo-tooltip-above' data-jbox-content=".$ActyDetails->Get_Category_Name($row['CategoryID'])."><i style='color:#536878' class='fa fa-eraser fa-lg' aria-hidden='true'></i></span>";
         break;
         case 3:
-          echo "<i style='color:#536878' class='fa fa-sliders fa-lg' aria-hidden='true'></i>";
+          echo "<span class='hover' id='demo-tooltip-above' data-jbox-content=".$ActyDetails->Get_Category_Name($row['CategoryID'])."><i style='color:#536878' class='fa fa-sliders fa-lg' aria-hidden='true'></i></span>";
         break;
          case 4:
-          echo "<i style='color:#536878' class='fa fa-rocket fa-lg' aria-hidden='true'></i>";
+          echo "<span class='hover' id='demo-tooltip-above' data-jbox-content=".$ActyDetails->Get_Category_Name($row['CategoryID'])."><i style='color:#536878' class='fa fa-rocket fa-lg' aria-hidden='true'></i></span>";
         break;
          case 5:
-          echo "<i style='color:#536878' class='fa fa-shield fa-lg' aria-hidden='true'></i>";
+          echo "<span class='hover' id='demo-tooltip-above' data-jbox-content=".$ActyDetails->Get_Category_Name($row['CategoryID'])."><i style='color:#536878' class='fa fa-shield fa-lg' aria-hidden='true'></i></span>";
         break;
       }  
 
-      //$ActyDetails->Get_Category_Name($row['CategoryID']); //severity name
+      // //severity name
 
       ?>
 
@@ -130,7 +162,6 @@ $Tags->Compare_Array(); // execute tag comparison  ?>
 
 
 </tr>
-
 
 
 <?php } //foreach ?>

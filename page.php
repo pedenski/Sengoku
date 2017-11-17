@@ -145,25 +145,25 @@ include_once('html/navbar.php');
   <nav class="level">
     <div class="level-item has-text-centered">
       <div>
-        <p class="heading">Total </p>
+        <p style="color:#fff;" class="heading">Total Issues</p>
           <?php $issue = $Activity->CountIssues($ActyID);?>
-        <p class="title"> <?php echo $issue['issueCount']; ?> </p>
+        <p style="color:#fff;" class="title"> <?php echo $issue['issueCount']; ?> </p>
       </div>
     </div>
  
     <div class="level-item has-text-centered">
       <div>
-        <p class="heading">Active </p>
+        <p style="color:#fff;" class="heading">Active Issues</p>
           <?php $active = $Activity->Count_Active_Issues($ActyID);?>
-        <p class="title"> <?php echo $active['active']; ?> </p>
+        <p style="color:#fff;" class="title"> <?php echo $active['active']; ?> </p>
       </div>
     </div>
 
     <div class="level-item has-text-centered">
       <div>
-        <p class="heading">Resolved</p>
+        <p style="color:#fff;" class="heading">Resolved Issues</p>
           <?php $answer = $Activity->CountAnswers($ActyID);?>
-        <p class="title"> <?php echo $answer['answer']; ?> </p>
+        <p style="color:#fff;" class="title"> <?php echo $answer['answer']; ?> </p>
       </div>
     </div>
   
@@ -173,7 +173,7 @@ include_once('html/navbar.php');
 <!--/ GRAPH WIDGET /-->
 <div style="margin-bottom:8px; padding-top:15px;padding-right:15px;border-radius:5px;background: #f4f4f4"> 
 
-  <?php include_once('html/page_graph_entries.php'); ?>
+  
   <canvas id="line-chartcanvas"></canvas>
 </div>
 
