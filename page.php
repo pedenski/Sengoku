@@ -173,7 +173,7 @@ include_once('html/navbar.php');
 <!--/ GRAPH WIDGET /-->
 <div style="margin-bottom:8px; padding-top:15px;padding-right:15px;border-radius:5px;background: #f4f4f4"> 
 
-  
+  <div id="loading_icon"><i class="fa fa-spin fa-spinner fa-4x" aria-hidden="true"></i></div>
   <canvas id="line-chartcanvas"></canvas>
 </div>
 

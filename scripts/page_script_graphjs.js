@@ -1,14 +1,13 @@
 $(document).ready(function () {
-
+  $('#loading_icon').show();
 	
 	$.ajax({
 		url: "html/page_graph_entries.php",
 		method: "GET",
-	
-		data: {actyid: "82"},
+		data: {actyid: actyid},
 		success: function(data) 
 		{
-			
+			$('#loading_icon').hide();
 			var parsed = $.parseJSON(data);
 			a = parsed.days;
 			b = parsed.arr;
@@ -43,8 +42,10 @@ $(document).ready(function () {
 			};
 
 			var ctx = $("#line-chartcanvas");
+			
 
 			var options = {
+
 				title : {
 					display : true,
 					position : "top",
@@ -71,6 +72,10 @@ $(document).ready(function () {
 				data : data,
 				options : options
 			});
-		}
+
+		
+		},
+
+	
 	});
 });

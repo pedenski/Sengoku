@@ -14,6 +14,10 @@ crossorigin="anonymous"></script>
 <script src="mods/DatePicker/datetimepicker.full.js"></script>
 <script src="mods/DatePicker/zconfig.js"></script>
 
+<script type="text/javascript">
+var actyid = <?php echo json_encode($ActyID); ?>;
+</script>
+
 <script>
 //Retrieve Content of clicked LogID then display on div.tinymce-noti
 $("span.log").click(function() {
@@ -83,6 +87,9 @@ $(document).ready(function() {
 
 });
 </script>
+
+
+
 
  <script src="scripts/page_script_graphjs.js"></script>
 </body>

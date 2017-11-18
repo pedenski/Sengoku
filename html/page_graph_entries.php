@@ -1,6 +1,7 @@
 <?php
 $ActyID = $_GET['actyid'];
 
+
 include_once('../lib/activity.class.php');
 $Activity = new Activity();
 
