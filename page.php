@@ -26,6 +26,7 @@ include_once('html/navbar.php');
 ?>
 
 
+
 <!-- HERO -->
 <section class="hero is-primary">
  <div class="hero-body">
@@ -84,6 +85,14 @@ include_once('html/navbar.php');
 
 <!--SECOND COLUMN -->
 <div class="column is-one-quarter">
+<?php if($Activity->is_Open == 0) { ?>
+<article class="message is-primary">
+  <div class="message-body">
+    <span style="color:#056456"><i class="fa fa-lock" aria-hidden="true"></i> Closed Thread at <?php echo date('M-d-y g:i a',strtotime($Activity->ActyEndDate));?></span>
+  </div>
+</article>
+<?php } ?>
+
 
 <div style="padding-top:4px; padding-right:4px; padding-left:4px; padding-bottom:1px;border-radius:5px;background: #f4f4f4; margin-bottom: 8px; "> 
 
@@ -179,29 +188,33 @@ include_once('html/navbar.php');
   <canvas id="line-chartcanvas"></canvas>
 </div>
 
-<form id="page_ctrl" action="util/close_page.php" method="post">
-<table class="table  is-fullwidth is-small">
-<tr>
-  <td>
-    <div class="field is-grouped">
-      <p class="control">
-        <a href="edit_activity.php?id=<?php echo $ActyID;?>" class="button is-dark is-outlined">
-          <span class="icon"><i class="fa fa-pencil-square-o"></i></span>
-          <span>Edit</span>
-        </a>
-      </p>
-      <p class="control">
-     <button class="button is-danger is-outlined" id="close_btn" name="close" type="submit">Close</button>
-     </p>
-      <p class="control">
-      <button class="button is-primary is-outlined" id="close_btn" name="open" type="submit">Open</button>
-      </p>
 
-    </div>
-  </td>
-</tr>
-</table>
-</form>
+ <?php if(isset($_SESSION['SESSID'])) { ?>
+    <form id="page_ctrl" action="util/close_page.php" method="post">
+    <input type="hidden" id="pageid" name="pageid" value="<?php echo $ActyID;?>">
+    <table class="table  is-fullwidth is-small">
+    <tr>
+      <td>
+        <div class="field is-grouped">
+          <p class="control">
+            <a href="edit_activity.php?id=<?php echo $ActyID;?>" class="button is-dark is-outlined">
+              <span class="icon"><i class="fa fa-pencil-square-o"></i></span>
+              <span>Edit</span>
+            </a>
+          </p>
+          <p class="control">
+         <button class="button is-danger is-outlined" id="close_btn" name="close" type="submit">Close</button>
+         </p>
+          <p class="control">
+          <button class="button is-primary is-outlined" id="close_btn" name="open" type="submit">Open</button>
+          </p>
+
+        </div>
+      </td>
+    </tr>
+    </table>
+    </form>
+<?php } ?>
 
 </div><!--//second column-->
 </div> <!--//columns-->
@@ -220,13 +233,23 @@ include_once('html/navbar.php');
   <!--FIRST COLUMN -->
   <div class="column is-four-fifths">
     <!-- // if not logged-in  -->
-    <?php if(isset($_SESSION['SESSID'])) {
+    <?php if(isset($_SESSION['SESSID']) && $Activity->is_Open == 1) {
       include_once('html/page_submit_log_form.php');
       } else { ?>
       <article class="message is-danger">
         <div class="message-body">
-         <i class="fa fa-exclamation-circle" aria-hidden="true"></i> You must be <strong>logged</strong> in to to reply.
+         <i class="fa fa-exclamation-circle" aria-hidden="true"></i> Error
+       
+
+        <div style="padding-left:40px;" >
+        <ul style="list-style-type:circle">
+            <li>You must be logged-in to <strong>Reply.</strong></li>
+            <li>Thread is <strong>closed.</strong></li>
+        </ul>
         </div>
+        </div>
+
+
       </article>
     <?php } ?>
   </div>

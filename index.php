@@ -99,8 +99,9 @@ include_once('html/navbar.php'); ?>
   <tr>
     <th>ID</th>
     <th>User</th>
+    <th><!-- <p class="has-text-centered">Stat</p> --></th>
     <th>Title</th>
-    <th>Description</th>
+    <th><!-- Description --></th>
   
     <th>Date</th>
 
@@ -123,8 +124,20 @@ foreach($ActyList as $row) { ?>
 <tr>
 
 <td width="25">#<?php echo $row['ActyID'];?></td>
+
+
 <td width="25"><img style="border-radius:50%;width:30px;height:30px" src="style/img/<?php echo $Users->GetUser($row['UserID']);?>.png"></td>
-<td width="400"><a href="page.php?id=<?php echo $row['ActyID'];?>"><span style="color:#363636; font-size:1.1rem;" class="_actyTitle"> <?php echo ucfirst($Activity->get_snippet($row['ActyTitle'], 5)); ?></a>
+
+<td width="15"><?php if($row['is_Open'] != 1) { ?>
+  <p class="has-text-centered"> <i style="color:#363636;" class="fa fa-lock fa-lg" aria-hidden="true"></i> </p>
+  <?php } else { ?>
+ <!--  <p class="has-text-centered"> <i style="color:#028090;" class="fa fa-unlock-alt fa-lg" aria-hidden="true"></i> </p> -->
+  <?php } ?>
+</td>
+
+<td width="400"><a href="page.php?id=<?php echo $row['ActyID'];?>"><span style="color:#363636; font-size:1.1rem;" class="_actyTitle"> <?php echo ucfirst($Activity->get_snippet($row['ActyTitle'], 5)); ?></a></span></a></td>
+
+
 <td width="300"><span style="color:#363636;"><small> <?php $Activity->Get_Activity_Detail($row['ActyID']);
 echo strip_tags($Activity->get_snippet($Activity->textarea, 5)); ?>  </small></span></td>
 

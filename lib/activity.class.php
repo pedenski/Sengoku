@@ -21,6 +21,8 @@ class Activity {
 	public $ReferTo;
 	public $is_Resolved;
 	public $ActyPostDate; //date post created
+	public $is_Open;
+	public $ActyEndDate;
 
 	public $LastID; //so tags can access this
 
@@ -150,6 +152,8 @@ class Activity {
 		$this->ActyPostDate = $row['ActyPostDate'];
 		$this->ModifiedUserID = $row['ModifiedUserID'];
 		$this->ModifiedDate = $row['ModifiedDate'];
+		$this->is_Open	= $row['is_Open'];
+		$this->ActyEndDate = $row['ActyEndDate'];
 
 	}
 
@@ -305,12 +309,37 @@ class Activity {
 		$sql->bindParam(':ActyID', 		$this->ActyID);
 		$sql->bindParam(':DetailText',	$this->Textarea);
 		$sql->execute();
+	}
 
+	public function setClose($ActyID)
+	//close thread
+	{
+		$q = "UPDATE activity_titles SET
+			  is_Open = 0,
+			  ActyEndDate = now()
+			  WHERE ActyID = :ActyID";
+		$sql = $this->conn->prepare($q);
+		$sql->bindParam(':ActyID', $ActyID);
+		$sql->execute();
+		return "ok";
 
 	}
 
+	public function setOpen($ActyID)
+	//close thread
+	{
+		$q = "UPDATE activity_titles SET
+			  is_Open = 1
+			  WHERE ActyID = :ActyID";
+		$sql = $this->conn->prepare($q);
+		$sql->bindParam(':ActyID', $ActyID);
+		$sql->execute();
+		return "ok";
+
+	}	
 
 	public function get_snippet( $str, $wordCount ) {
+	// cut down number of words for activity_titles in index
 	  return implode( 
 	    '', 
 	    array_slice( 

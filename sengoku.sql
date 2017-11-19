@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 15, 2017 at 04:32 PM
+-- Generation Time: Nov 19, 2017 at 04:06 PM
 -- Server version: 10.1.16-MariaDB
 -- PHP Version: 7.0.9
 
@@ -63,7 +63,10 @@ CREATE TABLE `activity_category` (
 
 INSERT INTO `activity_category` (`CategoryID`, `CategoryName`, `CategoryNick`, `CategoryDesc`, `UserID`, `Created`) VALUES
 (1, 'Support', 'Supp', 'Support Details', 1, '2017-11-07 14:52:21'),
-(2, 'Corrective', 'Corr', 'Corrective Details', 1, '2017-11-07 14:52:21');
+(2, 'Corrective', 'Corr', 'Corrective Details', 1, '2017-11-07 14:52:21'),
+(3, 'Optimization', 'Opti', 'Optimization details', 1, '2017-11-16 14:56:47'),
+(4, 'Deployment', 'Deploy', 'Deployment details', 1, '2017-11-16 14:56:47'),
+(5, 'Preventive', 'Prev', 'Preventive Details', 1, '2017-11-16 14:59:11');
 
 -- --------------------------------------------------------
 
@@ -158,7 +161,13 @@ INSERT INTO `activity_details` (`DetailID`, `DetailText`, `ActyID`) VALUES
 (74, '<p>Lorem Ipsum:&nbsp;Usage,&nbsp;Common examples,&nbsp;Translation,&nbsp;Variants and technical information<br />Essay:&nbsp;Lorem Ipsum--when, and when not to use it<br />Plugins:<br />Content management systems (CMS):&nbsp;Joomla,&nbsp;Wordpress,&nbsp;Magento,&nbsp;Google Docs,&nbsp;Drupal<br />Editors:&nbsp;Notepad++,&nbsp;Sublime Text,&nbsp;Office suites</p>', 74),
 (75, '<p>ipsum''s still resembles classical Latin, it actually has no meaning whatsoever. As Cicero''s text doesn''t contain the letters K, W, or Z, alien to latin, these, and others are often inserted randomly to mimic the typographic appearence of European languages, as are digraphs not to be found in the original.</p>', 75),
 (76, '<p>Most of its text is made up from sections 1.10.32&ndash;3 of Cicero''s De finibus bonorum et malorum (On the Boundaries of Goods and Evils; finibus may also be translated as purposes). Neque porro quisquam est qui dolorem ipsum&nbsp;quia&nbsp;dolor sit amet,&nbsp;</p>', 76),
-(77, '<p><em>But I must explain to you how all this mistaken idea of denouncing pleasure and praising pain was born and I will give you a complete account of the system, and expound the actual teachings of the great explorer of the truth, the master-builder of human happiness. No one rejects, dislikes, or avoids pleasure itself, because it is pleasure, but because those</em> who do not know how to pursue pleasure rationally encounter consequences that are extremely painful. Nor again is there anyone who&nbsp;loves or pursues or desires to obtain pain of itself, because it is pain, butoccasionally&nbsp;circumstances occur in which toil and pain can procure him some great&nbsp;pleasure.&nbsp;To take a trivial example, which of us ever&nbsp;undertakes&nbsp;laborious physical exercise, except to obtain some advantage from it? But who&nbsp;has any right to&nbsp;find fault&nbsp;with a man who&nbsp;chooses to enjoy a pleasure&nbsp;that has no annoying consequences, or&nbsp;one&nbsp;who&nbsp;avoids a pain&nbsp;that&nbsp;produces no&nbsp;resultant pleasure?</p>\n<p><strong>On the other hand, we denounce</strong> with righteous indignation and dislike men who are so beguiled and demoralized by the charms of pleasure of the moment, so&nbsp;blinded by desire, that they cannot foresee&nbsp;the pain and trouble that are bound to ensue; and equal&nbsp;blame belongs to those who fail in their duty through weakness of will, which is the same as saying through shrinking from toil&nbsp;and pain. These cases are perfectly simple and easy to distinguish. In a free hour, when our power of choice is untrammelled and when nothing prevents our being able to do what we like best, every pleasure is to be welcomed and every pain avoided. But in certain circumstances and owing to the claims of duty or the obligations of business it will frequently occur that pleasures have to be repudiated and annoyances accepted. The wise man therefore always holds in these matters to this principle of selection: he rejects pleasures to secure other greater pleasures, or else he endures pains to avoid worse pains.</p>', 77);
+(77, '<p><em>But I must explain to you how all this mistaken idea of denouncing pleasure and praising pain was born and I will give you a complete account of the system, and expound the actual teachings of the great explorer of the truth, the master-builder of human happiness. No one rejects, dislikes, or avoids pleasure itself, because it is pleasure, but because those</em> who do not know how to pursue pleasure rationally encounter consequences that are extremely painful. Nor again is there anyone who&nbsp;loves or pursues or desires to obtain pain of itself, because it is pain, butoccasionally&nbsp;circumstances occur in which toil and pain can procure him some great&nbsp;pleasure.&nbsp;To take a trivial example, which of us ever&nbsp;undertakes&nbsp;laborious physical exercise, except to obtain some advantage from it? But who&nbsp;has any right to&nbsp;find fault&nbsp;with a man who&nbsp;chooses to enjoy a pleasure&nbsp;that has no annoying consequences, or&nbsp;one&nbsp;who&nbsp;avoids a pain&nbsp;that&nbsp;produces no&nbsp;resultant pleasure?</p>\n<p><strong>On the other hand, we denounce</strong> with righteous indignation and dislike men who are so beguiled and demoralized by the charms of pleasure of the moment, so&nbsp;blinded by desire, that they cannot foresee&nbsp;the pain and trouble that are bound to ensue; and equal&nbsp;blame belongs to those who fail in their duty through weakness of will, which is the same as saying through shrinking from toil&nbsp;and pain. These cases are perfectly simple and easy to distinguish. In a free hour, when our power of choice is untrammelled and when nothing prevents our being able to do what we like best, every pleasure is to be welcomed and every pain avoided. But in certain circumstances and owing to the claims of duty or the obligations of business it will frequently occur that pleasures have to be repudiated and annoyances accepted. The wise man therefore always holds in these matters to this principle of selection: he rejects pleasures to secure other greater pleasures, or else he endures pains to avoid worse pains.</p>', 77),
+(78, '<p>Test</p>', 78),
+(79, '<p>Corrective Icon</p>', 79),
+(80, '<p>Optimization Icon</p>', 80),
+(81, '<p>Deployment Icon</p>', 81),
+(82, '<p>Preventive Icon</p>', 82),
+(83, '<p>If your whole JS code gets processed by PHP, then you can do it just like that. If you have individual .js files, and you don''t want PHP to process them (for example, for caching reasons), then what you can do is just pass variables around in JS. For example in your index.php (or wherever you specify your layout), you''d do something like this:</p>\n<p>&lt;script type="text/javascript"&gt;<br />var my_var = &lt;?php echo json_encode($my_var); ?&gt;;<br />&lt;/script&gt;<br />You could then use&nbsp;my_var&nbsp;in your JS files. This method also lets you pass other than just simple integer values, as json_encode() also deals with arrays, strings, etc. correctly, serializing them into a format that JS can use.</p>', 83);
 
 -- --------------------------------------------------------
 
@@ -354,7 +363,66 @@ INSERT INTO `activity_log` (`LogID`, `ActyID`, `LogText`, `LogSeverityID`, `User
 (168, 75, '<p>sample of an&nbsp; <em>issue</em> log</p>', 2, 1, '2017-11-15 19:00:00', '2017-11-15 12:49:19', 1, 1, 0),
 (169, 75, '<p>sample of&nbsp;<em>resolution&nbsp;</em>log</p>', 0, 1, '2017-11-15 22:00:00', '2017-11-15 12:49:57', 0, 0, 168),
 (170, 75, '<p>test log</p>', 1, 1, '2017-11-15 22:00:00', '2017-11-15 12:50:07', 0, 0, 0),
-(171, 75, '<p style="margin: 0px 0px 1em; padding: 0px; border: 0px; font-variant-numeric: inherit; font-stretch: inherit; font-size: 15px; line-height: inherit; font-family: Arial, ''Helvetica Neue'', Helvetica, sans-serif; vertical-align: baseline; clear: both; color: #242729;">The codes look simple, but I cannot remove the label from the graph. I tried a lot of solutions I found online, but most of them use Chart.js v1.x. How can I remove the dataset laels&nbsp; I tried a lot of solutions I found online, but most of them use Chart.js v1.x.</p>\n<p style="margin: 0px 0px 1em; padding: 0px; border: 0px; font-variant-numeric: inherit; font-stretch: inherit; font-size: 15px; line-height: inherit; font-family: Arial, ''Helvetica Neue'', Helvetica, sans-serif; vertical-align: baseline; clear: both; color: #242729;">&nbsp;</p>', 1, 1, '2017-11-01 20:50:00', '2017-11-15 12:50:39', 0, 0, 0);
+(171, 75, '<p style="margin: 0px 0px 1em; padding: 0px; border: 0px; font-variant-numeric: inherit; font-stretch: inherit; font-size: 15px; line-height: inherit; font-family: Arial, ''Helvetica Neue'', Helvetica, sans-serif; vertical-align: baseline; clear: both; color: #242729;">The codes look simple, but I cannot remove the label from the graph. I tried a lot of solutions I found online, but most of them use Chart.js v1.x. How can I remove the dataset laels&nbsp; I tried a lot of solutions I found online, but most of them use Chart.js v1.x.</p>\n<p style="margin: 0px 0px 1em; padding: 0px; border: 0px; font-variant-numeric: inherit; font-stretch: inherit; font-size: 15px; line-height: inherit; font-family: Arial, ''Helvetica Neue'', Helvetica, sans-serif; vertical-align: baseline; clear: both; color: #242729;">&nbsp;</p>', 1, 1, '2017-11-01 20:50:00', '2017-11-15 12:50:39', 0, 0, 0),
+(172, 77, '<p>issue</p>', 1, 2, '2017-11-15 03:00:00', '2017-11-15 15:37:56', 1, 0, 0),
+(173, 77, '<p>issue 2</p>', 0, 2, '2017-11-08 23:38:00', '2017-11-15 15:38:08', 1, 1, 0),
+(174, 77, '<p>test</p>', 2, 2, '2017-11-25 03:00:00', '2017-11-15 15:38:18', 0, 0, 173),
+(175, 78, 'Start of Activity', 0, 1, '2017-11-16 21:00:00', '2017-11-16 15:12:59', NULL, 0, NULL),
+(176, 79, 'Start of Activity', 2, 1, '2017-11-16 20:00:00', '2017-11-16 15:13:27', NULL, 0, NULL),
+(177, 80, 'Start of Activity', 2, 1, '2017-11-04 18:00:00', '2017-11-16 15:13:48', NULL, 0, NULL),
+(178, 81, 'Start of Activity', 2, 1, '2017-11-04 19:00:00', '2017-11-16 15:18:28', NULL, 0, NULL),
+(179, 82, 'Start of Activity', 2, 1, '2017-11-16 22:00:00', '2017-11-16 15:19:08', NULL, 0, NULL),
+(180, 82, '<p>test</p>', 1, 4, '2017-11-16 03:00:00', '2017-11-16 15:32:20', 1, 0, 0),
+(181, 82, '<p>test</p>', 1, 1, '2017-11-22 04:00:00', '2017-11-17 16:25:52', 0, 0, 0),
+(182, 83, 'Start of Activity', 0, 1, '2017-11-19 04:00:00', '2017-11-18 16:04:15', NULL, 0, NULL),
+(183, 83, '<p>test</p>', 1, 1, '2017-11-19 03:00:00', '2017-11-18 16:04:23', 0, 0, 0),
+(184, 83, '<p>test</p>', 1, 1, '2017-11-19 04:00:00', '2017-11-18 16:12:33', 0, 0, 0),
+(185, 83, '<p>test</p>', 0, 1, '2017-11-19 04:00:00', '2017-11-18 16:15:05', 0, 0, 0),
+(186, 83, '<p>test</p>', 1, 1, '2017-11-19 02:00:00', '2017-11-18 16:18:11', 0, 0, 0),
+(187, 83, '<p>a</p>', 1, 1, '2017-11-19 03:00:00', '2017-11-18 16:20:44', 0, 0, 0),
+(188, 83, '<p>a</p>', 1, 1, '2017-11-19 03:00:00', '2017-11-18 16:20:47', 0, 0, 0),
+(189, 83, '<p>test</p>', 1, 1, '2017-11-19 03:00:00', '2017-11-18 16:21:49', 0, 0, 0),
+(190, 83, '<p>test</p>', 0, 1, '2017-11-19 01:00:00', '2017-11-18 16:22:36', 0, 0, 0),
+(191, 83, '<p>test</p>', 1, 1, '2017-11-19 04:00:00', '2017-11-18 16:23:10', 0, 0, 0),
+(192, 83, '<p>bbbb</p>', 1, 1, '2017-11-19 03:00:00', '2017-11-18 16:23:24', 0, 0, 0),
+(193, 83, '<p>asdfasfasdf</p>', 2, 1, '2017-11-19 03:00:00', '2017-11-18 16:24:14', 0, 0, 0),
+(194, 83, '<p>aaa</p>', 1, 1, '2017-11-19 03:00:00', '2017-11-18 16:26:11', 0, 0, 0),
+(195, 83, '<p>fgfgfgfg</p>', 1, 1, '2017-11-19 03:00:00', '2017-11-18 16:26:33', 0, 0, 0),
+(196, 83, '<p>asdfasdf</p>', 1, 1, '2017-11-19 02:00:00', '2017-11-18 16:29:17', 0, 0, 0),
+(197, 83, '<p>test</p>', 2, 1, '2017-11-19 04:00:00', '2017-11-18 16:30:08', 0, 0, 0),
+(198, 83, '<p>test</p>', 1, 1, '2017-11-19 05:00:00', '2017-11-18 16:34:47', 0, 0, 0),
+(199, 83, '<p>32</p>', 1, 1, '2017-11-19 03:00:00', '2017-11-18 16:38:37', 0, 0, 0),
+(200, 83, '<p>asdfsf</p>', 1, 1, '2017-11-19 04:00:00', '2017-11-18 16:42:09', 0, 0, 0),
+(201, 83, '<p>asdfsf</p>', 1, 1, '2017-11-19 04:00:00', '2017-11-18 16:42:11', 0, 0, 0),
+(202, 83, '<p>sdf</p>', 1, 1, '2017-11-19 04:00:00', '2017-11-18 16:44:42', 0, 0, 0),
+(203, 83, '<p>asdf</p>', 2, 1, '2017-11-19 03:00:00', '2017-11-18 16:46:05', 0, 0, 0),
+(204, 83, '<p>asdfasf</p>', 0, 1, '2017-11-19 03:00:00', '2017-11-18 16:46:27', 0, 0, 0),
+(205, 83, '<p>sdfsdf</p>', 1, 1, '2017-11-19 04:00:00', '2017-11-18 16:46:41', 0, 0, 0),
+(206, 82, '<p>test</p>', 1, 1, '2017-11-19 04:00:00', '2017-11-18 16:46:56', 0, 0, 0),
+(207, 82, '<p>asdfsdf</p>', 1, 1, '2017-11-19 03:00:00', '2017-11-18 16:49:39', 0, 0, 0),
+(208, 83, '<p>asdf</p>', 1, 2, '2017-11-19 15:00:00', '2017-11-19 02:30:53', 0, 0, 0),
+(209, 82, '<p>test</p>', 1, 2, '2017-11-11 10:37:00', '2017-11-19 02:37:20', 0, 0, 0),
+(210, 82, '<p>har</p>', 1, 2, '2017-11-19 15:00:00', '2017-11-19 02:39:59', 0, 0, 0),
+(211, 82, '<p>aa</p>', 0, 2, '2017-11-18 14:00:00', '2017-11-19 02:40:29', 0, 0, 0),
+(212, 82, '<p>test</p>', 1, 2, '2017-11-19 14:00:00', '2017-11-19 02:46:19', 0, 0, 0),
+(213, 82, '<p>test</p>', 2, 2, '2017-11-19 14:00:00', '2017-11-19 02:50:29', 0, 0, 0),
+(214, 82, '<p>a</p>', 0, 2, '2017-11-19 13:00:00', '2017-11-19 02:52:49', 0, 0, 0),
+(215, 82, '<p>asdf</p>', 1, 2, '2017-11-19 13:00:00', '2017-11-19 02:53:18', 0, 0, 0),
+(216, 82, '<p>asf</p>', 0, 2, '2017-11-19 13:00:00', '2017-11-19 02:53:53', 0, 0, 0),
+(217, 82, '<p>test</p>', 0, 2, '2017-11-19 12:00:00', '2017-11-19 03:08:56', 0, 0, 0),
+(218, 82, '<p>aa</p>', 1, 2, '2017-11-19 13:00:00', '2017-11-19 03:17:02', 0, 0, 0),
+(219, 82, '<p>aasdf</p>', 1, 2, '2017-11-19 13:00:00', '2017-11-19 03:17:08', 0, 0, 0),
+(220, 82, '<p>the</p>', 1, 2, '2017-11-19 13:00:00', '2017-11-19 03:19:43', 0, 0, 0),
+(221, 82, '<p>theasdfasdf</p>', 1, 2, '2017-11-19 13:00:00', '2017-11-19 03:19:46', 0, 0, 0),
+(222, 82, '<p>theasdfasdf</p>', 1, 2, '2017-11-19 13:00:00', '2017-11-19 03:19:47', 0, 0, 0),
+(223, 82, '<p>theasdfasdf</p>', 1, 2, '2017-11-19 13:00:00', '2017-11-19 03:19:49', 0, 0, 0),
+(224, 82, '<p>theasdfasdf</p>', 1, 2, '2017-11-19 13:00:00', '2017-11-19 03:19:51', 0, 0, 0),
+(225, 82, '<p>theasdfasdf</p>', 1, 2, '2017-11-19 13:00:00', '2017-11-19 03:19:53', 0, 0, 0),
+(226, 82, '<p>theasdfasdf</p>', 1, 2, '2017-11-19 13:00:00', '2017-11-19 03:19:54', 0, 0, 0),
+(227, 82, '<p>theasdfasdf</p>', 1, 2, '2017-11-19 13:00:00', '2017-11-19 03:19:55', 0, 0, 0),
+(228, 82, '<p>theasdfasdf</p>', 1, 2, '2017-11-19 13:00:00', '2017-11-19 03:19:57', 0, 0, 0),
+(229, 82, '<p>theasdfasdf</p>', 1, 2, '2017-11-19 13:00:00', '2017-11-19 03:19:59', 0, 0, 0),
+(230, 83, '<p>asdfasdf</p>', 0, 2, '2017-11-19 13:00:00', '2017-11-19 03:56:26', 1, 0, 0);
 
 -- --------------------------------------------------------
 
@@ -395,6 +463,7 @@ CREATE TABLE `activity_titles` (
   `ActyStartDate` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `ActyPostDate` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `ModifiedDate` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `ActyEndDate` timestamp NULL DEFAULT NULL,
   `ModifiedUserID` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -402,84 +471,90 @@ CREATE TABLE `activity_titles` (
 -- Dumping data for table `activity_titles`
 --
 
-INSERT INTO `activity_titles` (`ActyID`, `ActyTitle`, `is_Open`, `UserID`, `SeverityID`, `CategoryID`, `AreaID`, `ActyStartDate`, `ActyPostDate`, `ModifiedDate`, `ModifiedUserID`) VALUES
-(1, 'IpsumÂ is dummy text of the printing and typesetting industry. Lorem Ipsum has been the', '0', 1, 2, 1, 1, '2017-11-09 12:00:00', '2017-11-11 15:03:10', '2017-11-11 15:03:10', 1),
-(2, 'Why do we use it?', '0', 1, 0, 1, 2, '2017-11-01 10:00:00', '2017-11-08 16:42:09', '2017-11-08 16:42:09', 1),
-(3, '10 Open Source Calendar UI Layouts Built With CSS', '0', 1, 1, 2, 2, '2017-11-04 11:00:00', '2017-11-11 15:15:56', '2017-11-11 15:15:56', 0),
-(4, 'Where can I get some?', '0', 1, 2, 1, 2, '2017-11-12 01:00:00', '2017-11-12 02:34:33', '2017-11-12 02:34:33', 0),
-(5, 'test', '0', 1, 2, 1, 2, '2017-11-18 07:00:00', '2017-11-12 04:45:04', '2017-11-12 04:45:04', 0),
-(6, 'Stranger Things', '0', 1, 1, 2, 2, '2017-11-11 19:00:00', '2017-11-12 15:44:03', '2017-11-12 15:44:03', 0),
-(7, 'Dfasdf', '0', 1, 2, 2, 2, '2017-11-11 19:00:00', '2017-11-14 06:08:10', '2017-11-14 06:08:10', 1),
-(8, 'Sakto', '0', 1, 0, 2, 2, '2017-11-12 19:00:00', '2017-11-13 16:24:26', '2017-11-13 16:24:25', 1),
-(9, 'Hahaha', '0', 1, 2, 2, 2, '2017-11-01 18:00:00', '2017-11-12 16:13:09', '2017-11-12 16:13:09', 1),
-(10, 'testing', '0', 1, 3, 1, 2, '2017-11-17 18:00:00', '2017-11-12 16:13:48', '2017-11-12 16:13:48', 0),
-(11, 'Working', '0', 1, 2, 2, 2, '2017-11-12 18:00:00', '2017-11-12 16:20:52', '2017-11-12 16:20:52', 1),
-(12, 'Hahahaha', '0', 2, 2, 2, 2, '2017-11-12 18:00:00', '2017-11-12 16:23:28', '2017-11-12 16:23:28', 2),
-(13, 'sdfsadf', '0', 2, 3, 1, 2, '2017-11-15 18:00:00', '2017-11-12 16:28:53', '2017-11-12 16:28:53', 0),
-(14, 'sdfsadf', '0', 2, 3, 1, 2, '2017-11-15 18:00:00', '2017-11-12 16:28:54', '2017-11-12 16:28:54', 0),
-(15, 'sdfsadf', '0', 2, 3, 1, 2, '2017-11-15 18:00:00', '2017-11-12 16:28:54', '2017-11-12 16:28:54', 0),
-(16, 'sdfsadf', '0', 2, 3, 1, 2, '2017-11-15 18:00:00', '2017-11-12 16:28:54', '2017-11-12 16:28:54', 0),
-(17, 'sdfsadf', '0', 2, 3, 1, 2, '2017-11-15 18:00:00', '2017-11-12 16:28:55', '2017-11-12 16:28:55', 0),
-(18, 'sdfsadf', '0', 2, 3, 1, 2, '2017-11-15 18:00:00', '2017-11-12 16:29:20', '2017-11-12 16:29:20', 0),
-(19, 'sdfsadf', '0', 2, 3, 1, 2, '2017-11-15 18:00:00', '2017-11-12 16:29:20', '2017-11-12 16:29:20', 0),
-(20, '', '0', 1, 2, 0, 0, '0000-00-00 00:00:00', '2017-11-12 16:49:12', '2017-11-12 16:49:12', 0),
-(21, 'test', '0', 1, 1, 2, 2, '2017-11-12 20:00:00', '2017-11-12 17:00:47', '2017-11-12 17:00:47', 0),
-(22, 'sadfasdf', '0', 1, 1, 2, 2, '2017-11-02 19:00:00', '2017-11-12 17:04:26', '2017-11-12 17:04:26', 0),
-(23, 'sadfasdf', '0', 1, 1, 2, 2, '2017-11-02 19:00:00', '2017-11-12 17:07:56', '2017-11-12 17:07:56', 0),
-(24, 'sadfasdf', '0', 1, 1, 2, 2, '2017-11-02 19:00:00', '2017-11-12 17:07:57', '2017-11-12 17:07:57', 0),
-(25, 'sadfasdf', '0', 1, 1, 2, 2, '2017-11-02 19:00:00', '2017-11-12 17:08:08', '2017-11-12 17:08:08', 0),
-(26, 'sadfasdf', '0', 1, 1, 2, 2, '2017-11-02 19:00:00', '2017-11-12 17:08:12', '2017-11-12 17:08:12', 0),
-(27, 'sadfasdf', '0', 1, 1, 2, 2, '2017-11-02 19:00:00', '2017-11-12 17:08:22', '2017-11-12 17:08:22', 0),
-(28, 'sadfasdf', '0', 1, 1, 2, 2, '2017-11-02 19:00:00', '2017-11-12 17:09:20', '2017-11-12 17:09:20', 0),
-(29, 'sadfasdf', '0', 1, 1, 2, 2, '2017-11-02 19:00:00', '2017-11-12 17:10:06', '2017-11-12 17:10:06', 0),
-(30, 'sadfasdf', '0', 1, 1, 2, 2, '2017-11-02 19:00:00', '2017-11-12 17:10:52', '2017-11-12 17:10:52', 0),
-(31, 'sadfasdf', '0', 1, 1, 2, 2, '2017-11-02 19:00:00', '2017-11-12 17:11:07', '2017-11-12 17:11:07', 0),
-(32, 'sadfasdf', '0', 1, 1, 2, 2, '2017-11-02 19:00:00', '2017-11-12 17:11:57', '2017-11-12 17:11:57', 0),
-(33, 'sadfasdf', '0', 1, 1, 2, 2, '2017-11-02 19:00:00', '2017-11-12 17:12:18', '2017-11-12 17:12:18', 0),
-(34, 'asdf', '0', 1, 2, 1, 2, '2017-11-12 19:00:00', '2017-11-12 17:13:56', '2017-11-12 17:13:56', 0),
-(35, 'asdf', '0', 1, 1, 1, 2, '2017-11-12 19:00:00', '2017-11-12 17:14:02', '2017-11-12 17:14:02', 0),
-(36, 'asdf', '0', 1, 1, 1, 2, '2017-11-12 19:00:00', '2017-11-12 17:14:03', '2017-11-12 17:14:03', 0),
-(37, 'asdf', '0', 1, 1, 1, 2, '2017-11-12 19:00:00', '2017-11-12 17:14:18', '2017-11-12 17:14:18', 0),
-(38, 'asdf', '0', 1, 1, 1, 2, '2017-11-12 19:00:00', '2017-11-12 17:14:19', '2017-11-12 17:14:19', 0),
-(39, 'asdf', '0', 1, 1, 1, 2, '2017-11-12 19:00:00', '2017-11-12 17:14:36', '2017-11-12 17:14:36', 0),
-(40, 'asdf', '0', 1, 1, 1, 2, '2017-11-12 19:00:00', '2017-11-12 17:14:41', '2017-11-12 17:14:41', 0),
-(41, 'asdf', '0', 1, 1, 1, 2, '2017-11-12 19:00:00', '2017-11-12 17:14:41', '2017-11-12 17:14:41', 0),
-(42, 'asdf', '0', 1, 1, 1, 2, '2017-11-12 19:00:00', '2017-11-12 17:14:42', '2017-11-12 17:14:42', 0),
-(43, 'asdfasf', '0', 1, 2, 2, 2, '2017-11-12 20:00:00', '2017-11-12 17:15:29', '2017-11-12 17:15:29', 0),
-(44, 'asdfasf', '0', 1, 2, 2, 2, '2017-11-12 20:00:00', '2017-11-12 17:15:30', '2017-11-12 17:15:30', 0),
-(45, 'asdfasf', '0', 1, 2, 2, 2, '2017-11-12 20:00:00', '2017-11-12 17:15:47', '2017-11-12 17:15:47', 0),
-(46, 'asdfasf', '0', 1, 2, 2, 2, '2017-11-12 20:00:00', '2017-11-12 17:16:05', '2017-11-12 17:16:05', 0),
-(47, 'asdfasf', '0', 1, 2, 2, 2, '2017-11-12 20:00:00', '2017-11-12 17:16:19', '2017-11-12 17:16:19', 0),
-(48, 'asdfasf', '0', 1, 2, 2, 2, '2017-11-12 20:00:00', '2017-11-12 17:16:31', '2017-11-12 17:16:31', 0),
-(49, 'fsdf', '0', 1, 1, 2, 2, '2017-11-12 21:00:00', '2017-11-12 17:20:38', '2017-11-12 17:20:38', 0),
-(50, 'asdf', '0', 1, 1, 2, 2, '2017-11-16 19:00:00', '2017-11-12 17:24:16', '2017-11-12 17:24:16', 0),
-(51, 'asdf', '0', 1, 1, 2, 2, '2017-11-16 19:00:00', '2017-11-12 17:25:27', '2017-11-12 17:25:27', 0),
-(52, 'Haha', '0', 1, 0, 2, 2, '2017-11-10 19:00:00', '2017-11-13 15:48:36', '2017-11-13 15:48:35', 1),
-(53, 'Haha', '0', 1, 0, 2, 2, '2017-11-10 19:00:00', '2017-11-14 05:03:25', '2017-11-14 05:03:24', 1),
-(54, 'haha', '0', 1, 3, 2, 2, '2017-11-10 19:00:00', '2017-11-12 17:28:07', '2017-11-12 17:28:07', 0),
-(55, 'asdfasdf', '0', 1, 1, 2, 2, '2017-11-16 20:00:00', '2017-11-12 17:28:22', '2017-11-12 17:28:22', 0),
-(56, 'start', '0', 2, 3, 1, 2, '2017-11-13 06:00:00', '2017-11-13 02:32:02', '2017-11-13 02:32:02', 0),
-(57, 'Har', '0', 2, 2, 2, 2, '2017-11-13 06:00:00', '2017-11-13 02:33:00', '2017-11-13 02:32:59', 2),
-(58, 'asdf', '0', 2, 1, 1, 2, '2017-11-13 06:00:00', '2017-11-13 02:33:19', '2017-11-13 02:33:19', 0),
-(59, 'xcvxcv', '0', 2, 1, 1, 2, '2017-11-13 06:00:00', '2017-11-13 02:33:37', '2017-11-13 02:33:37', 0),
-(60, 'asdf', '0', 2, 2, 1, 2, '2017-11-13 06:00:00', '2017-11-13 02:34:43', '2017-11-13 02:34:43', 0),
-(61, 'test', '0', 2, 0, 1, 2, '2017-11-13 06:00:00', '2017-11-13 02:36:08', '2017-11-13 02:36:08', 0),
-(62, 'asdf', '0', 2, 2, 2, 2, '2017-11-13 05:00:00', '2017-11-13 03:05:07', '2017-11-13 03:05:07', 0),
-(63, 'cvcvcv', '0', 2, 2, 1, 2, '2017-11-13 06:00:00', '2017-11-13 03:05:22', '2017-11-13 03:05:22', 0),
-(64, 'Zild', '0', 2, 2, 1, 1, '2017-10-31 16:00:00', '2017-11-13 05:51:20', '2017-11-13 05:51:19', 1),
-(65, 'Sdfasdf22', '0', 2, 0, 1, 2, '2017-11-08 10:00:00', '2017-11-13 05:45:22', '2017-11-13 05:45:21', 1),
-(66, 'ahahaha', '0', 2, 2, 2, 2, '2017-11-13 07:00:00', '2017-11-13 03:46:48', '2017-11-13 03:46:48', 0),
-(67, 'test', '0', 2, 2, 1, 2, '2017-11-11 06:00:00', '2017-11-13 04:09:36', '2017-11-13 04:09:36', 0),
-(68, 'Test 2', '0', 2, 2, 2, 2, '2017-11-13 07:00:00', '2017-11-13 05:50:54', '2017-11-13 05:50:54', 1),
-(69, 'So Lorem Ipsum is bad ', '0', 2, 0, 1, 2, '2017-11-13 10:00:00', '2017-11-13 17:16:26', '2017-11-13 17:16:25', 1),
-(70, 'test', '0', 1, 0, 1, 2, '2017-11-13 19:00:00', '2017-11-13 16:24:44', '2017-11-13 16:24:44', 0),
-(71, ' the quick brown fox jumps over the lazy dog 2', '0', 1, 2, 1, 2, '2017-11-13 19:00:00', '2017-11-14 15:34:30', '2017-11-14 15:34:30', 1),
-(72, 'JQUERY UI CSS JQUERY UI CSS', '0', 1, 2, 1, 2, '2017-11-14 14:00:00', '2017-11-14 16:28:26', '2017-11-14 16:28:26', 1),
-(73, 'statements have a different number of columns', '0', 1, 0, 1, 2, '2017-11-14 19:00:00', '2017-11-14 16:20:57', '2017-11-14 16:20:57', 0),
-(74, 'Lorem Ipsum: usage', '0', 1, 0, 1, 2, '2017-11-15 13:00:00', '2017-11-15 12:02:01', '2017-11-15 12:02:01', 0),
-(75, 'Pseudo-Latin text used in web design', '0', 1, 0, 2, 2, '2017-11-15 13:00:00', '2017-11-15 12:02:44', '2017-11-15 12:02:44', 0),
-(76, 'Lorem Ipsum: common examples', '0', 1, 2, 1, 2, '2017-11-15 13:00:00', '2017-11-15 12:03:11', '2017-11-15 12:03:11', 0),
-(77, 'Lorem Ipsum: translation', '0', 1, 2, 1, 2, '2017-11-15 13:00:00', '2017-11-15 12:03:52', '2017-11-15 12:03:52', 0);
+INSERT INTO `activity_titles` (`ActyID`, `ActyTitle`, `is_Open`, `UserID`, `SeverityID`, `CategoryID`, `AreaID`, `ActyStartDate`, `ActyPostDate`, `ModifiedDate`, `ActyEndDate`, `ModifiedUserID`) VALUES
+(1, 'IpsumÂ is dummy text of the printing and typesetting industry. Lorem Ipsum has been the', '1', 1, 2, 1, 1, '2017-11-09 12:00:00', '2017-11-19 13:41:20', '2017-11-11 15:03:10', NULL, 1),
+(2, 'Why do we use it?', '1', 1, 0, 1, 2, '2017-11-01 10:00:00', '2017-11-19 13:41:20', '2017-11-08 16:42:09', NULL, 1),
+(3, '10 Open Source Calendar UI Layouts Built With CSS', '1', 1, 1, 2, 2, '2017-11-04 11:00:00', '2017-11-19 13:41:20', '2017-11-11 15:15:56', NULL, 0),
+(4, 'Where can I get some?', '1', 1, 2, 1, 2, '2017-11-12 01:00:00', '2017-11-19 13:41:20', '2017-11-12 02:34:33', NULL, 0),
+(5, 'test', '1', 1, 2, 1, 2, '2017-11-18 07:00:00', '2017-11-19 13:41:20', '2017-11-12 04:45:04', NULL, 0),
+(6, 'Stranger Things', '1', 1, 1, 2, 2, '2017-11-11 19:00:00', '2017-11-19 13:41:20', '2017-11-12 15:44:03', NULL, 0),
+(7, 'Dfasdf', '1', 1, 2, 2, 2, '2017-11-11 19:00:00', '2017-11-19 13:41:20', '2017-11-14 06:08:10', NULL, 1),
+(8, 'Sakto', '1', 1, 0, 2, 2, '2017-11-12 19:00:00', '2017-11-19 13:41:20', '2017-11-13 16:24:25', NULL, 1),
+(9, 'Hahaha', '1', 1, 2, 2, 2, '2017-11-01 18:00:00', '2017-11-19 13:41:20', '2017-11-12 16:13:09', NULL, 1),
+(10, 'testing', '1', 1, 3, 1, 2, '2017-11-17 18:00:00', '2017-11-19 13:41:20', '2017-11-12 16:13:48', NULL, 0),
+(11, 'Working', '1', 1, 2, 2, 2, '2017-11-12 18:00:00', '2017-11-19 13:41:20', '2017-11-12 16:20:52', NULL, 1),
+(12, 'Hahahaha', '1', 2, 2, 2, 2, '2017-11-12 18:00:00', '2017-11-19 13:41:20', '2017-11-12 16:23:28', NULL, 2),
+(13, 'sdfsadf', '1', 2, 3, 1, 2, '2017-11-15 18:00:00', '2017-11-19 13:41:20', '2017-11-12 16:28:53', NULL, 0),
+(14, 'sdfsadf', '1', 2, 3, 1, 2, '2017-11-15 18:00:00', '2017-11-19 13:41:20', '2017-11-12 16:28:54', NULL, 0),
+(15, 'sdfsadf', '1', 2, 3, 1, 2, '2017-11-15 18:00:00', '2017-11-19 13:41:20', '2017-11-12 16:28:54', NULL, 0),
+(16, 'sdfsadf', '1', 2, 3, 1, 2, '2017-11-15 18:00:00', '2017-11-19 13:41:20', '2017-11-12 16:28:54', NULL, 0),
+(17, 'sdfsadf', '1', 2, 3, 1, 2, '2017-11-15 18:00:00', '2017-11-19 13:41:20', '2017-11-12 16:28:55', NULL, 0),
+(18, 'sdfsadf', '1', 2, 3, 1, 2, '2017-11-15 18:00:00', '2017-11-19 13:41:20', '2017-11-12 16:29:20', NULL, 0),
+(19, 'sdfsadf', '1', 2, 3, 1, 2, '2017-11-15 18:00:00', '2017-11-19 13:41:20', '2017-11-12 16:29:20', NULL, 0),
+(20, '', '1', 1, 2, 0, 0, '0000-00-00 00:00:00', '2017-11-19 13:41:20', '2017-11-12 16:49:12', NULL, 0),
+(21, 'test', '1', 1, 1, 2, 2, '2017-11-12 20:00:00', '2017-11-19 13:41:20', '2017-11-12 17:00:47', NULL, 0),
+(22, 'sadfasdf', '1', 1, 1, 2, 2, '2017-11-02 19:00:00', '2017-11-19 13:41:20', '2017-11-12 17:04:26', NULL, 0),
+(23, 'sadfasdf', '1', 1, 1, 2, 2, '2017-11-02 19:00:00', '2017-11-19 13:41:20', '2017-11-12 17:07:56', NULL, 0),
+(24, 'sadfasdf', '1', 1, 1, 2, 2, '2017-11-02 19:00:00', '2017-11-19 13:41:20', '2017-11-12 17:07:57', NULL, 0),
+(25, 'sadfasdf', '1', 1, 1, 2, 2, '2017-11-02 19:00:00', '2017-11-19 13:41:20', '2017-11-12 17:08:08', NULL, 0),
+(26, 'sadfasdf', '1', 1, 1, 2, 2, '2017-11-02 19:00:00', '2017-11-19 13:41:20', '2017-11-12 17:08:12', NULL, 0),
+(27, 'sadfasdf', '1', 1, 1, 2, 2, '2017-11-02 19:00:00', '2017-11-19 13:41:20', '2017-11-12 17:08:22', NULL, 0),
+(28, 'sadfasdf', '1', 1, 1, 2, 2, '2017-11-02 19:00:00', '2017-11-19 13:41:20', '2017-11-12 17:09:20', NULL, 0),
+(29, 'sadfasdf', '1', 1, 1, 2, 2, '2017-11-02 19:00:00', '2017-11-19 13:41:20', '2017-11-12 17:10:06', NULL, 0),
+(30, 'sadfasdf', '1', 1, 1, 2, 2, '2017-11-02 19:00:00', '2017-11-19 13:41:20', '2017-11-12 17:10:52', NULL, 0),
+(31, 'sadfasdf', '1', 1, 1, 2, 2, '2017-11-02 19:00:00', '2017-11-19 13:41:20', '2017-11-12 17:11:07', NULL, 0),
+(32, 'sadfasdf', '1', 1, 1, 2, 2, '2017-11-02 19:00:00', '2017-11-19 13:41:20', '2017-11-12 17:11:57', NULL, 0),
+(33, 'sadfasdf', '1', 1, 1, 2, 2, '2017-11-02 19:00:00', '2017-11-19 13:41:20', '2017-11-12 17:12:18', NULL, 0),
+(34, 'asdf', '1', 1, 2, 1, 2, '2017-11-12 19:00:00', '2017-11-19 13:41:20', '2017-11-12 17:13:56', NULL, 0),
+(35, 'asdf', '1', 1, 1, 1, 2, '2017-11-12 19:00:00', '2017-11-19 13:41:20', '2017-11-12 17:14:02', NULL, 0),
+(36, 'asdf', '1', 1, 1, 1, 2, '2017-11-12 19:00:00', '2017-11-19 13:41:20', '2017-11-12 17:14:03', NULL, 0),
+(37, 'asdf', '1', 1, 1, 1, 2, '2017-11-12 19:00:00', '2017-11-19 13:41:20', '2017-11-12 17:14:18', NULL, 0),
+(38, 'asdf', '1', 1, 1, 1, 2, '2017-11-12 19:00:00', '2017-11-19 13:41:20', '2017-11-12 17:14:19', NULL, 0),
+(39, 'asdf', '1', 1, 1, 1, 2, '2017-11-12 19:00:00', '2017-11-19 13:41:20', '2017-11-12 17:14:36', NULL, 0),
+(40, 'asdf', '1', 1, 1, 1, 2, '2017-11-12 19:00:00', '2017-11-19 13:41:20', '2017-11-12 17:14:41', NULL, 0),
+(41, 'asdf', '1', 1, 1, 1, 2, '2017-11-12 19:00:00', '2017-11-19 13:41:20', '2017-11-12 17:14:41', NULL, 0),
+(42, 'asdf', '1', 1, 1, 1, 2, '2017-11-12 19:00:00', '2017-11-19 13:41:20', '2017-11-12 17:14:42', NULL, 0),
+(43, 'asdfasf', '1', 1, 2, 2, 2, '2017-11-12 20:00:00', '2017-11-19 13:41:20', '2017-11-12 17:15:29', NULL, 0),
+(44, 'asdfasf', '1', 1, 2, 2, 2, '2017-11-12 20:00:00', '2017-11-19 13:41:20', '2017-11-12 17:15:30', NULL, 0),
+(45, 'asdfasf', '1', 1, 2, 2, 2, '2017-11-12 20:00:00', '2017-11-19 13:41:20', '2017-11-12 17:15:47', NULL, 0),
+(46, 'asdfasf', '1', 1, 2, 2, 2, '2017-11-12 20:00:00', '2017-11-19 13:41:20', '2017-11-12 17:16:05', NULL, 0),
+(47, 'asdfasf', '1', 1, 2, 2, 2, '2017-11-12 20:00:00', '2017-11-19 13:41:20', '2017-11-12 17:16:19', NULL, 0),
+(48, 'asdfasf', '1', 1, 2, 2, 2, '2017-11-12 20:00:00', '2017-11-19 13:41:20', '2017-11-12 17:16:31', NULL, 0),
+(49, 'fsdf', '1', 1, 1, 2, 2, '2017-11-12 21:00:00', '2017-11-19 13:41:20', '2017-11-12 17:20:38', NULL, 0),
+(50, 'asdf', '1', 1, 1, 2, 2, '2017-11-16 19:00:00', '2017-11-19 13:41:20', '2017-11-12 17:24:16', NULL, 0),
+(51, 'asdf', '1', 1, 1, 2, 2, '2017-11-16 19:00:00', '2017-11-19 13:41:20', '2017-11-12 17:25:27', NULL, 0),
+(52, 'Haha', '1', 1, 0, 2, 2, '2017-11-10 19:00:00', '2017-11-19 13:41:20', '2017-11-13 15:48:35', NULL, 1),
+(53, 'Haha', '1', 1, 0, 2, 2, '2017-11-10 19:00:00', '2017-11-19 13:41:20', '2017-11-14 05:03:24', NULL, 1),
+(54, 'haha', '1', 1, 3, 2, 2, '2017-11-10 19:00:00', '2017-11-19 13:41:20', '2017-11-12 17:28:07', NULL, 0),
+(55, 'asdfasdf', '1', 1, 1, 2, 2, '2017-11-16 20:00:00', '2017-11-19 13:41:20', '2017-11-12 17:28:22', NULL, 0),
+(56, 'start', '1', 2, 3, 1, 2, '2017-11-13 06:00:00', '2017-11-19 13:41:20', '2017-11-13 02:32:02', NULL, 0),
+(57, 'Har', '1', 2, 2, 2, 2, '2017-11-13 06:00:00', '2017-11-19 13:41:20', '2017-11-13 02:32:59', NULL, 2),
+(58, 'asdf', '1', 2, 1, 1, 2, '2017-11-13 06:00:00', '2017-11-19 13:41:20', '2017-11-13 02:33:19', NULL, 0),
+(59, 'xcvxcv', '1', 2, 1, 1, 2, '2017-11-13 06:00:00', '2017-11-19 13:41:20', '2017-11-13 02:33:37', NULL, 0),
+(60, 'asdf', '1', 2, 2, 1, 2, '2017-11-13 06:00:00', '2017-11-19 13:41:20', '2017-11-13 02:34:43', NULL, 0),
+(61, 'test', '1', 2, 0, 1, 2, '2017-11-13 06:00:00', '2017-11-19 13:41:20', '2017-11-13 02:36:08', NULL, 0),
+(62, 'asdf', '1', 2, 2, 2, 2, '2017-11-13 05:00:00', '2017-11-19 13:41:20', '2017-11-13 03:05:07', NULL, 0),
+(63, 'cvcvcv', '1', 2, 2, 1, 2, '2017-11-13 06:00:00', '2017-11-19 13:41:20', '2017-11-13 03:05:22', NULL, 0),
+(64, 'Zild', '1', 2, 2, 1, 1, '2017-10-31 16:00:00', '2017-11-19 13:41:20', '2017-11-13 05:51:19', NULL, 1),
+(65, 'Sdfasdf22', '1', 2, 0, 1, 2, '2017-11-08 10:00:00', '2017-11-19 13:41:20', '2017-11-13 05:45:21', NULL, 1),
+(66, 'ahahaha', '1', 2, 2, 2, 2, '2017-11-13 07:00:00', '2017-11-19 13:41:20', '2017-11-13 03:46:48', NULL, 0),
+(67, 'test', '1', 2, 2, 1, 2, '2017-11-11 06:00:00', '2017-11-19 13:41:20', '2017-11-13 04:09:36', NULL, 0),
+(68, 'Test 2', '1', 2, 2, 2, 2, '2017-11-13 07:00:00', '2017-11-19 13:41:20', '2017-11-13 05:50:54', NULL, 1),
+(69, 'So Lorem Ipsum is bad ', '1', 2, 0, 1, 2, '2017-11-13 10:00:00', '2017-11-19 13:41:20', '2017-11-13 17:16:25', NULL, 1),
+(70, 'test', '1', 1, 0, 1, 2, '2017-11-13 19:00:00', '2017-11-19 13:41:20', '2017-11-13 16:24:44', NULL, 0),
+(71, ' the quick brown fox jumps over the lazy dog 2', '1', 1, 2, 1, 2, '2017-11-13 19:00:00', '2017-11-19 13:41:20', '2017-11-14 15:34:30', NULL, 1),
+(72, 'JQUERY UI CSS JQUERY UI CSS', '1', 1, 2, 1, 2, '2017-11-14 14:00:00', '2017-11-19 13:41:20', '2017-11-14 16:28:26', NULL, 1),
+(73, 'statements have a different number of columns', '1', 1, 0, 1, 2, '2017-11-14 19:00:00', '2017-11-19 13:41:20', '2017-11-14 16:20:57', NULL, 0),
+(74, 'Lorem Ipsum: usage', '1', 1, 0, 1, 2, '2017-11-15 13:00:00', '2017-11-19 13:41:20', '2017-11-15 12:02:01', NULL, 0),
+(75, 'Pseudo-Latin text used in web design', '1', 1, 0, 2, 2, '2017-11-15 13:00:00', '2017-11-19 13:41:20', '2017-11-15 12:02:44', NULL, 0),
+(76, 'Lorem Ipsum: common examples', '1', 1, 2, 1, 2, '2017-11-15 13:00:00', '2017-11-19 13:41:20', '2017-11-15 12:03:11', NULL, 0),
+(77, 'Lorem Ipsum: translation', '1', 1, 2, 1, 2, '2017-11-15 13:00:00', '2017-11-19 13:41:20', '2017-11-15 12:03:52', NULL, 0),
+(78, 'Support Icon', '1', 1, 0, 1, 2, '2017-11-16 13:00:00', '2017-11-19 13:41:20', '2017-11-16 15:12:59', NULL, 0),
+(79, 'Corrective Icon', '0', 1, 2, 2, 2, '2017-11-16 12:00:00', '2017-11-19 15:05:53', '2017-11-16 15:13:27', '2017-11-19 15:05:53', 0),
+(80, 'Optimization Icon', '0', 1, 2, 3, 2, '2017-11-04 10:00:00', '2017-11-19 15:05:48', '2017-11-16 15:13:48', '2017-11-19 15:05:48', 0),
+(81, 'Deployment Icon', '1', 1, 2, 4, 2, '2017-11-04 11:00:00', '2017-11-19 15:05:57', '2017-11-16 15:18:28', '2017-11-19 15:03:01', 0),
+(82, 'Preventive Icon', '0', 1, 2, 5, 2, '2017-11-16 14:00:00', '2017-11-19 15:02:57', '2017-11-16 15:19:08', '2017-11-19 15:02:57', 0),
+(83, 'Star wars battlefront', '0', 1, 0, 3, 2, '2017-11-18 20:00:00', '2017-11-19 14:29:23', '2017-11-18 16:04:15', '2017-11-19 14:29:23', 0);
 
 -- --------------------------------------------------------
 
@@ -723,7 +798,24 @@ INSERT INTO `tags` (`TagID`, `TagName`, `TagDate`) VALUES
 (344, 'tiny', '2017-11-15 12:03:11'),
 (345, 'har', '2017-11-15 12:03:11'),
 (346, 'test', '2017-11-15 12:03:53'),
-(347, 'zzzx', '2017-11-15 12:03:53');
+(347, 'zzzx', '2017-11-15 12:03:53'),
+(348, 'pudge', '2017-11-16 15:12:59'),
+(349, 'tiny', '2017-11-16 15:12:59'),
+(350, 'pudge', '2017-11-16 15:13:27'),
+(351, 'tiny', '2017-11-16 15:13:27'),
+(352, 'test', '2017-11-16 15:13:27'),
+(353, 'anna', '2017-11-16 15:13:27'),
+(354, 'pudge', '2017-11-16 15:13:48'),
+(355, 'tiny', '2017-11-16 15:13:48'),
+(356, 'anna', '2017-11-16 15:13:48'),
+(357, 'pudge', '2017-11-16 15:18:28'),
+(358, 'tiny', '2017-11-16 15:18:28'),
+(359, 'anna', '2017-11-16 15:18:28'),
+(360, 'janin', '2017-11-16 15:19:08'),
+(361, 'test', '2017-11-16 15:19:08'),
+(362, 'pudge', '2017-11-18 16:04:15'),
+(363, 'tiny', '2017-11-18 16:04:15'),
+(364, 'anna', '2017-11-18 16:04:15');
 
 -- --------------------------------------------------------
 
@@ -967,7 +1059,24 @@ INSERT INTO `tag_map` (`TagMapID`, `ActyID`, `TagID`) VALUES
 (344, 76, 344),
 (345, 76, 345),
 (346, 77, 346),
-(347, 77, 347);
+(347, 77, 347),
+(348, 78, 348),
+(349, 78, 349),
+(350, 79, 350),
+(351, 79, 351),
+(352, 79, 352),
+(353, 79, 353),
+(354, 80, 354),
+(355, 80, 355),
+(356, 80, 356),
+(357, 81, 357),
+(358, 81, 358),
+(359, 81, 359),
+(360, 82, 360),
+(361, 82, 361),
+(362, 83, 362),
+(363, 83, 363),
+(364, 83, 364);
 
 -- --------------------------------------------------------
 
@@ -990,10 +1099,10 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`UserID`, `UserName`, `Password`, `Team`, `isAdmin`, `Created`, `LastLogin`) VALUES
-(1, 'zild', 'zild', 'ssa', 1, '2017-11-07 14:53:22', '2017-11-15 14:10:02'),
-(2, 'anna', 'anna', 'ssd', 0, '2017-11-07 14:53:22', '2017-11-15 14:10:12'),
+(1, 'zild', 'zild', 'ssa', 1, '2017-11-07 14:53:22', '2017-11-19 14:42:14'),
+(2, 'anna', 'anna', 'ssd', 0, '2017-11-07 14:53:22', '2017-11-19 02:29:39'),
 (3, 'lem', 'lem', 'ssa', 0, '2017-11-07 14:53:22', '0000-00-00 00:00:00'),
-(4, 'janin', 'janin', 'ssd', 0, '2017-11-07 14:53:22', '0000-00-00 00:00:00');
+(4, 'janin', 'janin', 'ssd', 0, '2017-11-07 14:53:22', '2017-11-19 15:03:48');
 
 --
 -- Indexes for dumped tables
@@ -1066,17 +1175,17 @@ ALTER TABLE `activity_area`
 -- AUTO_INCREMENT for table `activity_category`
 --
 ALTER TABLE `activity_category`
-  MODIFY `CategoryID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `CategoryID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 --
 -- AUTO_INCREMENT for table `activity_details`
 --
 ALTER TABLE `activity_details`
-  MODIFY `DetailID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=78;
+  MODIFY `DetailID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=84;
 --
 -- AUTO_INCREMENT for table `activity_log`
 --
 ALTER TABLE `activity_log`
-  MODIFY `LogID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=172;
+  MODIFY `LogID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=231;
 --
 -- AUTO_INCREMENT for table `activity_severity`
 --
@@ -1086,17 +1195,17 @@ ALTER TABLE `activity_severity`
 -- AUTO_INCREMENT for table `activity_titles`
 --
 ALTER TABLE `activity_titles`
-  MODIFY `ActyID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=78;
+  MODIFY `ActyID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=84;
 --
 -- AUTO_INCREMENT for table `tags`
 --
 ALTER TABLE `tags`
-  MODIFY `TagID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=348;
+  MODIFY `TagID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=365;
 --
 -- AUTO_INCREMENT for table `tag_map`
 --
 ALTER TABLE `tag_map`
-  MODIFY `TagMapID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=348;
+  MODIFY `TagMapID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=365;
 --
 -- AUTO_INCREMENT for table `users`
 --

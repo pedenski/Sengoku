@@ -1,12 +1,23 @@
 <?php
+include_once('../lib/activity.class.php');
+
+$Activity = new Activity();
+
+
 
 if(isset($_POST['close'])) {
 
-echo "close";
+$ActyID = $_POST['pageid'];
+$Activity->setClose($ActyID);
+header('location: ../page.php?id='.$ActyID);
 
-} else {
+} elseif(isset($_POST['open'])) {
 
-	echo "open";
+$ActyID = $_POST['pageid'];
+$Activity->setOpen($ActyID);
+header('location: ../page.php?id='.$ActyID);
+
+
 }
 
 
