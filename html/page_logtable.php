@@ -1,10 +1,10 @@
 <table id="logtable" style="background:#F4F4F4;" class="table is-fullwidth is-small ">
   <tr>
-    <td><p class="has-text-centered"> ID </p></td>
-    <td>Date Log</td>
+   <!--  <td><p class="has-text-centered"> ID </p></td>
+  <td>Date Log</td>
     <td>User</td>
     <td> <p class="has-text-centered">Status</p></td>
-    <td colspan="2">Action</td>
+    <td colspan="2">Action</td> -->
   </tr>
 
 

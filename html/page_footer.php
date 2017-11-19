@@ -74,7 +74,7 @@ $(document).ready(function() {
             label : false,
             data : b,
             borderWidth : 1,
-            backgroundColor : "rgba(233, 62, 62, 0.45)",
+            backgroundColor : "rgba(255, 168, 185, 0.7)",
             borderColor : "#FF3860",
             pointBackgroundColor : "#411515",
             fill: 'false',
@@ -93,8 +93,8 @@ $(document).ready(function() {
         title : {
           display : true,
           position : "top",
-          text : "2017 Top tags",
-          fontSize : 14,
+          text : "entries",
+          fontSize : 10,
           fontColor : "#00C4A7"
         },
         legend : {
@@ -177,7 +177,7 @@ function updateChart() {
             label : false,
             data : b,
             borderWidth : 1,
-            backgroundColor : "rgba(233, 62, 62, 0.45)",
+            backgroundColor : "rgba(255, 168, 185, 0.7)",
             borderColor : "#FF3860",
             pointBackgroundColor : "#411515",
             fill: 'false',
@@ -195,8 +195,8 @@ function updateChart() {
         title : {
           display : true,
           position : "top",
-          text : "2017 Top tags",
-          fontSize : 14,
+          text : "entries",
+          fontSize : 10,
           fontColor : "#00C4A7"
         },
         legend : {

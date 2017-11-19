@@ -48,7 +48,7 @@ include_once('html/navbar.php');
 <div class="column is-four-fifths">
 
   <div style="border-radius:4px; padding:15px;background: #f4f4f4; margin-bottom: 8px; "> 
-    <article class="media" style="padding:8px;">
+    <article style="margin-bottom:10px;border-bottom:1px solid #cdcdcd;padding-bottom:10px;padding-left:5px;" class="media">
       <div class="media-content">
 
         <div class="level-left">
@@ -75,7 +75,9 @@ include_once('html/navbar.php');
       </div>
     </article>
 
+
   <?php include_once('html/page_logtable.php'); ?>
+
   </div>
 </div> <!--/first column-->
 
@@ -170,8 +172,8 @@ include_once('html/navbar.php');
   </nav>
 </div> <!-- //div style -->
 
-<!--/ GRAPH WIDGET /-->
-<div style="margin-bottom:8px; padding-top:15px;padding-right:15px;border-radius:5px;background: #f4f4f4"> 
+<!--/ ` WIDGET /-->
+<div style="margin-bottom:8px; padding-bottom:15px; padding-top:7px;padding-right:15px;border-radius:5px;background: #f4f4f4"> 
 
   <div id="loading_icon"><i class="fa fa-spin fa-spinner fa-4x" aria-hidden="true"></i></div>
   <canvas id="line-chartcanvas"></canvas>
