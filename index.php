@@ -305,6 +305,21 @@ $Tags->Compare_Array(); // execute tag comparison  ?>
       </div><!-- END TAG GRAPH BAR -->
 
 
+        <!-- TAG GRAPH BAR -->
+      <div style="border-radius:5px; margin-bottom:15px; padding-top:25px; padding-bottom:5px; padding-right:15px; background: #f4f4f4"> 
+       <table class="table"> 
+    
+       		<?php 
+       	
+       			$a = $Activity->LogPreview(); 
+       			print_r($a);
+
+       		?>
+
+       </table> 	
+      </div><!-- END TAG GRAPH BAR -->
+  
+
 
     <!-- USER LOGGED IN TODAY -->
       <div style="margin-bottom:5px;padding:8px;"> 

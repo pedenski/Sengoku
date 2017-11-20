@@ -182,6 +182,13 @@ body {
 
 /* END OF TOOLTIP DARK */
 
+.table td {
+  border:none; 
+}
+
+.table tr:nth-child(even) td {
+  background-color:#FFF5F7;
+}
 
 /*table tr:nth-of-type(4n) td {
     border-bottom: 3px solid #f00;

@@ -22,7 +22,7 @@ $(document).ready(function () {
 					{	
 						label : false,
 						data : total,
-						backgroundColor : ["#05668D","#028090","#00A896", "#02C39A", "#F0F3BD", "#fff" ],
+						backgroundColor : ["#05668D","#05668D","#05668D", "#05668D", "#05668D", "#fff" ],
 						//backgroundColor : ["rgba(127,46,61,0.9)" ,"rgba(153,55,73,0.9)","rgba(178,64,86,0.9)","rgba(204,73,98,0.9)","rgba(229,82,110,0.9)"],
 						borderWidth : 1
 					}

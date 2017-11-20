@@ -168,6 +168,18 @@ class Activity {
 	
 	}
 
+
+	public function LogPreview()
+	//retrieve log from a specific activity
+	{
+		$q = "SELECT ActyID, LogDate, LogSeverityID FROM activity_log ORDER BY LogID Limit 5";
+		$sql = $this->conn->prepare($q);
+		$sql->execute();
+		return $sql->fetchALL(PDO::FETCH_ASSOC);
+	}
+
+
+
 	public function Last_Log_Insert($LastID)
 	// Get last inserted log for json post success();
 	{
