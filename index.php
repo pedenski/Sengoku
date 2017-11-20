@@ -306,16 +306,28 @@ $Tags->Compare_Array(); // execute tag comparison  ?>
 
 
         <!-- TAG GRAPH BAR -->
-      <div style="border-radius:5px; margin-bottom:15px; padding-top:25px; padding-bottom:5px; padding-right:15px; background: #f4f4f4"> 
-       <table class="table"> 
+      <div style="border-radius:5px; padding:5px;background: #f4f4f4"> 
+
+       <table style="background:#f4f4f4;" class="table is-fullwidth is-striped"> 
+          <thead>
     
+            <th><span style="color:#028090"><i class="fa fa-file-text-o" aria-hidden="true"></i> Recent Logs</span></th>
+          
+          </thead>
+          <tbody>
        		<?php 
-       	
-       			$a = $Activity->LogPreview(); 
-       			print_r($a);
+       		$recentlogs = $Activity->LogPreview($num = 5); 
+       	  foreach($recentlogs as $recent) { ?>
 
-       		?>
+          <tr>
+          
+            <td><a style="color:#028090;" href="page.php?id=<?php echo $recent['ActyID']; ?>"><?php echo ($Activity->get_snippet($recent['LogText'], 12)); ?> - <small> #<?php echo $recent['ActyID']; ?> </small></td>
 
+
+
+          </tr>
+          <?php }	?>
+        </tbody>
        </table> 	
       </div><!-- END TAG GRAPH BAR -->
   

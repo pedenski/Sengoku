@@ -5,8 +5,9 @@ tinymce.init({
     height : "150",
     menubar: false,
     branding: false,
-     toolbar: 'undo redo bold italic bullist numlist issue noissue removeref',
-    plugins: 'codesample',
+    toolbar: 'undo redo bold italic bullist numlist issue noissue removeref',
+    plugins: 'codesample paste',
+    oninit : "setPlainText",
     paste_as_text: true,
     setup: function (editor) {
 

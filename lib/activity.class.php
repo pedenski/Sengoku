@@ -169,11 +169,13 @@ class Activity {
 	}
 
 
-	public function LogPreview()
+	public function LogPreview($num)
 	//retrieve log from a specific activity
 	{
-		$q = "SELECT ActyID, LogDate, LogSeverityID FROM activity_log ORDER BY LogID Limit 5";
+		
+		$q = "SELECT ActyID, LogText, LogDate, LogSeverityID FROM activity_log ORDER BY LogID DESC Limit :num";
 		$sql = $this->conn->prepare($q);
+		$sql->bindValue(':num',$num, PDO::PARAM_INT);
 		$sql->execute();
 		return $sql->fetchALL(PDO::FETCH_ASSOC);
 	}

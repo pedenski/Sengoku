@@ -186,7 +186,7 @@ body {
   border:none; 
 }
 
-.table tr:nth-child(even) td {
+#topics tr:nth-child(even) td {
   background-color:#FFF5F7;
 }
 
