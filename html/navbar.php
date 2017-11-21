@@ -1,7 +1,7 @@
 <nav class="navbar is-light">
   <div class="navbar-brand">
   <a class="navbar-item" href="index.php">
-    <img src="../sengoku/style/img/logo3.png" alt="Sengoku: Activity Report" width="30" height="90">
+    <img src="style/img/logo3.png" alt="Sengoku: Activity Report" width="30" height="90">
   </a>
   </div>
   <div id="navMenuTransparentExample" class="navbar-menu">

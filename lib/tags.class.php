@@ -72,6 +72,17 @@ class Tags  {
 	}		
 
 
+	public function Get_Title_From_Tags($tagname)
+	{
+		$q = "SELECT tag_map.ActyID , tags.TagName FROM tags
+		INNER JOIN tag_map ON tags.TagID = tag_map.TagID 
+		WHERE tags.TagName = ?";
+		$sql = $this->conn->prepare($q);
+		$sql->bindParam(1, $tagname);	  	
+		$sql->execute();
+		return $row = $sql->fetchALL(PDO::FETCH_ASSOC);
+	}
+
 	
 	public function Compare_Array()
 	/* -- Issue with Comparing Arrays --

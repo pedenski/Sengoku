@@ -228,7 +228,7 @@ echo strip_tags($Activity->get_snippet($Activity->textarea, 5)); ?>  </small></s
 $Tags->Get_Tags($row['ActyID']);   //Execute Tags based on ActyID
 $Tags->Compare_Array(); // execute tag comparison  ?>
 <?php foreach($Tags->TagLists as $TagName) { ?>
-<span class="tag is-dark mar-r-5">  <?php echo $TagName; ?> </span> 
+<a href="tags.php?tagname=<?php echo $TagName; ?>"><span class="tag is-dark mar-r-5">  <?php echo $TagName; ?> </span> </a>
 <!-- <span class="tag is-info"> </span> -->
 <?php } ?>
 </td>
