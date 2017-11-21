@@ -10,7 +10,7 @@ $Users = new Users();
 // $a = $Tags->Count_Top();
 // print json_encode($a);
 
-$tags  = $Tags->Count_Top();
+$tags  = $Tags->Count_Top($limit = 5);
 $tagarr = array();
 $ulist = $Users->Get_User_Listing();
 

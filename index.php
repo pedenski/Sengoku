@@ -321,7 +321,7 @@ $Tags->Compare_Array(); // execute tag comparison  ?>
 
           <tr>
           
-            <td><a style="color:#028090;" href="page.php?id=<?php echo $recent['ActyID']; ?>"><?php echo ($Activity->get_snippet($recent['LogText'], 12)); ?> - <small> #<?php echo $recent['ActyID']; ?> </small></td>
+            <td><a style="color:#028090;" href="page.php?id=<?php echo $recent['ActyID']; ?>"><?php echo strip_tags($Activity->get_snippet($recent['LogText'], 12)); ?> - <small> #<?php echo $recent['ActyID']; ?> </small></td>
 
 
 

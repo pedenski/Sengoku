@@ -102,9 +102,10 @@ class Tags  {
 
 
 
-	public function Count_Top() {
-		$q = "select TagName, count(*) as total from tags group by TagName  order by count(*)  desc limit 6";
+	public function Count_Top($limit) {
+		$q = "select TagName, count(*) as total from tags group by TagName  order by count(*)  desc limit ?";
 		$sql = $this->conn->prepare($q);
+		$sql->bindValue(1, (int)$limit, PDO::PARAM_INT);
 		$sql->execute();
 		return $row = $sql->fetchALL(PDO::FETCH_ASSOC);
 
