@@ -1,10 +1,16 @@
 body {
     background:#fff;
 }
-.tag:not(body){
-    font-size:.60rem;
 
+span a {
+  color:#fff;
 }
+
+span a:hover {
+  color:#00D1B2;
+}
+
+
 .hero-body{
     padding: .5rem;
 }

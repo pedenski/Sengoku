@@ -126,7 +126,7 @@ foreach($ActyList as $row) { ?>
 
 <td width="400"><a href="page.php?id=<?php echo $row['ActyID'];?>"><span style="color:#363636; font-size:1.1rem;" class="_actyTitle"> <?php echo ucfirst($Activity->get_snippet($row['ActyTitle'], 5)); ?></a></span></a> <br>
 		<span style="color:#363636;"><small> <?php $Activity->Get_Activity_Detail($row['ActyID']);
-echo strip_tags($Activity->get_snippet($Activity->textarea, 5)); ?>  </small></span>
+echo strip_tags($Activity->get_snippet($Activity->textarea, 15)); ?>  </small></span>
 
 </td>
 

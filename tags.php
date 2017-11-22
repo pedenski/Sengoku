@@ -1,9 +1,11 @@
 <?php 
 session_start();
 $page_title = "Tags";
+$page = isset($_GET['page']) ? $_GET['page'] : 1;
 if(isset($_GET['tagname'])) {
+  $isset = 1;
 	$tagname = $_GET['tagname'];
-	$page = isset($_GET['page']) ? $_GET['page'] : 1;
+
 }
 
 
@@ -31,11 +33,12 @@ include_once('html/navbar.php');
 ?>
 
 <!-- HERO -->
-<section class="hero is-primary">
+<section class="hero is-warning">
 <div class="hero-body">
 <div class="container">
   <h1 class="title">
-  <?php echo ucfirst($tagname); ?>
+
+  <?php if(isset($_GET['tagname'])) { echo ucfirst($tagname); } else { echo $page_title; } ?>
   </h1>
   <h2 class="subtitle">
     Tag listing
@@ -50,19 +53,19 @@ include_once('html/navbar.php');
 
 
 
-$a = $tags->Count_Top($limit = 10);
-//print_r($a);
+$taglists = $tags->Count_Top($limit = 20);
+
 
 
 $tags->UserLists = $Users->Get_User_Listing();
-$tags->TagLists = $a;
+$tags->TagLists = $taglists;
 
 // echo "<hr>";
 $tags->Compare_Array();
 
 // print_r($tags->TagLists);
 // echo "<hr>";
-// print_r($tags->UserLists);
+//print_r($tags->UserLists);
 //styles
 
 ?>
@@ -70,7 +73,42 @@ $tags->Compare_Array();
 <div class="container">
 <div style="margin-bottom:25px"></div>
 
-   <div class="columns">
+
+<div class="columns">
+
+<div class="column"> <!-- TAGS --> 
+  <div style="padding:20px; border-radius:5px; background:#f4f4f4;">
+    <div class="content">
+      <h4 style="margin-bottom:10px;">Top 20 Tags</h4>
+
+      <div class="tags">
+      <?php foreach($taglists as $t) { ?>
+            <span class="tag is-dark"> <a href="tags.php?tagname=<?php echo $t['TagName']; ?>"><?php echo $t['TagName']; ?></a></span>
+      <?php } ?>
+      </div> <!--/tags -->
+    </div> <!--/content-->
+  </div> <!--/notification -->
+</div> <!--/tag column-->
+
+<div class="column"> <!-- TAGS --> 
+  <div style="padding:20px; border-radius:5px; background:#f4f4f4;">
+    <div class="content">
+      <h4 style="margin-bottom:10px;">User Tags</h4>
+
+      <div class="tags">
+      <?php foreach($tags->UserLists as $user) { ?>
+            <span class="tag is-dark"><a href="tags.php?tagname=<?php echo $user; ?>"><?php echo $user; ?></a></span>
+      <?php } ?>
+      </div> <!--/tags -->
+    </div> <!--/content-->
+  </div> <!--/notification -->
+</div> <!--/tag column-->
+
+
+</div> <!--/columns-->
+
+<?php if(isset($_GET['tagname'])) { ?>
+ <div class="columns">
       <div class="column is-half">
        <!--    <div class="control has-icons-left has-icons-right"> -->
         <!--   <input class="input" type="text" name="search_text" id="search_text" placeholder="Search By Title"> -->
@@ -80,111 +118,25 @@ $tags->Compare_Array();
     <!--       </div> -->
         </td>
       </div>
-		<div class="column is-half ">
-		  <div class="pagi is-pulled-right">
-		  <?php echo $nav->first(' <a href="tags.php?tagname='.$tagname.'">First</a>  ');
-		        echo $nav->numbers(' <a href="tags.php?tagname='.$tagname.'&page={nr}">{nr}</a>  ', '  <b>{nr}</b>  ');
-		        echo $nav->next(' <a href="tags.php?tagname='.$tagname.'&page={nr}">Next</a>  '); ?>
-		  </div> 
-		</div>
-	</div>
+    <div class="column is-half ">
+      <div class="pagi is-pulled-right">
+      <?php echo $nav->first(' <a href="tags.php?tagname='.$tagname.'">First</a>  ');
+            echo $nav->numbers(' <a href="tags.php?tagname='.$tagname.'&page={nr}">{nr}</a>  ', '  <b>{nr}</b>  ');
+            echo $nav->next(' <a href="tags.php?tagname='.$tagname.'&page={nr}">Next</a>  '); ?>
+      </div> 
+    </div>
+  </div>
+ <?php } ?>
+  
 
 
 
 <?php 
+if(isset($_GET['tagname'])) {   
+  $tags = $tags->Get_Title_From_Tags($tagname, $nav, $max);
+  include_once('html/tags_table.php');
+} ?>
 
-$tags = $tags->Get_Title_From_Tags($tagname, $nav, $max);
-?>
-
-<h2></h2>
-
-<table class="table is-bordered is-fullwidth is-striped">
-<thead>
-  <tr>
-    <th>ID</th>
-    <th>User</th>
-    <th>Title</th>
-    <th>Date</th>
-    <th><p class="has-text-centered">Div</p></th>
-    <th><p class="has-text-centered">Sev</p></th>
-
-  </tr>
-</thead>
-
-
-
-
-
-
-<?php
-foreach($tags as $r) { 
-$Activity->Get_Title_Data($r['ActyID']);
-?>
-<tr>
-	<td width="25"><?php  echo $r['ActyID']; ?></td>
-	<td width="25"><img style="border-radius:50%;width:30px;height:30px" src="style/img/<?php echo $Users->GetUser($Activity->UserID);?>.png"></td>
-	<td><a href="page.php?id=<?php echo $r['ActyID']; ?>"><?php echo ucfirst($Activity->get_snippet($Activity->ActyTitle, 8)); ?></a><br>
-		<?php $Activity->Get_Activity_Detail($r['ActyID']);?>
-		<small> <?php $Activity->Get_Activity_Detail($r['ActyID']);
-				echo strip_tags($Activity->get_snippet($Activity->textarea, 20)); ?>...  </small></span>
-
-
-
-	</td>
-	
-	<td width="100"><span style="color:#363636;"><small><?php echo date('M-d',strtotime($Activity->ActyPostDate)); ?>
-    <span class='hover' id='demo-tooltip-above' data-jbox-content="<?php echo date('H:i',strtotime($Activity->ActyPostDate)); ?>">  <i class="fa fa-clock-o" aria-hidden="true"></i></span></small></span>
-    </td>
-
-	<td width="25"><p class="has-text-centered">
-	<?php switch($Activity->CategoryID) 
-	{
-        case 1:
-          echo "<span class='hover' id='demo-tooltip-above' data-jbox-content=".$ActyDetails->Get_Category_Name($Activity->CategoryID)."><i style='color:#028090' class='fa fa-handshake-o fa-lg' aria-hidden='true'></i></span>";
-        break; 
-        case 2:
-          echo "<span class='hover' id='demo-tooltip-above' data-jbox-content=".$ActyDetails->Get_Category_Name($Activity->CategoryID)."><i style='color:#028090' class='fa fa-eraser fa-lg' aria-hidden='true'></i></span>";
-        break;
-        case 3:
-          echo "<span class='hover' id='demo-tooltip-above' data-jbox-content=".$ActyDetails->Get_Category_Name($Activity->CategoryID)."><i style='color:#028090' class='fa fa-sliders fa-lg' aria-hidden='true'></i></span>";
-        break;
-         case 4:
-          echo "<span class='hover' id='demo-tooltip-above' data-jbox-content=".$ActyDetails->Get_Category_Name($Activity->CategoryID)."><i style='color:#028090' class='fa fa-rocket fa-lg' aria-hidden='true'></i></span>";
-        break;
-         case 5:
-          echo "<span class='hover' id='demo-tooltip-above' data-jbox-content=".$ActyDetails->Get_Category_Name($Activity->CategoryID)."><i style='color:#028090' class='fa fa-shield fa-lg' aria-hidden='true'></i></span>";
-        break;
-    }  
-    ?>
-
-    </p>
-	</td>
-	<td width="25"><p class="has-text-centered">
-	  <?php switch($Activity->SeverityID) 
-	      {
-	        case 0:
-	          echo "<i style='color:#81D742' class='fa fa-thermometer-0 fa-lg' aria-hidden='true'></i>";
-	        break; 
-	        case 1:
-	          echo "<i style='color:#FCC02B' class='fa fa-thermometer-2 fa-lg' aria-hidden='true'></i>";
-	        break;
-	        case 2:
-	          echo "<i style='color:#EB1C23' class='fa fa-thermometer fa-lg' aria-hidden='true'></i>";
-	        break;
-	      }  
-
-	      //$ActyDetails->Get_Severity_Name($row['SeverityID']); //severity name
-
-	      ?>
-	  </p>
-</td>
-
-</tr>
-
-
-<?php } ?>
-
-</table>
 
 
 
