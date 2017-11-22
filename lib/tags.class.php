@@ -72,11 +72,12 @@ class Tags  {
 	}		
 
 
-	public function Get_Title_From_Tags($tagname)
+	public function Get_Title_From_Tags($tagname, $nav, $max)
+		//retrive tag name to show related actyids (tags.php)
 	{
 		$q = "SELECT tag_map.ActyID , tags.TagName FROM tags
 		INNER JOIN tag_map ON tags.TagID = tag_map.TagID 
-		WHERE tags.TagName = ?";
+		WHERE tags.TagName = ? ORDER BY tag_map.ActyID DESC LIMIT ".$nav->start().",".$max;
 		$sql = $this->conn->prepare($q);
 		$sql->bindParam(1, $tagname);	  	
 		$sql->execute();

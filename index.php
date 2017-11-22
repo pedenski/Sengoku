@@ -31,18 +31,7 @@ include_once('html/navbar.php'); ?>
 
 
  <style>
- .pagi {
-  margin-top:5px;
 
- }
-  .pagi a, b {
-   background:#f4f4f4;
-   padding: 10px;
-   border-radius: 3px;
-
-
-
-  }
   </style>
 
 <!-- HERO -->
@@ -92,16 +81,16 @@ include_once('html/navbar.php'); ?>
 <div id="demo-container">
 <!--   <span class="hover" id="demo-tooltip-above" title="I'm above the element">Above centered</span> -->
 </div>  
-
-<table id="topics" class="table is-fullwidth is-striped is-responsive">
+<div style="border-radius:4px; padding:15px;background: #f4f4f4; margin-bottom: 8px; "> 
+<table style="background:#f4f4f4" id="topics" class="table is-fullwidth">
 
 <thead>
   <tr>
     <th>ID</th>
-    <th>User</th>
+    <th><p class="has-text-centered">User</p></th>
     <th><!-- <p class="has-text-centered">Stat</p> --></th>
     <th>Title</th>
-    <th><!-- Description --></th>
+   
   
     <th>Date</th>
 
@@ -126,7 +115,7 @@ foreach($ActyList as $row) { ?>
 <td width="25">#<?php echo $row['ActyID'];?></td>
 
 
-<td width="25"><img style="border-radius:50%;width:30px;height:30px" src="style/img/<?php echo $Users->GetUser($row['UserID']);?>.png"></td>
+<td width="25"><p class="has-text-centered"><img style="border-radius:50%;width:30px;height:30px" src="style/img/<?php echo $Users->GetUser($row['UserID']);?>.png"></p></td>
 
 <td width="15"><?php if($row['is_Open'] != 1) { ?>
   <p class="has-text-centered"> <i style="color:#363636;" class="fa fa-lock fa-lg" aria-hidden="true"></i> </p>
@@ -135,16 +124,18 @@ foreach($ActyList as $row) { ?>
   <?php } ?>
 </td>
 
-<td width="400"><a href="page.php?id=<?php echo $row['ActyID'];?>"><span style="color:#363636; font-size:1.1rem;" class="_actyTitle"> <?php echo ucfirst($Activity->get_snippet($row['ActyTitle'], 5)); ?></a></span></a></td>
+<td width="400"><a href="page.php?id=<?php echo $row['ActyID'];?>"><span style="color:#363636; font-size:1.1rem;" class="_actyTitle"> <?php echo ucfirst($Activity->get_snippet($row['ActyTitle'], 5)); ?></a></span></a> <br>
+		<span style="color:#363636;"><small> <?php $Activity->Get_Activity_Detail($row['ActyID']);
+echo strip_tags($Activity->get_snippet($Activity->textarea, 5)); ?>  </small></span>
+
+</td>
 
 
-<td width="300"><span style="color:#363636;"><small> <?php $Activity->Get_Activity_Detail($row['ActyID']);
-echo strip_tags($Activity->get_snippet($Activity->textarea, 5)); ?>  </small></span></td>
 
 
 
 
-<td><span style="color:#363636;"><small><?php echo date('M-d',strtotime($row['ActyStartDate'])); ?>
+<td width="25"><span style="color:#363636;"><small><?php echo date('M-d',strtotime($row['ActyStartDate'])); ?>
     <span class='hover' id='demo-tooltip-above' data-jbox-content="<?php echo date('H:i',strtotime($row['ActyStartDate'])); ?>">  <i class="fa fa-clock-o" aria-hidden="true"></i></span></small></span>
     </td>
 
@@ -177,7 +168,7 @@ echo strip_tags($Activity->get_snippet($Activity->textarea, 5)); ?>  </small></s
 </td> -->
 
 
-<td>
+<td width="25">
 <p class="has-text-centered">
     <?php switch($row['CategoryID']) 
       {
@@ -204,7 +195,7 @@ echo strip_tags($Activity->get_snippet($Activity->textarea, 5)); ?>  </small></s
 
 </p>
 </td>
-<td><p class="has-text-centered">
+<td width="25"><p class="has-text-centered">
   <?php switch($row['SeverityID']) 
       {
         case 0:
@@ -221,14 +212,15 @@ echo strip_tags($Activity->get_snippet($Activity->textarea, 5)); ?>  </small></s
       //$ActyDetails->Get_Severity_Name($row['SeverityID']); //severity name
 
       ?>
+  </p>
 </td>
 
-<td>
+<td width="200">
 <?php $Tags->UserLists = $Users->Get_User_Listing(); //get Names and insert to Tags class var
 $Tags->Get_Tags($row['ActyID']);   //Execute Tags based on ActyID
 $Tags->Compare_Array(); // execute tag comparison  ?>
 <?php foreach($Tags->TagLists as $TagName) { ?>
-<a href="tags.php?tagname=<?php echo $TagName; ?>"><span class="tag is-dark mar-r-5">  <?php echo $TagName; ?> </span> </a>
+<a href="tags.php?tagname=<?php echo $TagName; ?>"><span class="tag is-danger mar-r-5">  <?php echo $TagName; ?> </span> </a>
 <!-- <span class="tag is-info"> </span> -->
 <?php } ?>
 </td>
@@ -236,8 +228,9 @@ $Tags->Compare_Array(); // execute tag comparison  ?>
 
 </tr>
 <?php }  ?> <!--END FOR-->
-</body>
+</tbody>
 </table>
+</div>
   </div>  <!-- END LEFT COLUMN -->
 
 
@@ -321,7 +314,7 @@ $Tags->Compare_Array(); // execute tag comparison  ?>
 
           <tr>
           
-            <td><a style="color:#028090;" href="page.php?id=<?php echo $recent['ActyID']; ?>"><?php echo strip_tags($Activity->get_snippet($recent['LogText'], 12)); ?> - <small> #<?php echo $recent['ActyID']; ?> </small></td>
+            <td><a style="color:#028090;" href="page.php?id=<?php echo $recent['ActyID']; ?>"><?php echo strip_tags($Activity->get_snippet($recent['LogText'], 25)); ?> - <small> #<?php echo $recent['ActyID']; ?> </small></td>
 
 
 

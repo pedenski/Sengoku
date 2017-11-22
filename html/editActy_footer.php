@@ -61,7 +61,7 @@ $(document).ready(function() {
       if($(this).attr('name') == "Low") {
          $(this).addClass('is-selected is-light').siblings().attr('class','button is-small');
          slider.update({from:0});
-      } if($(this).attr('name') == "Medium") {
+      } if($(this).attr('name') == "Med") {
         $(this).addClass('is-selected is-light').siblings().attr('class','button is-small');
           slider.update({from:1});
       } if($(this).attr('name') == "High") {
@@ -87,14 +87,14 @@ $(document).ready(function() {
           grid: true,
           grid_snap: true,
           from:<?php echo $Activity->SeverityID; ?>,
-          values: ["Low", "Medium", "High" ]
+          values: ["Low", "Med", "High" ]
         });
 
         $range.on("change", function () 
         {
           value = $range.prop("value");
           if(value == "Low") { $SeverityValue = "1"; }
-          if(value == "Medium") { $SeverityValue = "2"; }
+          if(value == "Med") { $SeverityValue = "2"; }
           if(value == "High") { $SeverityValue = "3"; }
           //console.log("Value: " + $SeverityValue + "-" + value);
         });

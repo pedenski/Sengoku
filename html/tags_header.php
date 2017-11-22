@@ -24,6 +24,6 @@
         
     <!-- SLIDER -->
       <!-- CUSTOM CSS -->
-    <link rel="stylesheet" type="text/css" href="../style/css/sengoku.index.css"/> 
+    <link rel="stylesheet" type="text/css" href="../sengoku/style/css/sengoku.tags.css"/> 
   </head>
   <body>

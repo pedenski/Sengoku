@@ -40,38 +40,64 @@ if(isset($_POST['query'])) {
 
 <?php	} else { ?>
 
-<table class="table is-fullwidth is-striped">
+
+<table id="topics" class="table is-fullwidth is-striped">
+
 <thead>
   <tr>
     <th>ID</th>
+    <th><p class="has-text-centered">User</p></th>
+    <th><!-- <p class="has-text-centered">Stat</p> --></th>
     <th>Title</th>
-    <th>Description</th>
-    <th>User</th>
+   
+  
     <th>Date</th>
-    <th>Time</th>
-    <th><p class="has-text-centered">Area</p></th>
+
+    <!-- <th><p class="has-text-centered">Area</p></th> -->
     <th><p class="has-text-centered">Div</p></th>
     <th><p class="has-text-centered">Sev</p></th>
     <th>Tags</th>
   </tr>
 </thead>
 
+
+<tbody>
+
+
 <?php foreach($searchlist as $row) { ?>
  
+
 
 <tr>
 
 <td width="25">#<?php echo $row['ActyID'];?></td>
-<td width="400"><a href="page.php?id=<?php echo $row['ActyID'];?>"><span style="color:#03927D; font-size:1.1rem;" class="_actyTitle"> <?php echo ucfirst($Activity->get_snippet($row['ActyTitle'], 5)); ?></a>
-<td><small> <?php $Activity->Get_Activity_Detail($row['ActyID']);
-echo strip_tags($Activity->get_snippet($Activity->textarea, 5)); ?>  </small></td>
+
+
+<td width="25"><p class="has-text-centered"><img style="border-radius:50%;width:30px;height:30px" src="style/img/<?php echo $Users->GetUser($row['UserID']);?>.png"></p></td>
+
+<td width="15"><?php if($row['is_Open'] != 1) { ?>
+  <p class="has-text-centered"> <i style="color:#363636;" class="fa fa-lock fa-lg" aria-hidden="true"></i> </p>
+  <?php } else { ?>
+ <!--  <p class="has-text-centered"> <i style="color:#028090;" class="fa fa-unlock-alt fa-lg" aria-hidden="true"></i> </p> -->
+  <?php } ?>
+</td>
+
+<td width="400"><a href="page.php?id=<?php echo $row['ActyID'];?>"><span style="color:#363636; font-size:1.1rem;" class="_actyTitle"> <?php echo ucfirst($Activity->get_snippet($row['ActyTitle'], 5)); ?></a></span></a> <br>
+    <span style="color:#363636;"><small> <?php $Activity->Get_Activity_Detail($row['ActyID']);
+echo strip_tags($Activity->get_snippet($Activity->textarea, 5)); ?>  </small></span>
+
+</td>
 
 
 
-<td><img style="border-radius:50%;width:30px;height:30px" src="style/img/<?php echo $Users->GetUser($row['UserID']);?>.png"></td>
-<td><?php echo date('m-y',strtotime($row['ActyStartDate'])); ?></td>
-<td><?php echo date('H:i',strtotime($row['ActyStartDate'])); ?></td>
-<td>
+
+
+
+<td width="25"><span style="color:#363636;"><small><?php echo date('M-d',strtotime($row['ActyStartDate'])); ?>
+    <span class='hover' id='demo-tooltip-above' data-jbox-content="<?php echo date('H:i',strtotime($row['ActyStartDate'])); ?>">  <i class="fa fa-clock-o" aria-hidden="true"></i></span></small></span>
+    </td>
+
+<!-- <td>
     <p class="has-text-centered">
     <?php switch($row['AreaID']) 
       {
@@ -97,31 +123,27 @@ echo strip_tags($Activity->get_snippet($Activity->textarea, 5)); ?>  </small></t
       ?>
 
 </p>
-
-  
-
+</td> -->
 
 
-
-</td>
-<td>
+<td width="25">
 <p class="has-text-centered">
     <?php switch($row['CategoryID']) 
       {
         case 1:
-          echo "<span class='hover' id='demo-tooltip-above' data-jbox-content=".$ActyDetails->Get_Category_Name($row['CategoryID'])."><i style='color:#536878' class='fa fa-handshake-o fa-lg' aria-hidden='true'></i></span>";
+          echo "<span class='hover' id='demo-tooltip-above' data-jbox-content=".$ActyDetails->Get_Category_Name($row['CategoryID'])."><i style='color:#028090' class='fa fa-handshake-o fa-lg' aria-hidden='true'></i></span>";
         break; 
         case 2:
-          echo "<span class='hover' id='demo-tooltip-above' data-jbox-content=".$ActyDetails->Get_Category_Name($row['CategoryID'])."><i style='color:#536878' class='fa fa-eraser fa-lg' aria-hidden='true'></i></span>";
+          echo "<span class='hover' id='demo-tooltip-above' data-jbox-content=".$ActyDetails->Get_Category_Name($row['CategoryID'])."><i style='color:#028090' class='fa fa-eraser fa-lg' aria-hidden='true'></i></span>";
         break;
         case 3:
-          echo "<span class='hover' id='demo-tooltip-above' data-jbox-content=".$ActyDetails->Get_Category_Name($row['CategoryID'])."><i style='color:#536878' class='fa fa-sliders fa-lg' aria-hidden='true'></i></span>";
+          echo "<span class='hover' id='demo-tooltip-above' data-jbox-content=".$ActyDetails->Get_Category_Name($row['CategoryID'])."><i style='color:#028090' class='fa fa-sliders fa-lg' aria-hidden='true'></i></span>";
         break;
          case 4:
-          echo "<span class='hover' id='demo-tooltip-above' data-jbox-content=".$ActyDetails->Get_Category_Name($row['CategoryID'])."><i style='color:#536878' class='fa fa-rocket fa-lg' aria-hidden='true'></i></span>";
+          echo "<span class='hover' id='demo-tooltip-above' data-jbox-content=".$ActyDetails->Get_Category_Name($row['CategoryID'])."><i style='color:#028090' class='fa fa-rocket fa-lg' aria-hidden='true'></i></span>";
         break;
          case 5:
-          echo "<span class='hover' id='demo-tooltip-above' data-jbox-content=".$ActyDetails->Get_Category_Name($row['CategoryID'])."><i style='color:#536878' class='fa fa-shield fa-lg' aria-hidden='true'></i></span>";
+          echo "<span class='hover' id='demo-tooltip-above' data-jbox-content=".$ActyDetails->Get_Category_Name($row['CategoryID'])."><i style='color:#028090' class='fa fa-shield fa-lg' aria-hidden='true'></i></span>";
         break;
       }  
 
@@ -131,7 +153,7 @@ echo strip_tags($Activity->get_snippet($Activity->textarea, 5)); ?>  </small></t
 
 </p>
 </td>
-<td><p class="has-text-centered">
+<td width="25"><p class="has-text-centered">
   <?php switch($row['SeverityID']) 
       {
         case 0:
@@ -148,14 +170,15 @@ echo strip_tags($Activity->get_snippet($Activity->textarea, 5)); ?>  </small></t
       //$ActyDetails->Get_Severity_Name($row['SeverityID']); //severity name
 
       ?>
+  </p>
 </td>
 
-<td>
+<td width="200">
 <?php $Tags->UserLists = $Users->Get_User_Listing(); //get Names and insert to Tags class var
 $Tags->Get_Tags($row['ActyID']);   //Execute Tags based on ActyID
 $Tags->Compare_Array(); // execute tag comparison  ?>
 <?php foreach($Tags->TagLists as $TagName) { ?>
-<span class="tag is-dark mar-r-5">  <?php echo $TagName; ?> </span> 
+<a href="tags.php?tagname=<?php echo $TagName; ?>"><span class="tag is-danger mar-r-5">  <?php echo $TagName; ?> </span> </a>
 <!-- <span class="tag is-info"> </span> -->
 <?php } ?>
 </td>
@@ -163,8 +186,8 @@ $Tags->Compare_Array(); // execute tag comparison  ?>
 
 </tr>
 
-
 <?php } //foreach ?>
+</tbody>
 <table>
 
 <?php } //if empty  ?>
