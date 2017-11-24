@@ -36,7 +36,7 @@ $(document).ready(function () {
 				title : {
 					display : true,
 					position : "bottom",
-					text : "2017 Top tags",
+					text : "",
 					fontSize : 14,
 					fontColor : "#05668D"
 				},
@@ -47,6 +47,9 @@ $(document).ready(function () {
 				},
 				scales : {
 					yAxes : [{
+						gridLines: {
+							display:false
+						},
 						ticks : {
 							min : 0
 						}

@@ -83,21 +83,21 @@ $tags->Compare_Array();
 
       <div class="tags">
       <?php foreach($taglists as $t) { ?>
-            <span class="tag is-dark"> <a href="tags.php?tagname=<?php echo $t['TagName']; ?>"><?php echo $t['TagName']; ?></a></span>
+            <span class="tag is-danger"> <a href="tags.php?tagname=<?php echo $t['TagName']; ?>"><?php echo $t['TagName']; ?></a></span>
       <?php } ?>
       </div> <!--/tags -->
     </div> <!--/content-->
   </div> <!--/notification -->
 </div> <!--/tag column-->
 
-<div class="column"> <!-- TAGS --> 
-  <div style="padding:20px; border-radius:5px; background:#f4f4f4;">
+<div class="column"> <!-- USER TAGS --> 
+  <div style="height:100%;padding:20px; border-radius:5px; background:#f4f4f4;">
     <div class="content">
       <h4 style="margin-bottom:10px;">User Tags</h4>
 
       <div class="tags">
       <?php foreach($tags->UserLists as $user) { ?>
-            <span class="tag is-dark"><a href="tags.php?tagname=<?php echo $user; ?>"><?php echo $user; ?></a></span>
+            <span class="tag is-info"><a href="tags.php?tagname=<?php echo $user; ?>"><?php echo $user; ?></a></span>
       <?php } ?>
       </div> <!--/tags -->
     </div> <!--/content-->
@@ -106,6 +106,8 @@ $tags->Compare_Array();
 
 
 </div> <!--/columns-->
+
+<hr>
 
 <?php if(isset($_GET['tagname'])) { ?>
  <div class="columns">

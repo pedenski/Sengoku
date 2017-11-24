@@ -13,13 +13,13 @@ $(function () {
     grid: true,
     grid_snap: true,
     from: 1,
-    values: ["Low", "Medium", "High" ]
+    values: ["Low", "Med", "High" ]
   });
 
   $range.on("change", function () {
     value = $range.prop("value");
     if(value == "Low")    { $SeverityValue = "0"; }
-    if(value == "Medium") { $SeverityValue = "1"; }
+    if(value == "Med") { $SeverityValue = "1"; }
     if(value == "High")   { $SeverityValue = "2"; }
     console.log("Value: " + $SeverityValue + "-" + value);
   });
@@ -47,6 +47,7 @@ var formData =
   })
   .done(function(data) 
   {   
+    console.log(data);
        var data = $.parseJSON(data);
            new jBox('Notice', 
            {

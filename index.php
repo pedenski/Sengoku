@@ -88,7 +88,7 @@ include_once('html/navbar.php'); ?>
   <tr>
     <th>ID</th>
     <th><p class="has-text-centered">User</p></th>
-    <th><!-- <p class="has-text-centered">Stat</p> --></th>
+
     <th>Title</th>
    
   
@@ -112,21 +112,24 @@ foreach($ActyList as $row) { ?>
 
 <tr>
 
-<td width="25">#<?php echo $row['ActyID'];?></td>
-
-
-<td width="25"><p class="has-text-centered"><img style="border-radius:50%;width:30px;height:30px" src="style/img/<?php echo $Users->GetUser($row['UserID']);?>.png"></p></td>
-
-<td width="15"><?php if($row['is_Open'] != 1) { ?>
-  <p class="has-text-centered"> <i style="color:#363636;" class="fa fa-lock fa-lg" aria-hidden="true"></i> </p>
+<td width="30">#<?php echo $row['ActyID'];?>
+  
+<?php if($row['is_Open'] != 1) { ?>
+ <i style="color:#363636;font-size:.8rem;" class="fa fa-lock fa-lg" aria-hidden="true"></i>
   <?php } else { ?>
  <!--  <p class="has-text-centered"> <i style="color:#028090;" class="fa fa-unlock-alt fa-lg" aria-hidden="true"></i> </p> -->
   <?php } ?>
+
 </td>
+
+
+<td width="35"><p class="has-text-centered"><img style="border-radius:50%;width:30px;height:30px" src="style/img/<?php echo $Users->GetUser($row['UserID']);?>.png"></p></td>
+
+
 
 <td width="400"><a href="page.php?id=<?php echo $row['ActyID'];?>"><span style="color:#363636; font-size:1.1rem;" class="_actyTitle"> <?php echo ucfirst($Activity->get_snippet($row['ActyTitle'], 5)); ?></a></span></a> <br>
-		<span style="color:#363636;"><small> <?php $Activity->Get_Activity_Detail($row['ActyID']);
-echo strip_tags($Activity->get_snippet($Activity->textarea, 15)); ?>  </small></span>
+    <!-- <span style="color:#363636;"><small> <?php $Activity->Get_Activity_Detail($row['ActyID']);
+echo strip_tags($Activity->get_snippet($Activity->textarea, 15)); ?>  </small></span> -->
 
 </td>
 
@@ -135,7 +138,7 @@ echo strip_tags($Activity->get_snippet($Activity->textarea, 15)); ?>  </small></
 
 
 
-<td width="25"><span style="color:#363636;"><small><?php echo date('M-d',strtotime($row['ActyStartDate'])); ?>
+<td width="35"><span style="color:#363636;"><small><?php echo date('M-d',strtotime($row['ActyStartDate'])); ?>
     <span class='hover' id='demo-tooltip-above' data-jbox-content="<?php echo date('H:i',strtotime($row['ActyStartDate'])); ?>">  <i class="fa fa-clock-o" aria-hidden="true"></i></span></small></span>
     </td>
 
@@ -289,16 +292,32 @@ $Tags->Compare_Array(); // execute tag comparison  ?>
       </div><!-- USE PROFILE -->
 
 
+    <!-- AREAS -->
+    <div style="border-radius:5px; margin-bottom:15px; padding:5px; background: #fff;"> 
+    <?php 
+    foreach($ActyDetails->Get_Area_List() as $area) { ?>
+      <div class="areadiv" style="display:inline-block;position:relative;">
+       <a href="tags.php?tagname=<?php echo $area['AreaName'];?>"> <img data-jbox-content=" <?php echo $area['AreaName'];?>" id="demo-tooltip-above" class="hover imgsize-50" src="style/icons/<?php echo strtolower($area['AreaName']);?>.png"></a>
+        <?php $areacount = $ActyDetails->count_AreaEntries($area['AreaID']);?> 
+        <span class="iconbadge"><?php echo $areacount[0]['areacount']; ?></span>
+      </div>
+    <?php } ?>
+    </div><!--INFO -->
+     
 
     <!-- TAG GRAPH BAR -->
-      <div style="border-radius:5px; margin-bottom:15px; padding-top:25px; padding-bottom:5px; padding-right:15px; background: #f4f4f4"> 
+      <div style="border-radius:5px; margin-bottom:15px; padding-top:25px; background: #FCE5B0"> 
         <div class="chart-container">
           <canvas id="bar-chartcanvas"></canvas>
         </div>
+
       </div><!-- END TAG GRAPH BAR -->
 
 
-        <!-- TAG GRAPH BAR -->
+
+
+
+        <!-- RECENT LOGS -->
       <div style="border-radius:5px; padding:5px;background: #f4f4f4"> 
 
        <table style="background:#f4f4f4;" class="table is-fullwidth is-striped"> 
@@ -308,9 +327,9 @@ $Tags->Compare_Array(); // execute tag comparison  ?>
           
           </thead>
           <tbody>
-       		<?php 
-       		$recentlogs = $Activity->LogPreview($num = 5); 
-       	  foreach($recentlogs as $recent) { ?>
+          <?php 
+          $recentlogs = $Activity->LogPreview($num = 5); 
+          foreach($recentlogs as $recent) { ?>
 
           <tr>
           
@@ -319,11 +338,10 @@ $Tags->Compare_Array(); // execute tag comparison  ?>
 
 
           </tr>
-          <?php }	?>
+          <?php } ?>
         </tbody>
-       </table> 	
-      </div><!-- END TAG GRAPH BAR -->
-  
+       </table>   
+      </div><!-- /RECENT LOGS -->
 
 
     <!-- USER LOGGED IN TODAY -->

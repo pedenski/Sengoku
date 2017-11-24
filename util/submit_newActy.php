@@ -1,6 +1,8 @@
 <?php 
 session_start();
 
+
+
 /* if started from commandline, wrap parameters to $_POST and $_GET */
 // if (!isset($_SERVER["HTTP_HOST"])) {
   

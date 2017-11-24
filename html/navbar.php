@@ -3,6 +3,15 @@
   <a class="navbar-item" href="index.php">
     <img src="style/img/logo3.png" alt="Sengoku: Activity Report" width="30" height="90">
   </a>
+    <a class="navbar-item" href="index.php">
+    Home
+  </a>
+     <a class="navbar-item" href="tags.php">
+    Tags
+  </a>
+     <a class="navbar-item" href="index.php">
+    Users
+  </a>
   </div>
   <div id="navMenuTransparentExample" class="navbar-menu">
     <div class="navbar-start">

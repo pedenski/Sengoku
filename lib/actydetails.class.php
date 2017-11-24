@@ -137,6 +137,19 @@ class ActyDetails {
 		$this->Area_List = $sql->fetchAll(PDO::FETCH_ASSOC);
 	}
 
+	public function count_AreaEntries($AreaID)
+	//count number of title entries per area
+	{
+		$q = "SELECT COUNT(*) as areacount FROM activity_titles WHERE AreaID = ?";
+		$sql = $this->conn->prepare($q);
+		$sql->bindParam(1, $AreaID);
+		$sql->execute();
+		return $row = $sql->fetchAll(PDO::FETCH_ASSOC);
+
+	
+	}
+
+
 }
 
 
