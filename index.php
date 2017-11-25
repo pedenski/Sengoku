@@ -127,7 +127,7 @@ foreach($ActyList as $row) { ?>
 
 
 
-<td width="400"><a href="page.php?id=<?php echo $row['ActyID'];?>"><span style="color:#363636; font-size:1.1rem;" class="_actyTitle"> <?php echo ucfirst($Activity->get_snippet($row['ActyTitle'], 5)); ?></a></span></a> <br>
+<td width="400"><a href="page.php?id=<?php echo $row['ActyID'];?>"><span style="color:#05668D; font-size:1.1rem;" class="_actyTitle"> <?php echo ucfirst($Activity->get_snippet($row['ActyTitle'], 5)); ?></a></span></a> <br>
     <!-- <span style="color:#363636;"><small> <?php $Activity->Get_Activity_Detail($row['ActyID']);
 echo strip_tags($Activity->get_snippet($Activity->textarea, 15)); ?>  </small></span> -->
 
@@ -176,19 +176,19 @@ echo strip_tags($Activity->get_snippet($Activity->textarea, 15)); ?>  </small></
     <?php switch($row['CategoryID']) 
       {
         case 1:
-          echo "<span class='hover' id='demo-tooltip-above' data-jbox-content=".$ActyDetails->Get_Category_Name($row['CategoryID'])."><i style='color:#028090' class='fa fa-handshake-o fa-lg' aria-hidden='true'></i></span>";
+          echo "<span class='hover' id='demo-tooltip-above' data-jbox-content=".$ActyDetails->Get_Category_Name($row['CategoryID'])."><i style='color:#4A4A4A' class='fa fa-handshake-o fa-lg' aria-hidden='true'></i></span>";
         break; 
         case 2:
-          echo "<span class='hover' id='demo-tooltip-above' data-jbox-content=".$ActyDetails->Get_Category_Name($row['CategoryID'])."><i style='color:#028090' class='fa fa-eraser fa-lg' aria-hidden='true'></i></span>";
+          echo "<span class='hover' id='demo-tooltip-above' data-jbox-content=".$ActyDetails->Get_Category_Name($row['CategoryID'])."><i style='color:#4A4A4A' class='fa fa-eraser fa-lg' aria-hidden='true'></i></span>";
         break;
         case 3:
-          echo "<span class='hover' id='demo-tooltip-above' data-jbox-content=".$ActyDetails->Get_Category_Name($row['CategoryID'])."><i style='color:#028090' class='fa fa-sliders fa-lg' aria-hidden='true'></i></span>";
+          echo "<span class='hover' id='demo-tooltip-above' data-jbox-content=".$ActyDetails->Get_Category_Name($row['CategoryID'])."><i style='color:#4A4A4A' class='fa fa-sliders fa-lg' aria-hidden='true'></i></span>";
         break;
          case 4:
-          echo "<span class='hover' id='demo-tooltip-above' data-jbox-content=".$ActyDetails->Get_Category_Name($row['CategoryID'])."><i style='color:#028090' class='fa fa-rocket fa-lg' aria-hidden='true'></i></span>";
+          echo "<span class='hover' id='demo-tooltip-above' data-jbox-content=".$ActyDetails->Get_Category_Name($row['CategoryID'])."><i style='color:#4A4A4A' class='fa fa-rocket fa-lg' aria-hidden='true'></i></span>";
         break;
          case 5:
-          echo "<span class='hover' id='demo-tooltip-above' data-jbox-content=".$ActyDetails->Get_Category_Name($row['CategoryID'])."><i style='color:#028090' class='fa fa-shield fa-lg' aria-hidden='true'></i></span>";
+          echo "<span class='hover' id='demo-tooltip-above' data-jbox-content=".$ActyDetails->Get_Category_Name($row['CategoryID'])."><i style='color:#4A4A4A' class='fa fa-shield fa-lg' aria-hidden='true'></i></span>";
         break;
       }  
 
@@ -223,7 +223,7 @@ echo strip_tags($Activity->get_snippet($Activity->textarea, 15)); ?>  </small></
 $Tags->Get_Tags($row['ActyID']);   //Execute Tags based on ActyID
 $Tags->Compare_Array(); // execute tag comparison  ?>
 <?php foreach($Tags->TagLists as $TagName) { ?>
-<a href="tags.php?tagname=<?php echo $TagName; ?>"><span class="tag is-danger mar-r-5">  <?php echo $TagName; ?> </span> </a>
+<a href="tags.php?tagname=<?php echo $TagName; ?>"><span class="tag is-dark mar-r-5">  <?php echo $TagName; ?> </span> </a>
 <!-- <span class="tag is-info"> </span> -->
 <?php } ?>
 </td>
@@ -298,7 +298,7 @@ $Tags->Compare_Array(); // execute tag comparison  ?>
 
 
     <!-- AREAS -->
-    <div style="border-radius:5px; margin-bottom:15px; padding:5px; background: #fff;"> 
+    <div style="border-radius:5px; margin-bottom:15px; padding-left:50px; background: #fff;"> 
     <?php 
     foreach($ActyDetails->Get_Area_List() as $area) { ?>
       <div class="areadiv" style="display:inline-block;position:relative;">
