@@ -138,8 +138,8 @@ echo strip_tags($Activity->get_snippet($Activity->textarea, 15)); ?>  </small></
 
 
 
-<td width="35"><span style="color:#363636;"><small><?php echo date('M-d',strtotime($row['ActyStartDate'])); ?>
-    <span class='hover' id='demo-tooltip-above' data-jbox-content="<?php echo date('H:i',strtotime($row['ActyStartDate'])); ?>">  <i class="fa fa-clock-o" aria-hidden="true"></i></span></small></span>
+<td width="35"><span style="color:#363636;"><small><?php echo date('M-d',strtotime($row['ActyPostDate'])); ?>
+    <span class='hover' id='demo-tooltip-above' data-jbox-content="<?php echo date('H:i',strtotime($row['ActyPostDate'])); ?>">  <i class="fa fa-clock-o" aria-hidden="true"></i></span></small></span>
     </td>
 
 <!-- <td>
@@ -227,6 +227,31 @@ $Tags->Compare_Array(); // execute tag comparison  ?>
 <!-- <span class="tag is-info"> </span> -->
 <?php } ?>
 </td>
+
+
+
+<td>
+<?php 
+if(!empty($row['ActyEndDate'])) {
+$date_a = new DateTime($row['ActyPostDate']);
+$date_b = new DateTime($row['ActyEndDate']);
+
+$interval = $date_a->diff($date_b);
+echo $interval->format("Year: %Y Month: %M Day: %D - %H:%I:%S");
+
+
+} else {
+  echo "ongoing";
+}
+
+
+?>
+
+
+
+
+
+
 
 
 </tr>

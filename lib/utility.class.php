@@ -14,7 +14,7 @@ Class Search {
 	public function Search($query) {
 		$q = "SELECT * FROM activity_titles 
 			  WHERE ActyTitle LIKE '%".$query."%'
-			  OR ActyID LIKE '%".$query."%'";
+			  OR ActyPostDate LIKE '%".$query."%'";
 		$sql = $this->conn->prepare($q);
 		$sql->execute();
 

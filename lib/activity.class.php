@@ -343,7 +343,8 @@ class Activity {
 	//close thread
 	{
 		$q = "UPDATE activity_titles SET
-			  is_Open = 1
+			  is_Open = 1,
+			  ActyEndDate = NULL
 			  WHERE ActyID = :ActyID";
 		$sql = $this->conn->prepare($q);
 		$sql->bindParam(':ActyID', $ActyID);

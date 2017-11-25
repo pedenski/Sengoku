@@ -41,13 +41,13 @@ if(isset($_POST['query'])) {
 <?php	} else { ?>
 
 
-<table id="topics" class="table is-fullwidth is-striped">
+<table style="background:#f4f4f4" id="topics" class="table is-fullwidth">
 
 <thead>
   <tr>
     <th>ID</th>
     <th><p class="has-text-centered">User</p></th>
-    <th><!-- <p class="has-text-centered">Stat</p> --></th>
+
     <th>Title</th>
    
   
@@ -57,6 +57,7 @@ if(isset($_POST['query'])) {
     <th><p class="has-text-centered">Div</p></th>
     <th><p class="has-text-centered">Sev</p></th>
     <th>Tags</th>
+    <th>Lapse</th>
   </tr>
 </thead>
 
@@ -70,21 +71,24 @@ if(isset($_POST['query'])) {
 
 <tr>
 
-<td width="25">#<?php echo $row['ActyID'];?></td>
-
-
-<td width="25"><p class="has-text-centered"><img style="border-radius:50%;width:30px;height:30px" src="style/img/<?php echo $Users->GetUser($row['UserID']);?>.png"></p></td>
-
-<td width="15"><?php if($row['is_Open'] != 1) { ?>
-  <p class="has-text-centered"> <i style="color:#363636;" class="fa fa-lock fa-lg" aria-hidden="true"></i> </p>
+<td width="30">#<?php echo $row['ActyID'];?>
+  
+<?php if($row['is_Open'] != 1) { ?>
+ <i style="color:#363636;font-size:.8rem;" class="fa fa-lock fa-lg" aria-hidden="true"></i>
   <?php } else { ?>
  <!--  <p class="has-text-centered"> <i style="color:#028090;" class="fa fa-unlock-alt fa-lg" aria-hidden="true"></i> </p> -->
   <?php } ?>
+
 </td>
+
+
+<td width="35"><p class="has-text-centered"><img style="border-radius:50%;width:30px;height:30px" src="style/img/<?php echo $Users->GetUser($row['UserID']);?>.png"></p></td>
+
+
 
 <td width="400"><a href="page.php?id=<?php echo $row['ActyID'];?>"><span style="color:#363636; font-size:1.1rem;" class="_actyTitle"> <?php echo ucfirst($Activity->get_snippet($row['ActyTitle'], 5)); ?></a></span></a> <br>
-    <span style="color:#363636;"><small> <?php $Activity->Get_Activity_Detail($row['ActyID']);
-echo strip_tags($Activity->get_snippet($Activity->textarea, 5)); ?>  </small></span>
+    <!-- <span style="color:#363636;"><small> <?php $Activity->Get_Activity_Detail($row['ActyID']);
+echo strip_tags($Activity->get_snippet($Activity->textarea, 15)); ?>  </small></span> -->
 
 </td>
 
@@ -93,8 +97,8 @@ echo strip_tags($Activity->get_snippet($Activity->textarea, 5)); ?>  </small></s
 
 
 
-<td width="25"><span style="color:#363636;"><small><?php echo date('M-d',strtotime($row['ActyStartDate'])); ?>
-    <span class='hover' id='demo-tooltip-above' data-jbox-content="<?php echo date('H:i',strtotime($row['ActyStartDate'])); ?>">  <i class="fa fa-clock-o" aria-hidden="true"></i></span></small></span>
+<td width="35"><span style="color:#363636;"><small><?php echo date('M-d',strtotime($row['ActyPostDate'])); ?>
+    <span class='hover' id='demo-tooltip-above' data-jbox-content="<?php echo date('H:i',strtotime($row['ActyPostDate'])); ?>">  <i class="fa fa-clock-o" aria-hidden="true"></i></span></small></span>
     </td>
 
 <!-- <td>
@@ -183,6 +187,38 @@ $Tags->Compare_Array(); // execute tag comparison  ?>
 <?php } ?>
 </td>
 
+
+<td>
+<?php 
+if(!empty($row['ActyEndDate'])) {
+$date_a = new DateTime($row['ActyPostDate']);
+$date_b = new DateTime($row['ActyEndDate']);
+
+$interval = $date_a->diff($date_b);
+echo $interval->format("Year: %Y Month: %M Day: %D - %H:%I:%S");
+
+
+} else {
+  echo "ongoing";
+}
+
+
+?>
+</td>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</td>
 
 </tr>
 
