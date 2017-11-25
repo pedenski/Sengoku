@@ -13,6 +13,7 @@ $search = new Search();
 $ActyDetails = new ActyDetails();
 $Activity = new Activity();
 $Tags = new Tags();
+$Date = new Dates();
 
 //pagination
 $max = 12; //max items per page
@@ -56,8 +57,9 @@ if(isset($_POST['query'])) {
     <!-- <th><p class="has-text-centered">Area</p></th> -->
     <th><p class="has-text-centered">Div</p></th>
     <th><p class="has-text-centered">Sev</p></th>
+    <th>Elapsed</th>
     <th>Tags</th>
-    <th>Lapse</th>
+
   </tr>
 </thead>
 
@@ -97,7 +99,7 @@ echo strip_tags($Activity->get_snippet($Activity->textarea, 15)); ?>  </small></
 
 
 
-<td width="35"><span style="color:#363636;"><small><?php echo date('M-d',strtotime($row['ActyPostDate'])); ?>
+<td width="100"><span style="color:#363636;"><small><?php echo date('M-d',strtotime($row['ActyPostDate'])); ?>
     <span class='hover' id='demo-tooltip-above' data-jbox-content="<?php echo date('H:i',strtotime($row['ActyPostDate'])); ?>">  <i class="fa fa-clock-o" aria-hidden="true"></i></span></small></span>
     </td>
 
@@ -177,6 +179,28 @@ echo strip_tags($Activity->get_snippet($Activity->textarea, 15)); ?>  </small></
   </p>
 </td>
 
+
+<td width="200">
+<?php 
+if(!empty($row['ActyEndDate'])) 
+{
+    $interval = $Date->dateInterval($row['ActyPostDate'], $row['ActyEndDate']);
+    
+    if($interval->format("%a") != 0) {
+      echo $interval->format("%a days, "); 
+    }
+
+    echo $interval->format("%h hours ");
+    echo $interval->format("%i min");
+} 
+
+else {
+
+    echo "Ongoing";
+} ?>
+</td>
+
+
 <td width="200">
 <?php $Tags->UserLists = $Users->Get_User_Listing(); //get Names and insert to Tags class var
 $Tags->Get_Tags($row['ActyID']);   //Execute Tags based on ActyID
@@ -185,25 +209,6 @@ $Tags->Compare_Array(); // execute tag comparison  ?>
 <a href="tags.php?tagname=<?php echo $TagName; ?>"><span class="tag is-danger mar-r-5">  <?php echo $TagName; ?> </span> </a>
 <!-- <span class="tag is-info"> </span> -->
 <?php } ?>
-</td>
-
-
-<td>
-<?php 
-if(!empty($row['ActyEndDate'])) {
-$date_a = new DateTime($row['ActyPostDate']);
-$date_b = new DateTime($row['ActyEndDate']);
-
-$interval = $date_a->diff($date_b);
-echo $interval->format("Year: %Y Month: %M Day: %D - %H:%I:%S");
-
-
-} else {
-  echo "ongoing";
-}
-
-
-?>
 </td>
 
 

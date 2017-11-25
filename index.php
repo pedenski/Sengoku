@@ -11,14 +11,14 @@ include_once('lib/tags.class.php');
 include_once('lib/users.class.php');
 include_once('mods/pagination/pagination.php');
 include_once('lib/actydetails.class.php');
-
+include_once('lib/utility.class.php');
 //instantiate
 $db = new Database();
 $Activity = new Activity($db);
 $Tags = new Tags($db);
 $Users = new Users($db);
 $ActyDetails = new ActyDetails();
-
+$Date = new Dates();
 //pagination
 $max = 20; //max items per page
 $maxNum  = 5; //max number per page
@@ -62,7 +62,7 @@ include_once('html/navbar.php'); ?>
     <div class="columns">
       <div class="column is-half">
           <div class="control has-icons-left has-icons-right">
-          <input class="input" type="text" name="search_text" id="search_text" placeholder="Search By Title">
+          <input class="input" type="text" name="search_text" id="search_text" placeholder="Search by Activity or Month (numeric)">
           <span class="icon is-small is-left">
           <i class="fa fa-search"></i>
           </span>
@@ -138,7 +138,7 @@ echo strip_tags($Activity->get_snippet($Activity->textarea, 15)); ?>  </small></
 
 
 
-<td width="35"><span style="color:#363636;"><small><?php echo date('M-d',strtotime($row['ActyPostDate'])); ?>
+<td width="100"><span style="color:#363636;"><small><?php echo date('M-d',strtotime($row['ActyPostDate'])); ?>
     <span class='hover' id='demo-tooltip-above' data-jbox-content="<?php echo date('H:i',strtotime($row['ActyPostDate'])); ?>">  <i class="fa fa-clock-o" aria-hidden="true"></i></span></small></span>
     </td>
 
@@ -227,26 +227,6 @@ $Tags->Compare_Array(); // execute tag comparison  ?>
 <!-- <span class="tag is-info"> </span> -->
 <?php } ?>
 </td>
-
-
-
-<td>
-<?php 
-if(!empty($row['ActyEndDate'])) {
-$date_a = new DateTime($row['ActyPostDate']);
-$date_b = new DateTime($row['ActyEndDate']);
-
-$interval = $date_a->diff($date_b);
-echo $interval->format("Year: %Y Month: %M Day: %D - %H:%I:%S");
-
-
-} else {
-  echo "ongoing";
-}
-
-
-?>
-
 
 
 

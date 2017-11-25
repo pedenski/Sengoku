@@ -27,8 +27,24 @@ Class Search {
 	}
 
 
+
+
 }
 
+
+Class Dates {
+
+	public function dateInterval($start, $end) {
+	//$interval->format("Year: %Y Month: %M Day: %D - %H:%I:%S");	
+
+			$start = new DateTime($start);
+			$end = new DateTime($end);
+
+			return $interval = $start->diff($end);
+			
+
+	}
+}
 
 
 
