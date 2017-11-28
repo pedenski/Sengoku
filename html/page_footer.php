@@ -14,6 +14,12 @@ crossorigin="anonymous"></script>
 <script src="mods/DatePicker/datetimepicker.full.js"></script>
 <script src="mods/DatePicker/zconfig.js"></script>
 
+
+<!--/ JBOX  /--> 
+<script src="mods/jbox/Source/jBox.js"></script>
+<script src="mods/jbox/Source/plugins/Notice/jBox.Notice.js"></script>
+<script src="mods/jbox/zconfig.js"></script>
+
 <script type="text/javascript">
 var actyid = <?php echo json_encode($ActyID); ?>;
 </script>
@@ -65,7 +71,7 @@ $(document).ready(function() {
       a = parsed.days;
       b = parsed.arr;
 
-      console.log(b); 
+      //console.log(b); 
   
       var data = {
         labels : a,
@@ -142,13 +148,44 @@ $(document).ready(function() {
   ({
     type        : 'POST', 
     url         : 'util/submit_log.php',
-    data        : formData
+    data        : formData,
+    dataType     : 'json',
+
+    success     : function(data) {
+      //var a = $.parseJSON(data);
+      if(data.hasError == true) {
+             console.log(data.error);
+             new jBox('Notice', 
+           {
+              theme: 'NoticeFancy',
+              attributes: 
+              {
+                x: 'left',
+                y: 'bottom'
+              },
+              color: getColor(),
+              title: getZ(data.error),
+              maxWidth: 600,
+              audio: 'mods/jbox/Source/audio/bling2',
+              volume: 80,
+              autoClose: Math.random() * 8000 + 2000,
+              animation: {open: 'slide:bottom', close: 'slide:left'},
+              delayOnHover: true,
+              showCountdown: true,
+              closeButton: true
+          });
+      } else {
+             console.log(data);
+             $('table#logtable').append($(data)).fadeIn('slow'); //insert on table
+             updateChart(); //activate function 
+    
+      }
+   
+    
+    }
+
   })
-    .done(function(data) {
-     console.log(data); 
-     $('table#logtable').append($(data)).fadeIn('slow'); //insert on table
-     updateChart(); //activate function 
-  });
+
   event.preventDefault();
   });
 
@@ -168,7 +205,7 @@ function updateChart() {
       a = parsed.days;
       b = parsed.arr;
 
-      console.log(b); 
+      //console.log(b); 
      
       var data = {
         labels : a,

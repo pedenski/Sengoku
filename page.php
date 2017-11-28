@@ -11,13 +11,14 @@ include_once('lib/activity.class.php');
 include_once('lib/users.class.php');
 include_once('lib/tags.class.php');
 include_once('lib/actydetails.class.php');
-
+include_once('lib/utility.class.php');
 //Instantiate
 $db = new Database();
 $Activity = new Activity();
 $Users = new Users();
 $Tags = new Tags();
 $ActyDetails = new ActyDetails();
+$Date = new Dates();
 
 $Activity->Get_Title_Data($ActyID);
 
@@ -88,9 +89,28 @@ include_once('html/navbar.php');
 <?php if($Activity->is_Open == 0) { ?>
 <article class="message is-primary">
   <div class="message-body">
-    <span style="color:#056456"><i class="fa fa-lock" aria-hidden="true"></i> Closed Thread at <?php echo date('M-d-y g:i a',strtotime($Activity->ActyEndDate));?></span>
+    <span style="color:#056456"><i class="fa fa-lock" aria-hidden="true"></i> Closed Thread </span>
+
+    <hr style="background-color:#00D1B2;margin-top:5px; margin-bottom:5px;">
+   <span style="color:#056456"></i><small><?php echo date('M-d-y g:i a', strtotime($Activity->ActyPostDate)); ?> - <?php echo date('M-d-y g:i a', strtotime($Activity->ActyEndDate)); ?></small></span> <br>
+    <span style="color:#056456"><strong>
+    <?php
+    if(!empty($Activity->ActyEndDate)) {
+    $interval = $Date->dateInterval($Activity->ActyPostDate, $Activity->ActyEndDate);
+    
+        if($interval->format("%a") != 0) {
+          echo $interval->format("%a days, "); 
+        }
+
+    echo $interval->format("%h hours ");
+    echo $interval->format("%i min");
+    } ?>
+    </strong></span>
+
   </div>
 </article>
+
+
 <?php } ?>
 
 

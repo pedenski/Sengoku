@@ -311,7 +311,7 @@ $Tags->Compare_Array(); // execute tag comparison  ?>
      
 
     <!-- TAG GRAPH BAR -->
-      <div style="border-radius:5px; margin-bottom:15px; padding-top:25px; background: #FCE5B0"> 
+      <div style="border-radius:5px; margin-bottom:15px; padding-top:25px; background: #f4f4f4"> 
         <div class="chart-container">
           <canvas id="bar-chartcanvas"></canvas>
         </div>

@@ -26,6 +26,10 @@
     <!-- DATETIME PICKER -->
     <link rel="stylesheet" type="text/css" href="mods/DatePicker/datetimepicker.css"/>  
     
+    <!-- JBOX -->
+    <link rel="stylesheet" href="mods/jbox/Source/jBox.css">
+    <link rel="stylesheet" href="mods/jbox/Source/plugins/Notice/jBox.Notice.css">
+
 
     <!-- TINYMICE (/script) -->
   	<script src="mods/tinyMCE/tinymce.min.js"></script>  

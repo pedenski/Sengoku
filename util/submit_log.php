@@ -26,52 +26,100 @@ $Activity->is_Resolved		= htmlspecialchars($_POST['resolve']);
 $Activity->Update_Issue_As_Answered();
 
 
+/*
+Note to self:
+
+Below so complex, took a while to fix the error.
+whole point below is to trigger JBOX depending on the condition if(error == true) { show jbox } else { display HTML table}
+
+if you use AJAX with dataType: JSON, 
+subsequent returns (html or raw text) must also be in JSON format
+use JSON_ENCODE() function in PHP
+
+I had to assign variable for each of the data, so the array will accept the variable instead of the actualy PHP echo format.
+
+*/
 
 $error = $Validator->isLog_Valid();
 if(!empty($error)) {
-	echo $error;
+  $true = true;
+	$a = array('error' => $error, 'hasError' => $true);
+  echo json_encode($a);
 	die();
-}
+} else {
+
 
 $LastID = $Activity->Insert_Log();
 $log = $Activity->Last_Log_Insert($LastID);
 
+$logID       = $log['LogID']; // LOG ID
+$sprintLogID = sprintf("%02d",$log['LogID']); // LogID with 0 if digit is singular e.g 1 => 01
+$logDate     = date('M-d g:i a',strtotime($log['LogDate'])); //convert date
+$avatar      = $Users->GetUser($log['UserID']); // get user for AVATAR img
+$logTextarea = strip_tags($log['LogText'],'<strong><em>'); // strip HTML for textarea logs
+
+
+/*
+ * $tr = <tr> tag
+ */
 if($log['LogIssue'] != 1) {
-  echo "<tr>";
+    $tr = "<tr>"; //if normal update logs
+
+    if($log['ReferTo'] != 0 ) {
+      $tr = "<tr class='is-answered'>"; // if log is answered
+    }
  
-  if($log['ReferTo'] !=0 ) {
-    echo "<tr class='is-answered'>";
-  }
-  } else {
-    echo "<tr class='is-selected'>";
-  }
-?>
-   <!--/ LOG ID -->
-      <td width="20">
-        <span id="datalog" class="button is-small log" data-logid="<?php echo $log['LogID'];?>" ><small><?php echo sprintf("%02d",$log['LogID']);?></small></span>
-      </td>
+} else {
+  $tr = "<tr class='is-selected'>"; //if log is issue
+}
 
-      <!--/ LOG DATE /-->
-      <td width="130"><small> <?php echo date('M-d g:i a',strtotime($log['LogDate']));?> </small></td>
 
-       <!--/ USER /-->
-      <td width="50"><figure class="media-left"><p class="image"><img style="border-radius:5px;width:55px;height:25px" src="style/img/<?php echo $Users->GetUser($log['UserID']);?>.png"></p></figure>
-      </td>
+/*
+ * $span = <span> tag
+ */
+if($log['ReferTo'] == 0) {
+  $sevStats = $ActyDetails->Severity_Status($log['LogSeverityID']);
+  $sevName  = $ActyDetails->Get_Severity_Name($log['LogSeverityID']);
 
-      <!--/ SEVERITY /-->
-      <td width="80">
-        <p class="has-text-centered">
-        <?php if($log['ReferTo'] == 0) { ?>
-           <span class="tag <?php echo $ActyDetails->Severity_Status($log['LogSeverityID']); ?>"><?php echo $ActyDetails->Get_Severity_Name($log['LogSeverityID']);?></span>
-        <?php } else { ?>
-           <span class="tag is-dark">Ref # <?php echo sprintf("%02d",$log['ReferTo']); ?></span>
-        <?php }  ?>
-        </p>
-      </td>
+  $span = "<span class='tag ".$ActyDetails->Severity_Status($log['LogSeverityID'])."'>".$ActyDetails->Get_Severity_Name($log['LogSeverityID'])."</span>";
+} else {
+  $referTag = sprintf("%02d",$log['ReferTo']);
+  $span = "<span class='tag is-dark'>Ref # ".sprintf('%02d',$log['ReferTo'])."</span>";
+}
 
-      <!--/ LOG DETAIL /-->
-      <td> 
-      <?php echo strip_tags($log['LogText'],'<strong><em>');?>
-      </td>
+
+
+
+
+$str = "
+  $tr 
+  
+    <td width='20'>
+          <span id='datalog' class='button is-small log' data-logid='$logID'>
+          <small> $sprintLogID </small></span>
+    </td>
+
+
+    <td width='130'><small> $logDate </small></td>
+   
+    <td width='50'><figure class='media-left'><p class='image'><img style='border-radius:5px;width:55px;height:25px' src='style/img/$avatar.png'></p></figure>
+    </td>  
+
+    <td width='80'>
+      <p class='has-text-centered'>
+      $span
+      </p>
+    </td>
+
+    <td> 
+      $logTextarea
+    </td>
+
   </tr>
+    
+    ";
 
+
+echo json_encode($str);
+
+} ?>
