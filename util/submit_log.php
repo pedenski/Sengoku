@@ -78,12 +78,8 @@ if($log['LogIssue'] != 1) {
  * $span = <span> tag
  */
 if($log['ReferTo'] == 0) {
-  $sevStats = $ActyDetails->Severity_Status($log['LogSeverityID']);
-  $sevName  = $ActyDetails->Get_Severity_Name($log['LogSeverityID']);
-
   $span = "<span class='tag ".$ActyDetails->Severity_Status($log['LogSeverityID'])."'>".$ActyDetails->Get_Severity_Name($log['LogSeverityID'])."</span>";
 } else {
-  $referTag = sprintf("%02d",$log['ReferTo']);
   $span = "<span class='tag is-dark'>Ref # ".sprintf('%02d',$log['ReferTo'])."</span>";
 }
 
@@ -93,7 +89,7 @@ if($log['ReferTo'] == 0) {
 
 $str = "
   $tr 
-  
+
     <td width='20'>
           <span id='datalog' class='button is-small log' data-logid='$logID'>
           <small> $sprintLogID </small></span>
